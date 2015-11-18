@@ -1,0 +1,66 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 8.810 ns
+From           : ResetDelay:u2|oRST_1
+To             : GPIO_1[14]
+From Clock     : iCLK_50
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case tpd
+Slack          : N/A
+Required Time  : None
+Actual Time    : 10.585 ns
+From           : iSW[3]
+To             : oLEDR[3]
+From Clock     : --
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Clock Setup: 'vga_pll:u6|altpll:altpll_component|_clk0'
+Slack          : 4.473 ns
+Required Time  : 108.00 MHz ( period = 9.259 ns )
+Actual Time    : 208.94 MHz ( period = 4.786 ns )
+From           : vga_controller:vga|V_Cont[11]
+To             : vga_controller:vga|outVGA_R[0]
+From Clock     : vga_pll:u6|altpll:altpll_component|_clk0
+To Clock       : vga_pll:u6|altpll:altpll_component|_clk0
+Failed Paths   : 0
+
+Type           : Clock Setup: 'iCLK_50'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 240.10 MHz ( period = 4.165 ns )
+From           : ResetDelay:u2|Cont[4]
+To             : ResetDelay:u2|Cont[9]
+From Clock     : iCLK_50
+To Clock       : iCLK_50
+Failed Paths   : 0
+
+Type           : Clock Hold: 'vga_pll:u6|altpll:altpll_component|_clk0'
+Slack          : 0.391 ns
+Required Time  : 108.00 MHz ( period = 9.259 ns )
+Actual Time    : N/A
+From           : vga_controller:vga|mVGA_V_SYNC
+To             : vga_controller:vga|mVGA_V_SYNC
+From Clock     : vga_pll:u6|altpll:altpll_component|_clk0
+To Clock       : vga_pll:u6|altpll:altpll_component|_clk0
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+--------------------------------------------------------------------------------------
+
