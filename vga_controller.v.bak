@@ -47,7 +47,6 @@ wire				mVGA_BLANK;
 //	Control Signal
 input				iCLK;
 input				iRST_N;
-input 				iZOOM_MODE_SW;
 
 //	Internal Registers and Wires
 reg		[12:0]		H_Cont;
@@ -83,15 +82,18 @@ always@(posedge iCLK or negedge iRST_N)
 			end
 		else
 			begin
-				outVGA_R <= mVGA_R;
-				outVGA_G <= mVGA_G;
-                outVGA_B <= mVGA_B;
+				if (H_Cont > V_Cont)
+				begin
+					outVGA_R <= mVGA_R;
+					outVGA_G <= mVGA_G;
+					outVGA_B <= mVGA_B;
+                end
 				outVGA_BLANK <= mVGA_BLANK;
 				outVGA_SYNC <= mVGA_SYNC;
 				outVGA_H_SYNC <= mVGA_H_SYNC;
 				outVGA_V_SYNC <= mVGA_V_SYNC;				
 			end               
-	end
+end
 
 
 

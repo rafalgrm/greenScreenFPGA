@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="GreenScreen">
-		<CBX_INST_ENTRY INSTANCE_NAME="|GreenScreen|RAWToRGB:u4|LineBuffer:L1|altshift_taps:altshift_taps_component" CBX_FILE_NAME="shift_taps_jkn.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|GreenScreen|RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component" CBX_FILE_NAME="shift_taps_fms.tdf"/>
 	</PROJECT>
 </LOG_ROOT>

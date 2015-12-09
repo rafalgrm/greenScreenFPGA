@@ -84,13 +84,13 @@ always@(posedge iCLK or negedge iRST_N)
 			begin
 				outVGA_R <= mVGA_R;
 				outVGA_G <= mVGA_G;
-                outVGA_B <= mVGA_B;
+				outVGA_B <= mVGA_B;
 				outVGA_BLANK <= mVGA_BLANK;
 				outVGA_SYNC <= mVGA_SYNC;
 				outVGA_H_SYNC <= mVGA_H_SYNC;
 				outVGA_V_SYNC <= mVGA_V_SYNC;				
 			end               
-	end
+end
 
 
 

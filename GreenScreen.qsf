@@ -584,6 +584,14 @@ set_location_assignment PIN_B15 -to oVGA_SYNC_N
 set_global_assignment -name USE_CONFIGURATION_DEVICE ON
 set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
 set_global_assignment -name RESERVE_ASDO_AFTER_CONFIGURATION "AS INPUT TRI-STATED"
+set_global_assignment -name VERILOG_FILE verilog/SEG7_DIGIT.v
+set_global_assignment -name VERILOG_FILE verilog/SEG7_DISPLAY.v
+set_global_assignment -name VERILOG_FILE verilog/I2C_Controller.v
+set_global_assignment -name VERILOG_FILE verilog/I2C_CCD_Config.v
+set_global_assignment -name VERILOG_FILE verilog/line_buffer.v
+set_global_assignment -name VERILOG_FILE verilog/ccd_capture.v
+set_global_assignment -name VERILOG_FILE verilog/camera_if.v
+set_global_assignment -name VERILOG_FILE verilog/camera.v
 set_global_assignment -name VERILOG_FILE vga_pll.v
 set_global_assignment -name VERILOG_FILE vga_controller.v
 set_global_assignment -name TEXT_FILE vga_config.txt

@@ -427,30 +427,9 @@ module GreenScreen(
 		rCCD_FVAL	<=	CCD_FVAL;
 	end
 	
-	
-/*	
-vga_controller		vga	(	//	Host Side
-							.oRequest(Read),
-							.iRed(Read_DATA2[9:0]),
-							.iGreen({Read_DATA1[14:10],Read_DATA2[14:10]}),
-							.iBlue(Read_DATA1[9:0]),
-							//	VGA Side
-							.oVGA_R(oVGA_R),
-							.oVGA_G(oVGA_G),
-							.oVGA_B(oVGA_B),
-							.oVGA_H_SYNC(oVGA_HS),
-							.oVGA_V_SYNC(oVGA_VS),
-							.oVGA_SYNC(oVGA_SYNC_N),
-							.oVGA_BLANK(oVGA_BLANK_N),
-							//	Control Signal
-							.iCLK(VGA_CTRL_CLK),
-							.iRST_N(DLY_RST_2),
-							.iZOOM_MODE_SW(iSW[16])
-						);	
-endmodule
-*/
-assign Read_DATA2[14:0] = 14'b00001000011111;
-assign Read_DATA1[14:0] = 14'b11111111111111;
+assign Read_DATA2[9:0] = sCCD_R;
+assign {Read_DATA1[14:10],Read_DATA2[14:10]} = sCCD_G;
+assign Read_DATA1[9:0] = sCCD_B;
 
 /* VGA Module */ 
 
@@ -469,8 +448,7 @@ vga_controller	vga	(	//	Host Side
 					.outVGA_BLANK(oVGA_BLANK_N),
 					//	Control Signal
 					.iCLK(VGA_CTRL_CLK),
-					.iRST_N(DLY_RST_2),
-					.iZOOM_MODE_SW(iSW[16])
+					.iRST_N(DLY_RST_2)
 );	
 						
 /* VGA Phase locked loop Module */ 
@@ -496,15 +474,53 @@ ResetDelay		u2	(	.iCLK(iCLK_50),
 RAWToRGB		u4	(	.iCLK(CCD_PIXCLK),
 					.iRST_n(DLY_RST_1),
 					.iData(mCCD_DATA),
-					.iDval(mCCD_DVAL),
+					.iDataValid(mCCD_DVAL),
 					.oRed(sCCD_R),
 					.oGreen(sCCD_G),
 					.oBlue(sCCD_B),
-					.oDval(sCCD_DVAL),
+					.oDataValid(sCCD_DVAL),
 					.iZoom(iSW[17:16]),
-					.iX_Cont(X_Cont),
-					.iY_Cont(Y_Cont)
+					.iX_Counter(X_Cont),
+					.iY_Counter(Y_Cont)
 );
 
+
+/* */
+CCD_Capture		u3	(	.oDATA(mCCD_DATA),
+							.oDataValid(mCCD_DVAL),
+							.oX_Counter(X_Cont),
+							.oY_Counter(Y_Cont),
+							.oFrame_Counter(Frame_Cont),
+							.iDATA(rCCD_DATA),
+							.inputFrameValid(rCCD_FVAL),
+							.inputLineValid(rCCD_LVAL),
+							.iSTART(CCD_CAPTURE_START),
+							.iEND(CCD_CAPTURE_STOP),
+							.iCLK(CCD_PIXCLK),
+							.iRST(DLY_RST_2)
+						);
+
+/* */						
+						
+I2C_CCD_Config 		u10	(	//	Host Side
+							.iCLK(iCLK_50),
+							.iRST_N(DLY_RST_2),
+							.iZOOM_MODE_SW(iSW[16]),
+							.iEXPOSURE_ADJ(iKEY[1]),
+							.iEXPOSURE_DEC_p(iSW[0]),
+							//	I2C Side
+							.I2C_SCLK(GPIO_1[20]),
+							.I2C_SDAT(GPIO_1[19])
+						);
+/* Module for displaying information about color captured by camera*/
+
+assign iDIG = sCCD_R;
+						
+SEG7_DISPLAY 			u5	(	.oSEG0(oHEX0_D),.oSEG1(oHEX1_D),
+							.oSEG2(oHEX2_D),.oSEG3(oHEX3_D),
+							.oSEG4(oHEX4_D),.oSEG5(oHEX5_D),
+							.oSEG6(oHEX6_D),.oSEG7(oHEX7_D),
+							.iDIG(Frame_Cont[31:0])
+						);
 
 endmodule
