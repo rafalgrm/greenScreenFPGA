@@ -10,7 +10,7 @@ module GreenScreen(
 		iKEY,							//	Pushbutton[3:0]
 		////////////////////	DPDT Switch		////////////////////
 		iSW,							//	Toggle Switch[17:0]
-		////////////////////	7-SEG Dispaly	////////////////////
+		////////////////////	7-SEG Display	////////////////////
 		oHEX0_D,						//	Seven Segment Digit 0
 		oHEX0_DP,						//  Seven Segment Digit 0 decimal point
 		oHEX1_D,						//	Seven Segment Digit 1
@@ -29,98 +29,12 @@ module GreenScreen(
 		oHEX7_DP,						//  Seven Segment Digit 7 decimal point
 		////////////////////////	LED		////////////////////////
 		oLEDG,							//	LED Green[8:0]
-		oLEDR,							//	LED Red[17:0]
-		////////////////////////	UART	////////////////////////
-		oUART_TXD,						//	UART Transmitter
-		iUART_RXD,						//	UART Receiver
-		oUART_CTS,          			//	UART Clear To Send
-		iUART_RTS,          			//	UART Requst To Send
-		////////////////////////	IRDA	////////////////////////
-		oIRDA_TXD,						//	IRDA Transmitter
-		iIRDA_RXD,						//	IRDA Receiver
-		/////////////////////	SDRAM Interface		////////////////
-		DRAM_DQ,						//	SDRAM Data bus 32 Bits
-		oDRAM0_A,						//	SDRAM0 Address bus 13 Bits
-		oDRAM1_A,						//	SDRAM1 Address bus 13 Bits
-		oDRAM0_LDQM0,					//	SDRAM0 Low-byte Data Mask 
-		oDRAM1_LDQM0,					//	SDRAM1 Low-byte Data Mask 
-		oDRAM0_UDQM1,					//	SDRAM0 High-byte Data Mask
-		oDRAM1_UDQM1,					//	SDRAM1 High-byte Data Mask
-		oDRAM0_WE_N,					//	SDRAM0 Write Enable
-		oDRAM1_WE_N,					//	SDRAM1 Write Enable
-		oDRAM0_CAS_N,					//	SDRAM0 Column Address Strobe
-		oDRAM1_CAS_N,					//	SDRAM1 Column Address Strobe
-		oDRAM0_RAS_N,					//	SDRAM0 Row Address Strobe
-		oDRAM1_RAS_N,					//	SDRAM1 Row Address Strobe
-		oDRAM0_CS_N,					//	SDRAM0 Chip Select
-		oDRAM1_CS_N,					//	SDRAM1 Chip Select
-		oDRAM0_BA,						//	SDRAM0 Bank Address
-		oDRAM1_BA,	 					//	SDRAM1 Bank Address
-		oDRAM0_CLK,						//	SDRAM0 Clock
-		oDRAM1_CLK,						//	SDRAM1 Clock
-		oDRAM0_CKE,						//	SDRAM0 Clock Enable
-		oDRAM1_CKE,						//	SDRAM1 Clock Enable
-		////////////////////	Flash Interface		////////////////
-		FLASH_DQ,						//	FLASH Data bus 15 Bits (0 to 14)
-		FLASH_DQ15_AM1,					//  FLASH Data bus Bit 15 or Address A-1
-		oFLASH_A,						//	FLASH Address bus 26 Bits
-		oFLASH_WE_N,					//	FLASH Write Enable
-		oFLASH_RST_N,					//	FLASH Reset
-		oFLASH_WP_N,					//	FLASH Write Protect /Programming Acceleration 
-		iFLASH_RY_N,					//	FLASH Ready/Busy output 
-		oFLASH_BYTE_N,					//	FLASH Byte/Word Mode Configuration
-		oFLASH_OE_N,					//	FLASH Output Enable
-		oFLASH_CE_N,					//	FLASH Chip Enable
-		////////////////////	SRAM Interface		////////////////
-		SRAM_DQ,						//	SRAM Data Bus 32 Bits
-		SRAM_DPA, 						//  SRAM Parity Data Bus
-		oSRAM_A,						//	SRAM Address bus 22 Bits
-		oSRAM_ADSC_N,       			//	SRAM Controller Address Status 	
-		oSRAM_ADSP_N,                   //	SRAM Processor Address Status
-		oSRAM_ADV_N,                    //	SRAM Burst Address Advance
-		oSRAM_BE_N,                     //	SRAM Byte Write Enable
-		oSRAM_CE1_N,        			//	SRAM Chip Enable
-		oSRAM_CE2,          			//	SRAM Chip Enable
-		oSRAM_CE3_N,        			//	SRAM Chip Enable
-		oSRAM_CLK,                      //	SRAM Clock
-		oSRAM_GW_N,         			//  SRAM Global Write Enable
-		oSRAM_OE_N,         			//	SRAM Output Enable
-		oSRAM_WE_N,         			//	SRAM Write Enable
-		////////////////////	ISP1362 Interface	////////////////
-		OTG_D,							//	ISP1362 Data bus 16 Bits
-		oOTG_A,							//	ISP1362 Address 2 Bits
-		oOTG_CS_N,						//	ISP1362 Chip Select
-		oOTG_OE_N,						//	ISP1362 Read
-		oOTG_WE_N,						//	ISP1362 Write
-		oOTG_RESET_N,					//	ISP1362 Reset
-		OTG_FSPEED,						//	USB Full Speed,	0 = Enable, Z = Disable
-		OTG_LSPEED,						//	USB Low Speed, 	0 = Enable, Z = Disable
-		iOTG_INT0,						//	ISP1362 Interrupt 0
-		iOTG_INT1,						//	ISP1362 Interrupt 1
-		iOTG_DREQ0,						//	ISP1362 DMA Request 0
-		iOTG_DREQ1,						//	ISP1362 DMA Request 1
-		oOTG_DACK0_N,					//	ISP1362 DMA Acknowledge 0
-		oOTG_DACK1_N,					//	ISP1362 DMA Acknowledge 1
-		////////////////////	LCD Module 16X2		////////////////
-		oLCD_ON,						//	LCD Power ON/OFF
-		oLCD_BLON,						//	LCD Back Light ON/OFF
-		oLCD_RW,						//	LCD Read/Write Select, 0 = Write, 1 = Read
-		oLCD_EN,						//	LCD Enable
-		oLCD_RS,						//	LCD Command/Data Select, 0 = Command, 1 = Data
-		LCD_D,						//	LCD Data bus 8 bits
-		////////////////////	SD_Card Interface	////////////////
-		SD_DAT,							//	SD Card Data
-		SD_DAT3,						//	SD Card Data 3
-		SD_CMD,							//	SD Card Command Signal
-		oSD_CLK,						//	SD Card Clock
+		oLEDR,							//	LED Red[17:0]		
+		////////////////	TV Decoder		////////////////////////
+		iTD1_CLK27,						//	TV Decoder1 Line_Lock Output Clock 
 		////////////////////	I2C		////////////////////////////
 		I2C_SDAT,						//	I2C Data
 		oI2C_SCLK,						//	I2C Clock
-		////////////////////	PS2		////////////////////////////
-		PS2_KBDAT,						//	PS2 Keyboard Data
-		PS2_KBCLK,						//	PS2 Keyboard Clock		
-		PS2_MSDAT,						//	PS2 Mouse Data
-		PS2_MSCLK,						//	PS2 Mouse Clock
 		////////////////////	VGA		////////////////////////////
 		oVGA_CLOCK,   					//	VGA Clock
 		oVGA_HS,						//	VGA H_SYNC
@@ -130,39 +44,7 @@ module GreenScreen(
 		oVGA_R,   						//	VGA Red[9:0]
 		oVGA_G,	 						//	VGA Green[9:0]
 		oVGA_B,  						//	VGA Blue[9:0]
-		////////////	Ethernet Interface	////////////////////////
-		ENET_D,						//	DM9000A DATA bus 16Bits
-		oENET_CMD,						//	DM9000A Command/Data Select, 0 = Command, 1 = Data
-		oENET_CS_N,						//	DM9000A Chip Select
-		oENET_IOW_N,					//	DM9000A Write
-		oENET_IOR_N,					//	DM9000A Read
-		oENET_RESET_N,					//	DM9000A Reset
-		iENET_INT,						//	DM9000A Interrupt
-		oENET_CLK,						//	DM9000A Clock 25 MHz
-		////////////////	Audio CODEC		////////////////////////
-		AUD_ADCLRCK,					//	Audio CODEC ADC LR Clock
-		iAUD_ADCDAT,					//	Audio CODEC ADC Data
-		AUD_DACLRCK,					//	Audio CODEC DAC LR Clock
-		oAUD_DACDAT,					//	Audio CODEC DAC Data
-		AUD_BCLK,						//	Audio CODEC Bit-Stream Clock
-		oAUD_XCK,						//	Audio CODEC Chip Clock
-		////////////////	TV Decoder		////////////////////////
-		iTD1_CLK27,						//	TV Decoder1 Line_Lock Output Clock 
-		iTD1_D,    					    //	TV Decoder1 Data bus 8 bits
-		iTD1_HS,						//	TV Decoder1 H_SYNC
-		iTD1_VS,						//	TV Decoder1 V_SYNC
-		oTD1_RESET_N,					//	TV Decoder1 Reset
-		iTD2_CLK27,						//	TV Decoder2 Line_Lock Output Clock 		
-		iTD2_D,    					    //	TV Decoder2 Data bus 8 bits
-		iTD2_HS,						//	TV Decoder2 H_SYNC
-		iTD2_VS,						//	TV Decoder2 V_SYNC
-		oTD2_RESET_N,					//	TV Decoder2 Reset
 		////////////////////	GPIO	////////////////////////////
-		GPIO_0,							//	GPIO Connection 0 I/O
-		GPIO_CLKIN_N0,     				//	GPIO Connection 0 Clock Input 0
-		GPIO_CLKIN_P0,          		//	GPIO Connection 0 Clock Input 1
-		GPIO_CLKOUT_N0,     			//	GPIO Connection 0 Clock Output 0
-		GPIO_CLKOUT_P0,                 //	GPIO Connection 0 Clock Output 1
 		GPIO_1,							//	GPIO Connection 1 I/O
 		GPIO_CLKIN_N1,                  //	GPIO Connection 1 Clock Input 0
 		GPIO_CLKIN_P1,                  //	GPIO Connection 1 Clock Input 1
@@ -204,98 +86,12 @@ module GreenScreen(
 	output			oHEX7_DP;				//  Seven Segment Digit 7 decimal point
 	////////////////////////////	LED		////////////////////////////
 	output	[8:0]	oLEDG;					//	LED Green[8:0]
-	output	[17:0]	oLEDR;					//	LED Red[17:0]
-	////////////////////////////	UART	////////////////////////////
-	output			oUART_TXD;				//	UART Transmitter
-	input			iUART_RXD;				//	UART Receiver
-	output			oUART_CTS;          	//	UART Clear To Send
-	input			iUART_RTS;          	//	UART Requst To Send
-	////////////////////////////	IRDA	////////////////////////////
-	output			oIRDA_TXD;				//	IRDA Transmitter
-	input			iIRDA_RXD;				//	IRDA Receiver
-	///////////////////////		SDRAM Interface	////////////////////////
-	inout	[31:0]	DRAM_DQ;				//	SDRAM Data bus 32 Bits
-	output	[12:0]	oDRAM0_A;				//	SDRAM0 Address bus 13 Bits
-	output	[12:0]	oDRAM1_A;				//	SDRAM1 Address bus 13 Bits
-	output			oDRAM0_LDQM0;			//	SDRAM0 Low-byte Data Mask 
-	output			oDRAM1_LDQM0;			//	SDRAM1 Low-byte Data Mask 
-	output			oDRAM0_UDQM1;			//	SDRAM0 High-byte Data Mask
-	output			oDRAM1_UDQM1;			//	SDRAM1 High-byte Data Mask
-	output			oDRAM0_WE_N;			//	SDRAM0 Write Enable
-	output			oDRAM1_WE_N;			//	SDRAM1 Write Enable
-	output			oDRAM0_CAS_N;			//	SDRAM0 Column Address Strobe
-	output			oDRAM1_CAS_N;			//	SDRAM1 Column Address Strobe
-	output			oDRAM0_RAS_N;			//	SDRAM0 Row Address Strobe
-	output			oDRAM1_RAS_N;			//	SDRAM1 Row Address Strobe
-	output			oDRAM0_CS_N;			//	SDRAM0 Chip Select
-	output			oDRAM1_CS_N;			//	SDRAM1 Chip Select
-	output	[1:0]	oDRAM0_BA;				//	SDRAM0 Bank Address
-	output	[1:0]	oDRAM1_BA;		 		//	SDRAM1 Bank Address
-	output			oDRAM0_CLK;				//	SDRAM0 Clock
-	output			oDRAM1_CLK;				//	SDRAM1 Clock
-	output			oDRAM0_CKE;				//	SDRAM0 Clock Enable
-	output			oDRAM1_CKE;				//	SDRAM1 Clock Enable
-	////////////////////////	Flash Interface	////////////////////////
-	inout	[14:0]	FLASH_DQ;				//	FLASH Data bus 15 Bits (0 to 14)
-	inout			FLASH_DQ15_AM1;			//  FLASH Data bus Bit 15 or Address A-1
-	output	[21:0]	oFLASH_A;				//	FLASH Address bus 26 Bits
-	output			oFLASH_WE_N;			//	FLASH Write Enable
-	output			oFLASH_RST_N;			//	FLASH Reset
-	output			oFLASH_WP_N;			//	FLASH Write Protect /Programming Acceleration 
-	input			iFLASH_RY_N;			//	FLASH Ready/Busy output 
-	output			oFLASH_BYTE_N;			//	FLASH Byte/Word Mode Configuration
-	output			oFLASH_OE_N;			//	FLASH Output Enable
-	output			oFLASH_CE_N;			//	FLASH Chip Enable
-	////////////////////////	SRAM Interface	////////////////////////
-	inout	[31:0]	SRAM_DQ;				//	SRAM Data Bus 32 Bits
-	inout	[3:0]	SRAM_DPA; 				//  SRAM Parity Data Bus
-	output	[18:0]	oSRAM_A;				//	SRAM Address bus 21 Bits
-	output			oSRAM_ADSC_N;       	//	SRAM Controller Address Status 	
-	output			oSRAM_ADSP_N;           //	SRAM Processor Address Status
-	output			oSRAM_ADV_N;            //	SRAM Burst Address Advance
-	output	[3:0]	oSRAM_BE_N;             //	SRAM Byte Write Enable
-	output			oSRAM_CE1_N;        	//	SRAM Chip Enable
-	output			oSRAM_CE2;          	//	SRAM Chip Enable
-	output			oSRAM_CE3_N;        	//	SRAM Chip Enable
-	output			oSRAM_CLK;              //	SRAM Clock
-	output			oSRAM_GW_N;         	//  SRAM Global Write Enable
-	output			oSRAM_OE_N;         	//	SRAM Output Enable
-	output			oSRAM_WE_N;         	//	SRAM Write Enable
-	////////////////////	ISP1362 Interface	////////////////////////
-	inout	[15:0]	OTG_D;					//	ISP1362 Data bus 16 Bits
-	output	[1:0]	oOTG_A;					//	ISP1362 Address 2 Bits
-	output			oOTG_CS_N;				//	ISP1362 Chip Select
-	output			oOTG_OE_N;				//	ISP1362 Read
-	output			oOTG_WE_N;				//	ISP1362 Write
-	output			oOTG_RESET_N;			//	ISP1362 Reset
-	inout			OTG_FSPEED;				//	USB Full Speed,	0 = Enable, Z = Disable
-	inout			OTG_LSPEED;				//	USB Low Speed, 	0 = Enable, Z = Disable
-	input			iOTG_INT0;				//	ISP1362 Interrupt 0
-	input			iOTG_INT1;				//	ISP1362 Interrupt 1
-	input			iOTG_DREQ0;				//	ISP1362 DMA Request 0
-	input			iOTG_DREQ1;				//	ISP1362 DMA Request 1
-	output			oOTG_DACK0_N;			//	ISP1362 DMA Acknowledge 0
-	output			oOTG_DACK1_N;			//	ISP1362 DMA Acknowledge 1
-	////////////////////	LCD Module 16X2	////////////////////////////
-	inout	[7:0]	LCD_D;					//	LCD Data bus 8 bits
-	output			oLCD_ON;				//	LCD Power ON/OFF
-	output			oLCD_BLON;				//	LCD Back Light ON/OFF
-	output			oLCD_RW;				//	LCD Read/Write Select, 0 = Write, 1 = Read
-	output			oLCD_EN;				//	LCD Enable
-	output			oLCD_RS;				//	LCD Command/Data Select, 0 = Command, 1 = Data
-	////////////////////	SD Card Interface	////////////////////////
-	inout			SD_DAT;					//	SD Card Data
-	inout			SD_DAT3;				//	SD Card Data 3
-	inout			SD_CMD;					//	SD Card Command Signal
-	output			oSD_CLK;				//	SD Card Clock
+	output	[17:0]	oLEDR;					//	LED Red[17:0]		
+	////////////////////	TV Devoder		////////////////////////////
+	input			iTD1_CLK27;				//	TV Decoder1 Line_Lock Output Clock 
 	////////////////////////	I2C		////////////////////////////////
 	inout			I2C_SDAT;				//	I2C Data
 	output			oI2C_SCLK;				//	I2C Clock
-	////////////////////////	PS2		////////////////////////////////
-	inout		 	PS2_KBDAT;				//	PS2 Keyboard Data
-	inout			PS2_KBCLK;				//	PS2 Keyboard Clock
-	inout		 	PS2_MSDAT;				//	PS2 Mouse Data
-	inout			PS2_MSCLK;				//	PS2 Mouse Clock
 	////////////////////////	VGA			////////////////////////////
 	output			oVGA_CLOCK;   			//	VGA Clock
 	output			oVGA_HS;				//	VGA H_SYNC
@@ -305,40 +101,7 @@ module GreenScreen(
 	output	[9:0]	oVGA_R;   				//	VGA Red[9:0]
 	output	[9:0]	oVGA_G;	 				//	VGA Green[9:0]
 	output	[9:0]	oVGA_B;   				//	VGA Blue[9:0]
-	////////////////	Ethernet Interface	////////////////////////////
-	inout	[15:0]	ENET_D;					//	DM9000A DATA bus 16Bits
-	output			oENET_CMD;				//	DM9000A Command/Data Select, 0 = Command, 1 = Data
-	output			oENET_CS_N;				//	DM9000A Chip Select
-	output			oENET_IOW_N;			//	DM9000A Write
-	output			oENET_IOR_N;			//	DM9000A Read
-	output			oENET_RESET_N;			//	DM9000A Reset
-	input			iENET_INT;				//	DM9000A Interrupt
-	output			oENET_CLK;				//	DM9000A Clock 25 MHz
-	////////////////////	Audio CODEC		////////////////////////////
-	inout			AUD_ADCLRCK;			//	Audio CODEC ADC LR Clock
-	input			iAUD_ADCDAT;			//	Audio CODEC ADC Data
-	inout			AUD_DACLRCK;			//	Audio CODEC DAC LR Clock
-	output			oAUD_DACDAT;			//	Audio CODEC DAC Data
-	inout			AUD_BCLK;				//	Audio CODEC Bit-Stream Clock
-	output			oAUD_XCK;				//	Audio CODEC Chip Clock
-	////////////////////	TV Devoder		////////////////////////////
-	input			iTD1_CLK27;				//	TV Decoder1 Line_Lock Output Clock 
-	input	[7:0]	iTD1_D;    				//	TV Decoder1 Data bus 8 bits
-	input			iTD1_HS;				//	TV Decoder1 H_SYNC
-	input			iTD1_VS;				//	TV Decoder1 V_SYNC
-	output			oTD1_RESET_N;			//	TV Decoder1 Reset
-	input			iTD2_CLK27;				//	TV Decoder2 Line_Lock Output Clock 		
-	input	[7:0]	iTD2_D;    				//	TV Decoder2 Data bus 8 bits
-	input			iTD2_HS;				//	TV Decoder2 H_SYNC
-	input			iTD2_VS;				//	TV Decoder2 V_SYNC
-	output			oTD2_RESET_N;			//	TV Decoder2 Reset
-
 	////////////////////////	GPIO	////////////////////////////////
-	inout	[31:0]	GPIO_0;					//	GPIO Connection 0 I/O
-	input			GPIO_CLKIN_N0;     		//	GPIO Connection 0 Clock Input 0
-	input			GPIO_CLKIN_P0;          //	GPIO Connection 0 Clock Input 1
-	inout			GPIO_CLKOUT_N0;     	//	GPIO Connection 0 Clock Output 0
-	inout			GPIO_CLKOUT_P0;         //	GPIO Connection 0 Clock Output 1
 	inout	[31:0]	GPIO_1;					//	GPIO Connection 1 I/O
 	input			GPIO_CLKIN_N1;          //	GPIO Connection 1 Clock Input 0
 	input			GPIO_CLKIN_P1;          //	GPIO Connection 1 Clock Input 1
@@ -403,16 +166,16 @@ module GreenScreen(
 	assign	CCD_DATA[11]=	GPIO_1[0];
 
 
-	assign	GPIO_CLKOUT_N1	=	CCD_MCLK;
+	//assign	GPIO_CLKOUT_N1	=	CCD_MCLK;
 	assign	CCD_FVAL	=	GPIO_1[18];
 	assign	CCD_LVAL	=	GPIO_1[17];
 	assign	CCD_PIXCLK	=	GPIO_CLKIN_N1;
 
 	assign	GPIO_1[15]	=	1'b1;  // tRIGGER
 
-	assign	GPIO_1[14]	=	DLY_RST_1;
+	//assign	GPIO_1[14]	=	DLY_RST_1;
 
-	assign	oLEDR		=	iSW;
+	//assign	oLEDR		=	iSW;
 
 	assign	oTD1_RESET_N = 1'b1;
 	assign	oVGA_CLOCK	=	~VGA_CTRL_CLK;
@@ -433,6 +196,7 @@ assign Read_DATA1[9:0] = sCCD_B;
 
 /* VGA Module */ 
 
+/*
 vga_controller	vga	(	//	Host Side
 					.outRequest(Read),
 					.inRed(Read_DATA2[9:0]),
@@ -450,28 +214,30 @@ vga_controller	vga	(	//	Host Side
 					.iCLK(VGA_CTRL_CLK),
 					.iRST_N(DLY_RST_2)
 );	
+*/
 						
 /* VGA Phase locked loop Module */ 
-						
-vga_pll   u6	(
+		
+/*						
+vga_pll   phase_loop	(
 				.areset(!DLY_RST_0),
 				.inclk0(iTD1_CLK27),
 				.c0(VGA_CTRL_CLK)
 );
+*/
 
+/* Reset delay */ /*
 
-/* Reset delay */ 
-
-ResetDelay		u2	(	.iCLK(iCLK_50),
+ResetDelay		reset_delayer	(	.iCLK(iCLK_50),
 							.iRST(iKEY[0]),
 							.oRST_0(DLY_RST_0),
 							.oRST_1(DLY_RST_1),
 							.oRST_2(DLY_RST_2)
 );
 
-/* Image conversion */ 
+/* Image conversion */ /*
 
-RAWToRGB		u4	(	.iCLK(CCD_PIXCLK),
+RAWToRGB		image_conversion	(	.iCLK(CCD_PIXCLK),
 					.iRST_n(DLY_RST_1),
 					.iData(mCCD_DATA),
 					.iDataValid(mCCD_DVAL),
@@ -482,11 +248,23 @@ RAWToRGB		u4	(	.iCLK(CCD_PIXCLK),
 					.iZoom(iSW[17:16]),
 					.iX_Counter(X_Cont),
 					.iY_Counter(Y_Cont)
-);
+); */
 
 
-/* */
-CCD_Capture		u3	(	.oDATA(mCCD_DATA),
+assign oLEDG[7] = rCCD_FVAL;
+assign GPIO_1[14] = 0;
+
+assign oLEDG[6] = rCCD_LVAL;
+
+assign oLEDG[5] = CCD_PIXCLK;
+
+assign oLEDG[4] = 1;
+
+assign GPIO_CLKOUT_N1 = iCLK_50;
+
+
+/* *//*
+CCD_Capture		camera_capture	(	.oDATA(mCCD_DATA),
 							.oDataValid(mCCD_DVAL),
 							.oX_Counter(X_Cont),
 							.oY_Counter(Y_Cont),
@@ -498,11 +276,39 @@ CCD_Capture		u3	(	.oDATA(mCCD_DATA),
 							.iEND(CCD_CAPTURE_STOP),
 							.iCLK(CCD_PIXCLK),
 							.iRST(DLY_RST_2)
-						);
+						);		
+*/
+// ccd control
+/*
+`define DATA_PORT		0
+`define CMD_PORT		1
+`define STATUS_PORT		2
+`define TIGGLE_CNT_END	5
 
-/* */						
+wire					CCD_CAPTURE_START;
+wire					CCD_CAPTURE_STOP;
+reg		[3:0]			tiggle_cnt;
+reg		[3:0]			nios_tiggle_cnt;
+reg						start_triggle;
+reg						stop_triggle;
+assign CCD_CAPTURE_START = !iKEY[3] | start_triggle;
+assign CCD_CAPTURE_STOP = !iKEY[2] | stop_triggle;
+
+//========== control start/stop triggle ==========
+always @ (posedge CCD_PIXCLK)
+begin
+	if (DLY_RST_1 || (!start_triggle && !stop_triggle))
+		tiggle_cnt = 0;
+	else if (tiggle_cnt < `TIGGLE_CNT_END)
+		tiggle_cnt = tiggle_cnt + 1;		
+
+end
+
 						
-I2C_CCD_Config 		u10	(	//	Host Side
+
+/* */		/*				
+					
+I2C_CCD_Config 		i2c_Config	(	//	Host Side
 							.iCLK(iCLK_50),
 							.iRST_N(DLY_RST_2),
 							.iZOOM_MODE_SW(iSW[16]),
@@ -512,15 +318,16 @@ I2C_CCD_Config 		u10	(	//	Host Side
 							.I2C_SCLK(GPIO_1[20]),
 							.I2C_SDAT(GPIO_1[19])
 						);
+*/						
 /* Module for displaying information about color captured by camera*/
-
-assign iDIG = {sCCD_R,sCCD_B};
 						
-SEG7_DISPLAY 			u5	(	.oSEG0(oHEX0_D),.oSEG1(oHEX1_D),
+SEG7_DISPLAY 			segment_display	(	.oSEG0(oHEX0_D),.oSEG1(oHEX1_D),
 							.oSEG2(oHEX2_D),.oSEG3(oHEX3_D),
 							.oSEG4(oHEX4_D),.oSEG5(oHEX5_D),
 							.oSEG6(oHEX6_D),.oSEG7(oHEX7_D),
-							.iDIG(Frame_Cont[31:0])
+							.iDIG(CCD_PIXCLK)
 						);
+// 							.iDIG({mCCD_DATA,Frame_Cont,rCCD_FVAL})
+
 
 endmodule

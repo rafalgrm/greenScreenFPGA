@@ -1,4 +1,5 @@
-module	RAWToRGB(	iCLK,iRST_n,
+module	RAWToRGB(	iCLK,
+	iRST_n,
 	//Read Port 1
 	iData,
 	iDataValid,

@@ -138,6 +138,10 @@ always@(posedge iCLK or negedge iRST_n)
 			end
 	end		
 	
+/** UWAGA UWAGA !!!!!
+ ZAWSZE JESTESMY W 2D1 !!!! Na dole na srodku
+*/
+	
 always@(posedge iCLK or negedge iRST_n)
 	begin
 		if (!iRST_n)

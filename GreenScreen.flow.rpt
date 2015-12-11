@@ -1,5 +1,5 @@
 Flow report for GreenScreen
-Wed Dec 09 15:11:42 2015
+Wed Dec 09 18:50:53 2015
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -38,23 +38,23 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Flow Summary                                                                      ;
 +------------------------------------+----------------------------------------------+
-; Flow Status                        ; Successful - Wed Dec 09 15:11:42 2015        ;
+; Flow Status                        ; Successful - Wed Dec 09 18:50:53 2015        ;
 ; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name                      ; GreenScreen                                  ;
 ; Top-level Entity Name              ; GreenScreen                                  ;
 ; Family                             ; Cyclone II                                   ;
 ; Device                             ; EP2C70F896C6                                 ;
 ; Timing Models                      ; Final                                        ;
-; Met timing requirements            ; No                                           ;
-; Total logic elements               ; 460 / 68,416 ( < 1 % )                       ;
-;     Total combinational functions  ; 373 / 68,416 ( < 1 % )                       ;
-;     Dedicated logic registers      ; 309 / 68,416 ( < 1 % )                       ;
-; Total registers                    ; 309                                          ;
-; Total pins                         ; 530 / 622 ( 85 % )                           ;
+; Met timing requirements            ; Yes                                          ;
+; Total logic elements               ; 2 / 68,416 ( < 1 % )                         ;
+;     Total combinational functions  ; 0 / 68,416 ( 0 % )                           ;
+;     Dedicated logic registers      ; 2 / 68,416 ( < 1 % )                         ;
+; Total registers                    ; 2                                            ;
+; Total pins                         ; 193 / 622 ( 31 % )                           ;
 ; Total virtual pins                 ; 0                                            ;
-; Total memory bits                  ; 40 / 1,152,000 ( < 1 % )                     ;
+; Total memory bits                  ; 0 / 1,152,000 ( 0 % )                        ;
 ; Embedded Multiplier 9-bit elements ; 0 / 300 ( 0 % )                              ;
-; Total PLLs                         ; 1 / 4 ( 25 % )                               ;
+; Total PLLs                         ; 0 / 4 ( 0 % )                                ;
 +------------------------------------+----------------------------------------------+
 
 
@@ -63,25 +63,28 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 12/09/2015 15:10:16 ;
+; Start date & time ; 12/09/2015 18:49:57 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; GreenScreen         ;
 +-------------------+---------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                                             ;
-+------------------------------------+----------------------------------------------------------+---------------+-------------+----------------+
-; Assignment Name                    ; Value                                                    ; Default Value ; Entity Name ; Section Id     ;
-+------------------------------------+----------------------------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID              ; 134660536641499.144967021601800                          ; --            ; --          ; --             ;
-; MAX_CORE_JUNCTION_TEMP             ; 85                                                       ; --            ; --          ; --             ;
-; MIN_CORE_JUNCTION_TEMP             ; 0                                                        ; --            ; --          ; --             ;
-; MISC_FILE                          ; C:/Users/rafal_000/Desktop/TM/tm_projekt/GreenScreen.dpf ; --            ; --          ; --             ;
-; PARTITION_COLOR                    ; 16764057                                                 ; --            ; --          ; Top            ;
-; PARTITION_NETLIST_TYPE             ; SOURCE                                                   ; --            ; --          ; Top            ;
-; USE_GENERATED_PHYSICAL_CONSTRAINTS ; Off                                                      ; --            ; --          ; eda_blast_fpga ;
-+------------------------------------+----------------------------------------------------------+---------------+-------------+----------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                              ;
++------------------------------------+----------------------------------------------------------+--------------------------------+-------------+----------------+
+; Assignment Name                    ; Value                                                    ; Default Value                  ; Entity Name ; Section Id     ;
++------------------------------------+----------------------------------------------------------+--------------------------------+-------------+----------------+
+; COMPILER_SIGNATURE_ID              ; 134660536641499.144968339701172                          ; --                             ; --          ; --             ;
+; FITTER_EFFORT                      ; Fast Fit                                                 ; Auto Fit                       ; --          ; --             ;
+; MAX_CORE_JUNCTION_TEMP             ; 85                                                       ; --                             ; --          ; --             ;
+; MIN_CORE_JUNCTION_TEMP             ; 0                                                        ; --                             ; --          ; --             ;
+; MISC_FILE                          ; C:/Users/rafal_000/Desktop/TM/tm_projekt/GreenScreen.dpf ; --                             ; --          ; --             ;
+; OPTIMIZE_HOLD_TIMING               ; Off                                                      ; IO Paths and Minimum TPD Paths ; --          ; --             ;
+; OPTIMIZE_POWER_DURING_FITTING      ; Off                                                      ; Normal compilation             ; --          ; --             ;
+; PARTITION_COLOR                    ; 16764057                                                 ; --                             ; --          ; Top            ;
+; PARTITION_NETLIST_TYPE             ; SOURCE                                                   ; --                             ; --          ; Top            ;
+; USE_GENERATED_PHYSICAL_CONSTRAINTS ; Off                                                      ; --                             ; --          ; eda_blast_fpga ;
++------------------------------------+----------------------------------------------------------+--------------------------------+-------------+----------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------+
@@ -89,11 +92,11 @@ applicable agreement for further details.
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name             ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis    ; 00:00:16     ; 1.0                     ; 246 MB              ; 00:00:15                           ;
-; Fitter                  ; 00:00:44     ; 1.0                     ; 374 MB              ; 00:00:51                           ;
-; Assembler               ; 00:00:16     ; 1.0                     ; 346 MB              ; 00:00:15                           ;
-; Classic Timing Analyzer ; 00:00:02     ; 1.0                     ; 183 MB              ; 00:00:02                           ;
-; Total                   ; 00:01:18     ; --                      ; --                  ; 00:01:23                           ;
+; Analysis & Synthesis    ; 00:00:05     ; 1.0                     ; 232 MB              ; 00:00:07                           ;
+; Fitter                  ; 00:00:30     ; 1.0                     ; 371 MB              ; 00:00:33                           ;
+; Assembler               ; 00:00:15     ; 1.0                     ; 345 MB              ; 00:00:15                           ;
+; Classic Timing Analyzer ; 00:00:01     ; 1.0                     ; 176 MB              ; 00:00:01                           ;
+; Total                   ; 00:00:51     ; --                      ; --                  ; 00:00:56                           ;
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

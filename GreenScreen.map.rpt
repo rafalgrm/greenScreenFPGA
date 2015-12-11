@@ -1,5 +1,5 @@
 Analysis & Synthesis report for GreenScreen
-Wed Dec 09 15:10:33 2015
+Wed Dec 09 18:50:02 2015
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -13,26 +13,9 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Analysis & Synthesis RAM Summary
-  9. State Machine - |GreenScreen|I2C_CCD_Config:u10|mSetup_ST
- 10. Registers Removed During Synthesis
- 11. Removed Registers Triggering Further Register Optimizations
- 12. General Register Statistics
- 13. Inverted Register Statistics
- 14. Multiplexer Restructuring Statistics (Restructuring Performed)
- 15. Source assignments for RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2
- 16. Parameter Settings for User Entity Instance: vga_controller:vga
- 17. Parameter Settings for User Entity Instance: vga_pll:u6|altpll:altpll_component
- 18. Parameter Settings for User Entity Instance: RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component
- 19. Parameter Settings for User Entity Instance: CCD_Capture:u3
- 20. Parameter Settings for User Entity Instance: I2C_CCD_Config:u10
- 21. altpll Parameter Settings by Entity Instance
- 22. altshift_taps Parameter Settings by Entity Instance
- 23. Port Connectivity Checks: "I2C_CCD_Config:u10|I2C_Controller:u0"
- 24. Port Connectivity Checks: "RAWToRGB:u4|line_buffer:L1"
- 25. Port Connectivity Checks: "RAWToRGB:u4"
- 26. Port Connectivity Checks: "vga_controller:vga"
- 27. Analysis & Synthesis Messages
+  8. General Register Statistics
+  9. Port Connectivity Checks: "SEG7_DISPLAY:segment_display"
+ 10. Analysis & Synthesis Messages
 
 
 
@@ -58,20 +41,20 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +------------------------------------+----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Dec 09 15:10:33 2015        ;
+; Analysis & Synthesis Status        ; Successful - Wed Dec 09 18:50:01 2015        ;
 ; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name                      ; GreenScreen                                  ;
 ; Top-level Entity Name              ; GreenScreen                                  ;
 ; Family                             ; Cyclone II                                   ;
-; Total logic elements               ; 474                                          ;
-;     Total combinational functions  ; 373                                          ;
-;     Dedicated logic registers      ; 309                                          ;
-; Total registers                    ; 309                                          ;
-; Total pins                         ; 530                                          ;
+; Total logic elements               ; 2                                            ;
+;     Total combinational functions  ; 0                                            ;
+;     Dedicated logic registers      ; 2                                            ;
+; Total registers                    ; 2                                            ;
+; Total pins                         ; 193                                          ;
 ; Total virtual pins                 ; 0                                            ;
-; Total memory bits                  ; 40                                           ;
+; Total memory bits                  ; 0                                            ;
 ; Embedded Multiplier 9-bit elements ; 0                                            ;
-; Total PLLs                         ; 1                                            ;
+; Total PLLs                         ; 0                                            ;
 +------------------------------------+----------------------------------------------+
 
 
@@ -165,208 +148,54 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                ;
-+----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                      ;
-+----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------+
-; verilog/SEG7_DIGIT.v             ; yes             ; User Verilog HDL File        ; C:/Users/rafal_000/Desktop/TM/tm_projekt/verilog/SEG7_DIGIT.v     ;
-; verilog/SEG7_DISPLAY.v           ; yes             ; User Verilog HDL File        ; C:/Users/rafal_000/Desktop/TM/tm_projekt/verilog/SEG7_DISPLAY.v   ;
-; verilog/I2C_Controller.v         ; yes             ; User Verilog HDL File        ; C:/Users/rafal_000/Desktop/TM/tm_projekt/verilog/I2C_Controller.v ;
-; verilog/I2C_CCD_Config.v         ; yes             ; User Verilog HDL File        ; C:/Users/rafal_000/Desktop/TM/tm_projekt/verilog/I2C_CCD_Config.v ;
-; verilog/line_buffer.v            ; yes             ; User Wizard-Generated File   ; C:/Users/rafal_000/Desktop/TM/tm_projekt/verilog/line_buffer.v    ;
-; verilog/ccd_capture.v            ; yes             ; User Verilog HDL File        ; C:/Users/rafal_000/Desktop/TM/tm_projekt/verilog/ccd_capture.v    ;
-; vga_pll.v                        ; yes             ; User Wizard-Generated File   ; C:/Users/rafal_000/Desktop/TM/tm_projekt/vga_pll.v                ;
-; vga_controller.v                 ; yes             ; User Verilog HDL File        ; C:/Users/rafal_000/Desktop/TM/tm_projekt/vga_controller.v         ;
-; vga_config.txt                   ; yes             ; User File                    ; C:/Users/rafal_000/Desktop/TM/tm_projekt/vga_config.txt           ;
-; GreenScreen.v                    ; yes             ; User Verilog HDL File        ; C:/Users/rafal_000/Desktop/TM/tm_projekt/GreenScreen.v            ;
-; RAWToRGB.v                       ; yes             ; User Verilog HDL File        ; C:/Users/rafal_000/Desktop/TM/tm_projekt/RAWToRGB.v               ;
-; verilog/ResetDelay.v             ; yes             ; User Verilog HDL File        ; C:/Users/rafal_000/Desktop/TM/tm_projekt/verilog/ResetDelay.v     ;
-; altpll.tdf                       ; yes             ; Megafunction                 ; c:/altera/91sp2/quartus/libraries/megafunctions/altpll.tdf        ;
-; altshift_taps.tdf                ; yes             ; Megafunction                 ; c:/altera/91sp2/quartus/libraries/megafunctions/altshift_taps.tdf ;
-; db/shift_taps_fms.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/rafal_000/Desktop/TM/tm_projekt/db/shift_taps_fms.tdf    ;
-; db/altsyncram_16d1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/rafal_000/Desktop/TM/tm_projekt/db/altsyncram_16d1.tdf   ;
-; db/cntr_3rf.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/rafal_000/Desktop/TM/tm_projekt/db/cntr_3rf.tdf          ;
-; db/cmpr_mdc.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/rafal_000/Desktop/TM/tm_projekt/db/cmpr_mdc.tdf          ;
-; db/cntr_pah.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/rafal_000/Desktop/TM/tm_projekt/db/cntr_pah.tdf          ;
-+----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                        ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                    ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------+
+; verilog/SEG7_DIGIT.v             ; yes             ; User Verilog HDL File  ; C:/Users/rafal_000/Desktop/TM/tm_projekt/verilog/SEG7_DIGIT.v   ;
+; verilog/SEG7_DISPLAY.v           ; yes             ; User Verilog HDL File  ; C:/Users/rafal_000/Desktop/TM/tm_projekt/verilog/SEG7_DISPLAY.v ;
+; GreenScreen.v                    ; yes             ; User Verilog HDL File  ; C:/Users/rafal_000/Desktop/TM/tm_projekt/GreenScreen.v          ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                        ;
-+---------------------------------------------+----------------------+
-; Resource                                    ; Usage                ;
-+---------------------------------------------+----------------------+
-; Estimated Total logic elements              ; 474                  ;
-;                                             ;                      ;
-; Total combinational functions               ; 373                  ;
-; Logic element usage by number of LUT inputs ;                      ;
-;     -- 4 input functions                    ; 184                  ;
-;     -- 3 input functions                    ; 54                   ;
-;     -- <=2 input functions                  ; 135                  ;
-;                                             ;                      ;
-; Logic elements by mode                      ;                      ;
-;     -- normal mode                          ; 258                  ;
-;     -- arithmetic mode                      ; 115                  ;
-;                                             ;                      ;
-; Total registers                             ; 309                  ;
-;     -- Dedicated logic registers            ; 309                  ;
-;     -- I/O registers                        ; 0                    ;
-;                                             ;                      ;
-; I/O pins                                    ; 530                  ;
-; Total memory bits                           ; 40                   ;
-; Total PLLs                                  ; 1                    ;
-; Maximum fan-out node                        ; ResetDelay:u2|oRST_2 ;
-; Maximum fan-out                             ; 116                  ;
-; Total fan-out                               ; 2359                 ;
-; Average fan-out                             ; 1.91                 ;
-+---------------------------------------------+----------------------+
++-------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                 ;
++---------------------------------------------+---------------+
+; Resource                                    ; Usage         ;
++---------------------------------------------+---------------+
+; Estimated Total logic elements              ; 2             ;
+;                                             ;               ;
+; Total combinational functions               ; 0             ;
+; Logic element usage by number of LUT inputs ;               ;
+;     -- 4 input functions                    ; 0             ;
+;     -- 3 input functions                    ; 0             ;
+;     -- <=2 input functions                  ; 0             ;
+;                                             ;               ;
+; Logic elements by mode                      ;               ;
+;     -- normal mode                          ; 0             ;
+;     -- arithmetic mode                      ; 0             ;
+;                                             ;               ;
+; Total registers                             ; 2             ;
+;     -- Dedicated logic registers            ; 2             ;
+;     -- I/O registers                        ; 0             ;
+;                                             ;               ;
+; I/O pins                                    ; 193           ;
+; Maximum fan-out node                        ; GPIO_CLKIN_N1 ;
+; Maximum fan-out                             ; 7             ;
+; Total fan-out                               ; 12            ;
+; Average fan-out                             ; 0.06          ;
++---------------------------------------------+---------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                   ;
-+--------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; Compilation Hierarchy Node                       ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                     ; Library Name ;
-+--------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |GreenScreen                                     ; 373 (2)           ; 309 (11)     ; 40          ; 0            ; 0       ; 0         ; 530  ; 0            ; |GreenScreen                                                                                                                            ; work         ;
-;    |CCD_Capture:u3|                              ; 10 (10)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |GreenScreen|CCD_Capture:u3                                                                                                             ;              ;
-;    |I2C_CCD_Config:u10|                          ; 226 (169)         ; 132 (94)     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |GreenScreen|I2C_CCD_Config:u10                                                                                                         ;              ;
-;       |I2C_Controller:u0|                        ; 57 (57)           ; 38 (38)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |GreenScreen|I2C_CCD_Config:u10|I2C_Controller:u0                                                                                       ;              ;
-;    |RAWToRGB:u4|                                 ; 0 (0)             ; 60 (60)      ; 40          ; 0            ; 0       ; 0         ; 0    ; 0            ; |GreenScreen|RAWToRGB:u4                                                                                                                ;              ;
-;       |line_buffer:L1|                           ; 0 (0)             ; 0 (0)        ; 40          ; 0            ; 0       ; 0         ; 0    ; 0            ; |GreenScreen|RAWToRGB:u4|line_buffer:L1                                                                                                 ;              ;
-;          |altshift_taps:altshift_taps_component| ; 0 (0)             ; 0 (0)        ; 40          ; 0            ; 0       ; 0         ; 0    ; 0            ; |GreenScreen|RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component                                                           ;              ;
-;             |shift_taps_fms:auto_generated|      ; 0 (0)             ; 0 (0)        ; 40          ; 0            ; 0       ; 0         ; 0    ; 0            ; |GreenScreen|RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated                             ;              ;
-;                |altsyncram_16d1:altsyncram2|     ; 0 (0)             ; 0 (0)        ; 40          ; 0            ; 0       ; 0         ; 0    ; 0            ; |GreenScreen|RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2 ;              ;
-;    |ResetDelay:u2|                               ; 53 (53)           ; 35 (35)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |GreenScreen|ResetDelay:u2                                                                                                              ;              ;
-;    |vga_controller:vga|                          ; 82 (82)           ; 61 (61)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |GreenScreen|vga_controller:vga                                                                                                         ;              ;
-;    |vga_pll:u6|                                  ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |GreenScreen|vga_pll:u6                                                                                                                 ;              ;
-;       |altpll:altpll_component|                  ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |GreenScreen|vga_pll:u6|altpll:altpll_component                                                                                         ;              ;
-+--------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+; |GreenScreen               ; 0 (0)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 193  ; 0            ; |GreenScreen        ; work         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis RAM Summary                                                                                                                                                                                                           ;
-+---------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+------+
-; Name                                                                                                                                  ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF  ;
-+---------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+------+
-; RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 1278         ; 36           ; 1278         ; 36           ; 46008 ; None ;
-+---------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+------+
-
-
-Encoding Type:  One-Hot
-+-------------------------------------------------------------------+
-; State Machine - |GreenScreen|I2C_CCD_Config:u10|mSetup_ST         ;
-+----------------+----------------+----------------+----------------+
-; Name           ; mSetup_ST.0000 ; mSetup_ST.0010 ; mSetup_ST.0001 ;
-+----------------+----------------+----------------+----------------+
-; mSetup_ST.0000 ; 0              ; 0              ; 0              ;
-; mSetup_ST.0001 ; 1              ; 0              ; 1              ;
-; mSetup_ST.0010 ; 1              ; 1              ; 0              ;
-+----------------+----------------+----------------+----------------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                                                                                                  ;
-+---------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------+
-; Register name                                                                                                                   ; Reason for Removal                                ;
-+---------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------+
-; RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|dffe4                            ; Stuck at VCC due to stuck port preset             ;
-; RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|cntr_pah:cntr3|pre_hazard[0..10] ; Stuck at GND due to stuck port aclear             ;
-; vga_controller:vga|outVGA_SYNC                                                                                                  ; Stuck at GND due to stuck port data_in            ;
-; I2C_CCD_Config:u10|mI2C_DATA[31]                                                                                                ; Stuck at VCC due to stuck port data_in            ;
-; I2C_CCD_Config:u10|mI2C_DATA[30]                                                                                                ; Stuck at GND due to stuck port data_in            ;
-; I2C_CCD_Config:u10|mI2C_DATA[27..29]                                                                                            ; Stuck at VCC due to stuck port data_in            ;
-; I2C_CCD_Config:u10|mI2C_DATA[26]                                                                                                ; Stuck at GND due to stuck port data_in            ;
-; I2C_CCD_Config:u10|mI2C_DATA[25]                                                                                                ; Stuck at VCC due to stuck port data_in            ;
-; I2C_CCD_Config:u10|mI2C_DATA[24]                                                                                                ; Stuck at GND due to stuck port data_in            ;
-; I2C_CCD_Config:u10|I2C_Controller:u0|SD[31]                                                                                     ; Stuck at VCC due to stuck port data_in            ;
-; I2C_CCD_Config:u10|I2C_Controller:u0|SD[30]                                                                                     ; Stuck at GND due to stuck port data_in            ;
-; I2C_CCD_Config:u10|I2C_Controller:u0|SD[27..29]                                                                                 ; Stuck at VCC due to stuck port data_in            ;
-; I2C_CCD_Config:u10|I2C_Controller:u0|SD[26]                                                                                     ; Stuck at GND due to stuck port data_in            ;
-; I2C_CCD_Config:u10|I2C_Controller:u0|SD[25]                                                                                     ; Stuck at VCC due to stuck port data_in            ;
-; I2C_CCD_Config:u10|I2C_Controller:u0|SD[24]                                                                                     ; Stuck at GND due to stuck port data_in            ;
-; RAWToRGB:u4|wData0_d1[11]                                                                                                       ; Lost fanout                                       ;
-; RAWToRGB:u4|wData1_d1[11]                                                                                                       ; Lost fanout                                       ;
-; RAWToRGB:u4|wData2_d1[11]                                                                                                       ; Lost fanout                                       ;
-; CCD_Capture:u3|mCCD_DATA[11]                                                                                                    ; Lost fanout                                       ;
-; rCCD_DATA[11]                                                                                                                   ; Lost fanout                                       ;
-; I2C_CCD_Config:u10|senosr_exposure[0..1]                                                                                        ; Merged with I2C_CCD_Config:u10|senosr_exposure[2] ;
-; CCD_Capture:u3|mSTART                                                                                                           ; Stuck at GND due to stuck port data_in            ;
-; CCD_Capture:u3|Frame_Cont[0..31]                                                                                                ; Stuck at GND due to stuck port clock_enable       ;
-; CCD_Capture:u3|mCCD_FrameValid                                                                                                  ; Stuck at GND due to stuck port data_in            ;
-; CCD_Capture:u3|X_Counter[0..15]                                                                                                 ; Stuck at GND due to stuck port data_in            ;
-; CCD_Capture:u3|Y_Counter[0..15]                                                                                                 ; Stuck at GND due to stuck port data_in            ;
-; RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|cntr_3rf:cntr1|safe_q[0..10]     ; Stuck at GND due to stuck port clock              ;
-; RAWToRGB:u4|rBlue[9]                                                                                                            ; Merged with RAWToRGB:u4|wData2_d2[9]              ;
-; RAWToRGB:u4|rBlue[8]                                                                                                            ; Merged with RAWToRGB:u4|wData2_d2[8]              ;
-; RAWToRGB:u4|rBlue[7]                                                                                                            ; Merged with RAWToRGB:u4|wData2_d2[7]              ;
-; RAWToRGB:u4|rBlue[6]                                                                                                            ; Merged with RAWToRGB:u4|wData2_d2[6]              ;
-; RAWToRGB:u4|rBlue[5]                                                                                                            ; Merged with RAWToRGB:u4|wData2_d2[5]              ;
-; RAWToRGB:u4|rBlue[4]                                                                                                            ; Merged with RAWToRGB:u4|wData2_d2[4]              ;
-; RAWToRGB:u4|rBlue[3]                                                                                                            ; Merged with RAWToRGB:u4|wData2_d2[3]              ;
-; RAWToRGB:u4|rBlue[2]                                                                                                            ; Merged with RAWToRGB:u4|wData2_d2[2]              ;
-; RAWToRGB:u4|rBlue[1]                                                                                                            ; Merged with RAWToRGB:u4|wData2_d2[1]              ;
-; RAWToRGB:u4|rBlue[0]                                                                                                            ; Merged with RAWToRGB:u4|wData2_d2[0]              ;
-; RAWToRGB:u4|wData2_d1[10]                                                                                                       ; Lost fanout                                       ;
-; CCD_Capture:u3|mCCD_DATA[10]                                                                                                    ; Lost fanout                                       ;
-; rCCD_DATA[10]                                                                                                                   ; Lost fanout                                       ;
-; I2C_CCD_Config:u10|mSetup_ST~9                                                                                                  ; Lost fanout                                       ;
-; I2C_CCD_Config:u10|mSetup_ST~10                                                                                                 ; Lost fanout                                       ;
-; Total Number of Removed Registers = 128                                                                                         ;                                                   ;
-+---------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------+
-
-
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                                                                                                                                  ;
-+------------------------------------------------------------------------------------------------------+---------------------------+---------------------------------------------------------------------------------------------------------------------------+
-; Register name                                                                                        ; Reason for Removal        ; Registers Removed due to This Register                                                                                    ;
-+------------------------------------------------------------------------------------------------------+---------------------------+---------------------------------------------------------------------------------------------------------------------------+
-; CCD_Capture:u3|mSTART                                                                                ; Stuck at GND              ; CCD_Capture:u3|Frame_Cont[31], CCD_Capture:u3|Frame_Cont[30],                                                             ;
-;                                                                                                      ; due to stuck port data_in ; CCD_Capture:u3|Frame_Cont[29], CCD_Capture:u3|Frame_Cont[28],                                                             ;
-;                                                                                                      ;                           ; CCD_Capture:u3|Frame_Cont[27], CCD_Capture:u3|Frame_Cont[26],                                                             ;
-;                                                                                                      ;                           ; CCD_Capture:u3|Frame_Cont[25], CCD_Capture:u3|Frame_Cont[24],                                                             ;
-;                                                                                                      ;                           ; CCD_Capture:u3|Frame_Cont[23], CCD_Capture:u3|Frame_Cont[22],                                                             ;
-;                                                                                                      ;                           ; CCD_Capture:u3|Frame_Cont[21], CCD_Capture:u3|Frame_Cont[20],                                                             ;
-;                                                                                                      ;                           ; CCD_Capture:u3|Frame_Cont[19], CCD_Capture:u3|Frame_Cont[18],                                                             ;
-;                                                                                                      ;                           ; CCD_Capture:u3|Frame_Cont[17], CCD_Capture:u3|Frame_Cont[16],                                                             ;
-;                                                                                                      ;                           ; CCD_Capture:u3|Frame_Cont[15], CCD_Capture:u3|Frame_Cont[14],                                                             ;
-;                                                                                                      ;                           ; CCD_Capture:u3|Frame_Cont[13], CCD_Capture:u3|Frame_Cont[12],                                                             ;
-;                                                                                                      ;                           ; CCD_Capture:u3|Frame_Cont[11], CCD_Capture:u3|Frame_Cont[10],                                                             ;
-;                                                                                                      ;                           ; CCD_Capture:u3|Frame_Cont[9], CCD_Capture:u3|Frame_Cont[8],                                                               ;
-;                                                                                                      ;                           ; CCD_Capture:u3|Frame_Cont[7], CCD_Capture:u3|Frame_Cont[6],                                                               ;
-;                                                                                                      ;                           ; CCD_Capture:u3|Frame_Cont[5], CCD_Capture:u3|Frame_Cont[4],                                                               ;
-;                                                                                                      ;                           ; CCD_Capture:u3|Frame_Cont[3], CCD_Capture:u3|Frame_Cont[2],                                                               ;
-;                                                                                                      ;                           ; CCD_Capture:u3|Frame_Cont[1], CCD_Capture:u3|Frame_Cont[0]                                                                ;
-; CCD_Capture:u3|mCCD_FrameValid                                                                       ; Stuck at GND              ; RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|cntr_3rf:cntr1|safe_q[10], ;
-;                                                                                                      ; due to stuck port data_in ; RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|cntr_3rf:cntr1|safe_q[9],  ;
-;                                                                                                      ;                           ; RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|cntr_3rf:cntr1|safe_q[8],  ;
-;                                                                                                      ;                           ; RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|cntr_3rf:cntr1|safe_q[7],  ;
-;                                                                                                      ;                           ; RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|cntr_3rf:cntr1|safe_q[6],  ;
-;                                                                                                      ;                           ; RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|cntr_3rf:cntr1|safe_q[5],  ;
-;                                                                                                      ;                           ; RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|cntr_3rf:cntr1|safe_q[4],  ;
-;                                                                                                      ;                           ; RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|cntr_3rf:cntr1|safe_q[3],  ;
-;                                                                                                      ;                           ; RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|cntr_3rf:cntr1|safe_q[2],  ;
-;                                                                                                      ;                           ; CCD_Capture:u3|mCCD_DATA[10], rCCD_DATA[10]                                                                               ;
-; RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|dffe4 ; Stuck at VCC              ; CCD_Capture:u3|mCCD_DATA[11], rCCD_DATA[11]                                                                               ;
-;                                                                                                      ; due to stuck port preset  ;                                                                                                                           ;
-; I2C_CCD_Config:u10|mI2C_DATA[31]                                                                     ; Stuck at VCC              ; I2C_CCD_Config:u10|I2C_Controller:u0|SD[31]                                                                               ;
-;                                                                                                      ; due to stuck port data_in ;                                                                                                                           ;
-; I2C_CCD_Config:u10|mI2C_DATA[30]                                                                     ; Stuck at GND              ; I2C_CCD_Config:u10|I2C_Controller:u0|SD[30]                                                                               ;
-;                                                                                                      ; due to stuck port data_in ;                                                                                                                           ;
-; I2C_CCD_Config:u10|mI2C_DATA[29]                                                                     ; Stuck at VCC              ; I2C_CCD_Config:u10|I2C_Controller:u0|SD[29]                                                                               ;
-;                                                                                                      ; due to stuck port data_in ;                                                                                                                           ;
-; I2C_CCD_Config:u10|mI2C_DATA[28]                                                                     ; Stuck at VCC              ; I2C_CCD_Config:u10|I2C_Controller:u0|SD[28]                                                                               ;
-;                                                                                                      ; due to stuck port data_in ;                                                                                                                           ;
-; I2C_CCD_Config:u10|mI2C_DATA[27]                                                                     ; Stuck at VCC              ; I2C_CCD_Config:u10|I2C_Controller:u0|SD[27]                                                                               ;
-;                                                                                                      ; due to stuck port data_in ;                                                                                                                           ;
-; I2C_CCD_Config:u10|mI2C_DATA[26]                                                                     ; Stuck at GND              ; I2C_CCD_Config:u10|I2C_Controller:u0|SD[26]                                                                               ;
-;                                                                                                      ; due to stuck port data_in ;                                                                                                                           ;
-; I2C_CCD_Config:u10|mI2C_DATA[25]                                                                     ; Stuck at VCC              ; I2C_CCD_Config:u10|I2C_Controller:u0|SD[25]                                                                               ;
-;                                                                                                      ; due to stuck port data_in ;                                                                                                                           ;
-; I2C_CCD_Config:u10|mI2C_DATA[24]                                                                     ; Stuck at GND              ; I2C_CCD_Config:u10|I2C_Controller:u0|SD[24]                                                                               ;
-;                                                                                                      ; due to stuck port data_in ;                                                                                                                           ;
-+------------------------------------------------------------------------------------------------------+---------------------------+---------------------------------------------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -374,561 +203,23 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 309   ;
-; Number of registers using Synchronous Clear  ; 68    ;
-; Number of registers using Synchronous Load   ; 20    ;
-; Number of registers using Asynchronous Clear ; 250   ;
+; Total registers                              ; 2     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 114   ;
+; Number of registers using Clock Enable       ; 0     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+--------------------------------------------------------------+
-; Inverted Register Statistics                                 ;
-+----------------------------------------------------+---------+
-; Inverted Register                                  ; Fan out ;
-+----------------------------------------------------+---------+
-; I2C_CCD_Config:u10|I2C_Controller:u0|SD_COUNTER[5] ; 12      ;
-; I2C_CCD_Config:u10|I2C_Controller:u0|SD_COUNTER[3] ; 21      ;
-; I2C_CCD_Config:u10|I2C_Controller:u0|SD_COUNTER[4] ; 13      ;
-; I2C_CCD_Config:u10|I2C_Controller:u0|SD_COUNTER[2] ; 17      ;
-; I2C_CCD_Config:u10|I2C_Controller:u0|SD_COUNTER[0] ; 19      ;
-; I2C_CCD_Config:u10|I2C_Controller:u0|SD_COUNTER[1] ; 18      ;
-; I2C_CCD_Config:u10|senosr_exposure[8]              ; 4       ;
-; I2C_CCD_Config:u10|senosr_exposure[10]             ; 4       ;
-; I2C_CCD_Config:u10|senosr_exposure[9]              ; 4       ;
-; I2C_CCD_Config:u10|senosr_exposure[7]              ; 4       ;
-; I2C_CCD_Config:u10|senosr_exposure[6]              ; 4       ;
-; I2C_CCD_Config:u10|I2C_Controller:u0|SDO           ; 6       ;
-; I2C_CCD_Config:u10|I2C_Controller:u0|SCLK          ; 4       ;
-; I2C_CCD_Config:u10|I2C_Controller:u0|END           ; 5       ;
-; Total number of inverted registers = 14            ;         ;
-+----------------------------------------------------+---------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                    ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                          ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |GreenScreen|I2C_CCD_Config:u10|senosr_exposure[15] ;
-; 64:1               ; 7 bits    ; 294 LEs       ; 98 LEs               ; 196 LEs                ; Yes        ; |GreenScreen|I2C_CCD_Config:u10|mI2C_DATA[15]       ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |GreenScreen|I2C_CCD_Config:u10|senosr_exposure[10] ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |GreenScreen|I2C_CCD_Config:u10|Mux12               ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Source assignments for RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2 ;
-+---------------------------------+--------------------+------+-------------------------------------------------------------------------------------+
-; Assignment                      ; Value              ; From ; To                                                                                  ;
-+---------------------------------+--------------------+------+-------------------------------------------------------------------------------------+
-; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                                   ;
-+---------------------------------+--------------------+------+-------------------------------------------------------------------------------------+
-
-
-+-----------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: vga_controller:vga ;
-+----------------+-------+----------------------------------------+
-; Parameter Name ; Value ; Type                                   ;
-+----------------+-------+----------------------------------------+
-; H_SYNC_CYC     ; 112   ; Signed Integer                         ;
-; H_SYNC_BACK    ; 248   ; Signed Integer                         ;
-; H_SYNC_ACT     ; 1280  ; Signed Integer                         ;
-; H_SYNC_FRONT   ; 48    ; Signed Integer                         ;
-; H_SYNC_TOTAL   ; 1688  ; Signed Integer                         ;
-; V_SYNC_CYC     ; 3     ; Signed Integer                         ;
-; V_SYNC_BACK    ; 38    ; Signed Integer                         ;
-; V_SYNC_ACT     ; 1024  ; Signed Integer                         ;
-; V_SYNC_FRONT   ; 1     ; Signed Integer                         ;
-; V_SYNC_TOTAL   ; 1066  ; Signed Integer                         ;
-; X_START        ; 360   ; Signed Integer                         ;
-; Y_START        ; 41    ; Signed Integer                         ;
-+----------------+-------+----------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+---------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: vga_pll:u6|altpll:altpll_component ;
-+-------------------------------+-------------------+-----------------------------+
-; Parameter Name                ; Value             ; Type                        ;
-+-------------------------------+-------------------+-----------------------------+
-; OPERATION_MODE                ; NORMAL            ; Untyped                     ;
-; PLL_TYPE                      ; AUTO              ; Untyped                     ;
-; QUALIFY_CONF_DONE             ; OFF               ; Untyped                     ;
-; COMPENSATE_CLOCK              ; CLK0              ; Untyped                     ;
-; SCAN_CHAIN                    ; LONG              ; Untyped                     ;
-; PRIMARY_CLOCK                 ; INCLK0            ; Untyped                     ;
-; INCLK0_INPUT_FREQUENCY        ; 37037             ; Signed Integer              ;
-; INCLK1_INPUT_FREQUENCY        ; 0                 ; Untyped                     ;
-; GATE_LOCK_SIGNAL              ; NO                ; Untyped                     ;
-; GATE_LOCK_COUNTER             ; 0                 ; Untyped                     ;
-; LOCK_HIGH                     ; 1                 ; Untyped                     ;
-; LOCK_LOW                      ; 1                 ; Untyped                     ;
-; VALID_LOCK_MULTIPLIER         ; 1                 ; Untyped                     ;
-; INVALID_LOCK_MULTIPLIER       ; 5                 ; Untyped                     ;
-; SWITCH_OVER_ON_LOSSCLK        ; OFF               ; Untyped                     ;
-; SWITCH_OVER_ON_GATED_LOCK     ; OFF               ; Untyped                     ;
-; ENABLE_SWITCH_OVER_COUNTER    ; OFF               ; Untyped                     ;
-; SKIP_VCO                      ; OFF               ; Untyped                     ;
-; SWITCH_OVER_COUNTER           ; 0                 ; Untyped                     ;
-; SWITCH_OVER_TYPE              ; AUTO              ; Untyped                     ;
-; FEEDBACK_SOURCE               ; EXTCLK0           ; Untyped                     ;
-; BANDWIDTH                     ; 0                 ; Untyped                     ;
-; BANDWIDTH_TYPE                ; AUTO              ; Untyped                     ;
-; SPREAD_FREQUENCY              ; 0                 ; Untyped                     ;
-; DOWN_SPREAD                   ; 0                 ; Untyped                     ;
-; SELF_RESET_ON_GATED_LOSS_LOCK ; OFF               ; Untyped                     ;
-; SELF_RESET_ON_LOSS_LOCK       ; OFF               ; Untyped                     ;
-; CLK9_MULTIPLY_BY              ; 0                 ; Untyped                     ;
-; CLK8_MULTIPLY_BY              ; 0                 ; Untyped                     ;
-; CLK7_MULTIPLY_BY              ; 0                 ; Untyped                     ;
-; CLK6_MULTIPLY_BY              ; 0                 ; Untyped                     ;
-; CLK5_MULTIPLY_BY              ; 1                 ; Untyped                     ;
-; CLK4_MULTIPLY_BY              ; 1                 ; Untyped                     ;
-; CLK3_MULTIPLY_BY              ; 1                 ; Untyped                     ;
-; CLK2_MULTIPLY_BY              ; 1                 ; Untyped                     ;
-; CLK1_MULTIPLY_BY              ; 1                 ; Untyped                     ;
-; CLK0_MULTIPLY_BY              ; 4                 ; Signed Integer              ;
-; CLK9_DIVIDE_BY                ; 0                 ; Untyped                     ;
-; CLK8_DIVIDE_BY                ; 0                 ; Untyped                     ;
-; CLK7_DIVIDE_BY                ; 0                 ; Untyped                     ;
-; CLK6_DIVIDE_BY                ; 0                 ; Untyped                     ;
-; CLK5_DIVIDE_BY                ; 1                 ; Untyped                     ;
-; CLK4_DIVIDE_BY                ; 1                 ; Untyped                     ;
-; CLK3_DIVIDE_BY                ; 1                 ; Untyped                     ;
-; CLK2_DIVIDE_BY                ; 1                 ; Untyped                     ;
-; CLK1_DIVIDE_BY                ; 1                 ; Untyped                     ;
-; CLK0_DIVIDE_BY                ; 1                 ; Signed Integer              ;
-; CLK9_PHASE_SHIFT              ; 0                 ; Untyped                     ;
-; CLK8_PHASE_SHIFT              ; 0                 ; Untyped                     ;
-; CLK7_PHASE_SHIFT              ; 0                 ; Untyped                     ;
-; CLK6_PHASE_SHIFT              ; 0                 ; Untyped                     ;
-; CLK5_PHASE_SHIFT              ; 0                 ; Untyped                     ;
-; CLK4_PHASE_SHIFT              ; 0                 ; Untyped                     ;
-; CLK3_PHASE_SHIFT              ; 0                 ; Untyped                     ;
-; CLK2_PHASE_SHIFT              ; 0                 ; Untyped                     ;
-; CLK1_PHASE_SHIFT              ; 0                 ; Untyped                     ;
-; CLK0_PHASE_SHIFT              ; 0                 ; Untyped                     ;
-; CLK5_TIME_DELAY               ; 0                 ; Untyped                     ;
-; CLK4_TIME_DELAY               ; 0                 ; Untyped                     ;
-; CLK3_TIME_DELAY               ; 0                 ; Untyped                     ;
-; CLK2_TIME_DELAY               ; 0                 ; Untyped                     ;
-; CLK1_TIME_DELAY               ; 0                 ; Untyped                     ;
-; CLK0_TIME_DELAY               ; 0                 ; Untyped                     ;
-; CLK9_DUTY_CYCLE               ; 50                ; Untyped                     ;
-; CLK8_DUTY_CYCLE               ; 50                ; Untyped                     ;
-; CLK7_DUTY_CYCLE               ; 50                ; Untyped                     ;
-; CLK6_DUTY_CYCLE               ; 50                ; Untyped                     ;
-; CLK5_DUTY_CYCLE               ; 50                ; Untyped                     ;
-; CLK4_DUTY_CYCLE               ; 50                ; Untyped                     ;
-; CLK3_DUTY_CYCLE               ; 50                ; Untyped                     ;
-; CLK2_DUTY_CYCLE               ; 50                ; Untyped                     ;
-; CLK1_DUTY_CYCLE               ; 50                ; Untyped                     ;
-; CLK0_DUTY_CYCLE               ; 50                ; Signed Integer              ;
-; CLK9_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                     ;
-; CLK8_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                     ;
-; CLK7_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                     ;
-; CLK6_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                     ;
-; CLK5_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                     ;
-; CLK4_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                     ;
-; CLK3_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                     ;
-; CLK2_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                     ;
-; CLK1_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                     ;
-; CLK0_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                     ;
-; CLK9_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                     ;
-; CLK8_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                     ;
-; CLK7_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                     ;
-; CLK6_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                     ;
-; CLK5_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                     ;
-; CLK4_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                     ;
-; CLK3_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                     ;
-; CLK2_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                     ;
-; CLK1_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                     ;
-; CLK0_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                     ;
-; LOCK_WINDOW_UI                ;  0.05             ; Untyped                     ;
-; LOCK_WINDOW_UI_BITS           ; UNUSED            ; Untyped                     ;
-; VCO_RANGE_DETECTOR_LOW_BITS   ; UNUSED            ; Untyped                     ;
-; VCO_RANGE_DETECTOR_HIGH_BITS  ; UNUSED            ; Untyped                     ;
-; DPA_MULTIPLY_BY               ; 0                 ; Untyped                     ;
-; DPA_DIVIDE_BY                 ; 1                 ; Untyped                     ;
-; DPA_DIVIDER                   ; 0                 ; Untyped                     ;
-; EXTCLK3_MULTIPLY_BY           ; 1                 ; Untyped                     ;
-; EXTCLK2_MULTIPLY_BY           ; 1                 ; Untyped                     ;
-; EXTCLK1_MULTIPLY_BY           ; 1                 ; Untyped                     ;
-; EXTCLK0_MULTIPLY_BY           ; 1                 ; Untyped                     ;
-; EXTCLK3_DIVIDE_BY             ; 1                 ; Untyped                     ;
-; EXTCLK2_DIVIDE_BY             ; 1                 ; Untyped                     ;
-; EXTCLK1_DIVIDE_BY             ; 1                 ; Untyped                     ;
-; EXTCLK0_DIVIDE_BY             ; 1                 ; Untyped                     ;
-; EXTCLK3_PHASE_SHIFT           ; 0                 ; Untyped                     ;
-; EXTCLK2_PHASE_SHIFT           ; 0                 ; Untyped                     ;
-; EXTCLK1_PHASE_SHIFT           ; 0                 ; Untyped                     ;
-; EXTCLK0_PHASE_SHIFT           ; 0                 ; Untyped                     ;
-; EXTCLK3_TIME_DELAY            ; 0                 ; Untyped                     ;
-; EXTCLK2_TIME_DELAY            ; 0                 ; Untyped                     ;
-; EXTCLK1_TIME_DELAY            ; 0                 ; Untyped                     ;
-; EXTCLK0_TIME_DELAY            ; 0                 ; Untyped                     ;
-; EXTCLK3_DUTY_CYCLE            ; 50                ; Untyped                     ;
-; EXTCLK2_DUTY_CYCLE            ; 50                ; Untyped                     ;
-; EXTCLK1_DUTY_CYCLE            ; 50                ; Untyped                     ;
-; EXTCLK0_DUTY_CYCLE            ; 50                ; Untyped                     ;
-; VCO_MULTIPLY_BY               ; 0                 ; Untyped                     ;
-; VCO_DIVIDE_BY                 ; 0                 ; Untyped                     ;
-; SCLKOUT0_PHASE_SHIFT          ; 0                 ; Untyped                     ;
-; SCLKOUT1_PHASE_SHIFT          ; 0                 ; Untyped                     ;
-; VCO_MIN                       ; 0                 ; Untyped                     ;
-; VCO_MAX                       ; 0                 ; Untyped                     ;
-; VCO_CENTER                    ; 0                 ; Untyped                     ;
-; PFD_MIN                       ; 0                 ; Untyped                     ;
-; PFD_MAX                       ; 0                 ; Untyped                     ;
-; M_INITIAL                     ; 0                 ; Untyped                     ;
-; M                             ; 0                 ; Untyped                     ;
-; N                             ; 1                 ; Untyped                     ;
-; M2                            ; 1                 ; Untyped                     ;
-; N2                            ; 1                 ; Untyped                     ;
-; SS                            ; 1                 ; Untyped                     ;
-; C0_HIGH                       ; 0                 ; Untyped                     ;
-; C1_HIGH                       ; 0                 ; Untyped                     ;
-; C2_HIGH                       ; 0                 ; Untyped                     ;
-; C3_HIGH                       ; 0                 ; Untyped                     ;
-; C4_HIGH                       ; 0                 ; Untyped                     ;
-; C5_HIGH                       ; 0                 ; Untyped                     ;
-; C6_HIGH                       ; 0                 ; Untyped                     ;
-; C7_HIGH                       ; 0                 ; Untyped                     ;
-; C8_HIGH                       ; 0                 ; Untyped                     ;
-; C9_HIGH                       ; 0                 ; Untyped                     ;
-; C0_LOW                        ; 0                 ; Untyped                     ;
-; C1_LOW                        ; 0                 ; Untyped                     ;
-; C2_LOW                        ; 0                 ; Untyped                     ;
-; C3_LOW                        ; 0                 ; Untyped                     ;
-; C4_LOW                        ; 0                 ; Untyped                     ;
-; C5_LOW                        ; 0                 ; Untyped                     ;
-; C6_LOW                        ; 0                 ; Untyped                     ;
-; C7_LOW                        ; 0                 ; Untyped                     ;
-; C8_LOW                        ; 0                 ; Untyped                     ;
-; C9_LOW                        ; 0                 ; Untyped                     ;
-; C0_INITIAL                    ; 0                 ; Untyped                     ;
-; C1_INITIAL                    ; 0                 ; Untyped                     ;
-; C2_INITIAL                    ; 0                 ; Untyped                     ;
-; C3_INITIAL                    ; 0                 ; Untyped                     ;
-; C4_INITIAL                    ; 0                 ; Untyped                     ;
-; C5_INITIAL                    ; 0                 ; Untyped                     ;
-; C6_INITIAL                    ; 0                 ; Untyped                     ;
-; C7_INITIAL                    ; 0                 ; Untyped                     ;
-; C8_INITIAL                    ; 0                 ; Untyped                     ;
-; C9_INITIAL                    ; 0                 ; Untyped                     ;
-; C0_MODE                       ; BYPASS            ; Untyped                     ;
-; C1_MODE                       ; BYPASS            ; Untyped                     ;
-; C2_MODE                       ; BYPASS            ; Untyped                     ;
-; C3_MODE                       ; BYPASS            ; Untyped                     ;
-; C4_MODE                       ; BYPASS            ; Untyped                     ;
-; C5_MODE                       ; BYPASS            ; Untyped                     ;
-; C6_MODE                       ; BYPASS            ; Untyped                     ;
-; C7_MODE                       ; BYPASS            ; Untyped                     ;
-; C8_MODE                       ; BYPASS            ; Untyped                     ;
-; C9_MODE                       ; BYPASS            ; Untyped                     ;
-; C0_PH                         ; 0                 ; Untyped                     ;
-; C1_PH                         ; 0                 ; Untyped                     ;
-; C2_PH                         ; 0                 ; Untyped                     ;
-; C3_PH                         ; 0                 ; Untyped                     ;
-; C4_PH                         ; 0                 ; Untyped                     ;
-; C5_PH                         ; 0                 ; Untyped                     ;
-; C6_PH                         ; 0                 ; Untyped                     ;
-; C7_PH                         ; 0                 ; Untyped                     ;
-; C8_PH                         ; 0                 ; Untyped                     ;
-; C9_PH                         ; 0                 ; Untyped                     ;
-; L0_HIGH                       ; 1                 ; Untyped                     ;
-; L1_HIGH                       ; 1                 ; Untyped                     ;
-; G0_HIGH                       ; 1                 ; Untyped                     ;
-; G1_HIGH                       ; 1                 ; Untyped                     ;
-; G2_HIGH                       ; 1                 ; Untyped                     ;
-; G3_HIGH                       ; 1                 ; Untyped                     ;
-; E0_HIGH                       ; 1                 ; Untyped                     ;
-; E1_HIGH                       ; 1                 ; Untyped                     ;
-; E2_HIGH                       ; 1                 ; Untyped                     ;
-; E3_HIGH                       ; 1                 ; Untyped                     ;
-; L0_LOW                        ; 1                 ; Untyped                     ;
-; L1_LOW                        ; 1                 ; Untyped                     ;
-; G0_LOW                        ; 1                 ; Untyped                     ;
-; G1_LOW                        ; 1                 ; Untyped                     ;
-; G2_LOW                        ; 1                 ; Untyped                     ;
-; G3_LOW                        ; 1                 ; Untyped                     ;
-; E0_LOW                        ; 1                 ; Untyped                     ;
-; E1_LOW                        ; 1                 ; Untyped                     ;
-; E2_LOW                        ; 1                 ; Untyped                     ;
-; E3_LOW                        ; 1                 ; Untyped                     ;
-; L0_INITIAL                    ; 1                 ; Untyped                     ;
-; L1_INITIAL                    ; 1                 ; Untyped                     ;
-; G0_INITIAL                    ; 1                 ; Untyped                     ;
-; G1_INITIAL                    ; 1                 ; Untyped                     ;
-; G2_INITIAL                    ; 1                 ; Untyped                     ;
-; G3_INITIAL                    ; 1                 ; Untyped                     ;
-; E0_INITIAL                    ; 1                 ; Untyped                     ;
-; E1_INITIAL                    ; 1                 ; Untyped                     ;
-; E2_INITIAL                    ; 1                 ; Untyped                     ;
-; E3_INITIAL                    ; 1                 ; Untyped                     ;
-; L0_MODE                       ; BYPASS            ; Untyped                     ;
-; L1_MODE                       ; BYPASS            ; Untyped                     ;
-; G0_MODE                       ; BYPASS            ; Untyped                     ;
-; G1_MODE                       ; BYPASS            ; Untyped                     ;
-; G2_MODE                       ; BYPASS            ; Untyped                     ;
-; G3_MODE                       ; BYPASS            ; Untyped                     ;
-; E0_MODE                       ; BYPASS            ; Untyped                     ;
-; E1_MODE                       ; BYPASS            ; Untyped                     ;
-; E2_MODE                       ; BYPASS            ; Untyped                     ;
-; E3_MODE                       ; BYPASS            ; Untyped                     ;
-; L0_PH                         ; 0                 ; Untyped                     ;
-; L1_PH                         ; 0                 ; Untyped                     ;
-; G0_PH                         ; 0                 ; Untyped                     ;
-; G1_PH                         ; 0                 ; Untyped                     ;
-; G2_PH                         ; 0                 ; Untyped                     ;
-; G3_PH                         ; 0                 ; Untyped                     ;
-; E0_PH                         ; 0                 ; Untyped                     ;
-; E1_PH                         ; 0                 ; Untyped                     ;
-; E2_PH                         ; 0                 ; Untyped                     ;
-; E3_PH                         ; 0                 ; Untyped                     ;
-; M_PH                          ; 0                 ; Untyped                     ;
-; C1_USE_CASC_IN                ; OFF               ; Untyped                     ;
-; C2_USE_CASC_IN                ; OFF               ; Untyped                     ;
-; C3_USE_CASC_IN                ; OFF               ; Untyped                     ;
-; C4_USE_CASC_IN                ; OFF               ; Untyped                     ;
-; C5_USE_CASC_IN                ; OFF               ; Untyped                     ;
-; C6_USE_CASC_IN                ; OFF               ; Untyped                     ;
-; C7_USE_CASC_IN                ; OFF               ; Untyped                     ;
-; C8_USE_CASC_IN                ; OFF               ; Untyped                     ;
-; C9_USE_CASC_IN                ; OFF               ; Untyped                     ;
-; CLK0_COUNTER                  ; G0                ; Untyped                     ;
-; CLK1_COUNTER                  ; G0                ; Untyped                     ;
-; CLK2_COUNTER                  ; G0                ; Untyped                     ;
-; CLK3_COUNTER                  ; G0                ; Untyped                     ;
-; CLK4_COUNTER                  ; G0                ; Untyped                     ;
-; CLK5_COUNTER                  ; G0                ; Untyped                     ;
-; CLK6_COUNTER                  ; E0                ; Untyped                     ;
-; CLK7_COUNTER                  ; E1                ; Untyped                     ;
-; CLK8_COUNTER                  ; E2                ; Untyped                     ;
-; CLK9_COUNTER                  ; E3                ; Untyped                     ;
-; L0_TIME_DELAY                 ; 0                 ; Untyped                     ;
-; L1_TIME_DELAY                 ; 0                 ; Untyped                     ;
-; G0_TIME_DELAY                 ; 0                 ; Untyped                     ;
-; G1_TIME_DELAY                 ; 0                 ; Untyped                     ;
-; G2_TIME_DELAY                 ; 0                 ; Untyped                     ;
-; G3_TIME_DELAY                 ; 0                 ; Untyped                     ;
-; E0_TIME_DELAY                 ; 0                 ; Untyped                     ;
-; E1_TIME_DELAY                 ; 0                 ; Untyped                     ;
-; E2_TIME_DELAY                 ; 0                 ; Untyped                     ;
-; E3_TIME_DELAY                 ; 0                 ; Untyped                     ;
-; M_TIME_DELAY                  ; 0                 ; Untyped                     ;
-; N_TIME_DELAY                  ; 0                 ; Untyped                     ;
-; EXTCLK3_COUNTER               ; E3                ; Untyped                     ;
-; EXTCLK2_COUNTER               ; E2                ; Untyped                     ;
-; EXTCLK1_COUNTER               ; E1                ; Untyped                     ;
-; EXTCLK0_COUNTER               ; E0                ; Untyped                     ;
-; ENABLE0_COUNTER               ; L0                ; Untyped                     ;
-; ENABLE1_COUNTER               ; L0                ; Untyped                     ;
-; CHARGE_PUMP_CURRENT           ; 2                 ; Untyped                     ;
-; LOOP_FILTER_R                 ;  1.000000         ; Untyped                     ;
-; LOOP_FILTER_C                 ; 5                 ; Untyped                     ;
-; CHARGE_PUMP_CURRENT_BITS      ; 9999              ; Untyped                     ;
-; LOOP_FILTER_R_BITS            ; 9999              ; Untyped                     ;
-; LOOP_FILTER_C_BITS            ; 9999              ; Untyped                     ;
-; VCO_POST_SCALE                ; 0                 ; Untyped                     ;
-; CLK2_OUTPUT_FREQUENCY         ; 0                 ; Untyped                     ;
-; CLK1_OUTPUT_FREQUENCY         ; 0                 ; Untyped                     ;
-; CLK0_OUTPUT_FREQUENCY         ; 0                 ; Untyped                     ;
-; INTENDED_DEVICE_FAMILY        ; Cyclone II        ; Untyped                     ;
-; PORT_CLKENA0                  ; PORT_UNUSED       ; Untyped                     ;
-; PORT_CLKENA1                  ; PORT_UNUSED       ; Untyped                     ;
-; PORT_CLKENA2                  ; PORT_UNUSED       ; Untyped                     ;
-; PORT_CLKENA3                  ; PORT_UNUSED       ; Untyped                     ;
-; PORT_CLKENA4                  ; PORT_UNUSED       ; Untyped                     ;
-; PORT_CLKENA5                  ; PORT_UNUSED       ; Untyped                     ;
-; PORT_EXTCLKENA0               ; PORT_CONNECTIVITY ; Untyped                     ;
-; PORT_EXTCLKENA1               ; PORT_CONNECTIVITY ; Untyped                     ;
-; PORT_EXTCLKENA2               ; PORT_CONNECTIVITY ; Untyped                     ;
-; PORT_EXTCLKENA3               ; PORT_CONNECTIVITY ; Untyped                     ;
-; PORT_EXTCLK0                  ; PORT_UNUSED       ; Untyped                     ;
-; PORT_EXTCLK1                  ; PORT_UNUSED       ; Untyped                     ;
-; PORT_EXTCLK2                  ; PORT_UNUSED       ; Untyped                     ;
-; PORT_EXTCLK3                  ; PORT_UNUSED       ; Untyped                     ;
-; PORT_CLKBAD0                  ; PORT_UNUSED       ; Untyped                     ;
-; PORT_CLKBAD1                  ; PORT_UNUSED       ; Untyped                     ;
-; PORT_CLK0                     ; PORT_USED         ; Untyped                     ;
-; PORT_CLK1                     ; PORT_UNUSED       ; Untyped                     ;
-; PORT_CLK2                     ; PORT_UNUSED       ; Untyped                     ;
-; PORT_CLK3                     ; PORT_UNUSED       ; Untyped                     ;
-; PORT_CLK4                     ; PORT_UNUSED       ; Untyped                     ;
-; PORT_CLK5                     ; PORT_UNUSED       ; Untyped                     ;
-; PORT_CLK6                     ; PORT_UNUSED       ; Untyped                     ;
-; PORT_CLK7                     ; PORT_UNUSED       ; Untyped                     ;
-; PORT_CLK8                     ; PORT_UNUSED       ; Untyped                     ;
-; PORT_CLK9                     ; PORT_UNUSED       ; Untyped                     ;
-; PORT_SCANDATA                 ; PORT_UNUSED       ; Untyped                     ;
-; PORT_SCANDATAOUT              ; PORT_UNUSED       ; Untyped                     ;
-; PORT_SCANDONE                 ; PORT_UNUSED       ; Untyped                     ;
-; PORT_SCLKOUT1                 ; PORT_CONNECTIVITY ; Untyped                     ;
-; PORT_SCLKOUT0                 ; PORT_CONNECTIVITY ; Untyped                     ;
-; PORT_ACTIVECLOCK              ; PORT_UNUSED       ; Untyped                     ;
-; PORT_CLKLOSS                  ; PORT_UNUSED       ; Untyped                     ;
-; PORT_INCLK1                   ; PORT_UNUSED       ; Untyped                     ;
-; PORT_INCLK0                   ; PORT_USED         ; Untyped                     ;
-; PORT_FBIN                     ; PORT_UNUSED       ; Untyped                     ;
-; PORT_PLLENA                   ; PORT_UNUSED       ; Untyped                     ;
-; PORT_CLKSWITCH                ; PORT_UNUSED       ; Untyped                     ;
-; PORT_ARESET                   ; PORT_USED         ; Untyped                     ;
-; PORT_PFDENA                   ; PORT_UNUSED       ; Untyped                     ;
-; PORT_SCANCLK                  ; PORT_UNUSED       ; Untyped                     ;
-; PORT_SCANACLR                 ; PORT_UNUSED       ; Untyped                     ;
-; PORT_SCANREAD                 ; PORT_UNUSED       ; Untyped                     ;
-; PORT_SCANWRITE                ; PORT_UNUSED       ; Untyped                     ;
-; PORT_ENABLE0                  ; PORT_CONNECTIVITY ; Untyped                     ;
-; PORT_ENABLE1                  ; PORT_CONNECTIVITY ; Untyped                     ;
-; PORT_LOCKED                   ; PORT_UNUSED       ; Untyped                     ;
-; PORT_CONFIGUPDATE             ; PORT_UNUSED       ; Untyped                     ;
-; PORT_FBOUT                    ; PORT_CONNECTIVITY ; Untyped                     ;
-; PORT_PHASEDONE                ; PORT_UNUSED       ; Untyped                     ;
-; PORT_PHASESTEP                ; PORT_UNUSED       ; Untyped                     ;
-; PORT_PHASEUPDOWN              ; PORT_UNUSED       ; Untyped                     ;
-; PORT_SCANCLKENA               ; PORT_UNUSED       ; Untyped                     ;
-; PORT_PHASECOUNTERSELECT       ; PORT_UNUSED       ; Untyped                     ;
-; PORT_VCOOVERRANGE             ; PORT_CONNECTIVITY ; Untyped                     ;
-; PORT_VCOUNDERRANGE            ; PORT_CONNECTIVITY ; Untyped                     ;
-; M_TEST_SOURCE                 ; 5                 ; Untyped                     ;
-; C0_TEST_SOURCE                ; 5                 ; Untyped                     ;
-; C1_TEST_SOURCE                ; 5                 ; Untyped                     ;
-; C2_TEST_SOURCE                ; 5                 ; Untyped                     ;
-; C3_TEST_SOURCE                ; 5                 ; Untyped                     ;
-; C4_TEST_SOURCE                ; 5                 ; Untyped                     ;
-; C5_TEST_SOURCE                ; 5                 ; Untyped                     ;
-; C6_TEST_SOURCE                ; 5                 ; Untyped                     ;
-; C7_TEST_SOURCE                ; 5                 ; Untyped                     ;
-; C8_TEST_SOURCE                ; 5                 ; Untyped                     ;
-; C9_TEST_SOURCE                ; 5                 ; Untyped                     ;
-; CBXI_PARAMETER                ; NOTHING           ; Untyped                     ;
-; VCO_FREQUENCY_CONTROL         ; AUTO              ; Untyped                     ;
-; VCO_PHASE_SHIFT_STEP          ; 0                 ; Untyped                     ;
-; WIDTH_CLOCK                   ; 6                 ; Untyped                     ;
-; WIDTH_PHASECOUNTERSELECT      ; 4                 ; Untyped                     ;
-; USING_FBMIMICBIDIR_PORT       ; OFF               ; Untyped                     ;
-; DEVICE_FAMILY                 ; Cyclone II        ; Untyped                     ;
-; SCAN_CHAIN_MIF_FILE           ; UNUSED            ; Untyped                     ;
-; SIM_GATE_LOCK_DEVICE_BEHAVIOR ; OFF               ; Untyped                     ;
-; AUTO_CARRY_CHAINS             ; ON                ; AUTO_CARRY                  ;
-; IGNORE_CARRY_BUFFERS          ; OFF               ; IGNORE_CARRY                ;
-; AUTO_CASCADE_CHAINS           ; ON                ; AUTO_CASCADE                ;
-; IGNORE_CASCADE_BUFFERS        ; OFF               ; IGNORE_CASCADE              ;
-+-------------------------------+-------------------+-----------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+---------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component ;
-+----------------+----------------+-----------------------------------------------------------------------------+
-; Parameter Name ; Value          ; Type                                                                        ;
-+----------------+----------------+-----------------------------------------------------------------------------+
-; WIDTH_BYTEENA  ; 1              ; Untyped                                                                     ;
-; NUMBER_OF_TAPS ; 3              ; Signed Integer                                                              ;
-; TAP_DISTANCE   ; 1280           ; Signed Integer                                                              ;
-; WIDTH          ; 12             ; Signed Integer                                                              ;
-; POWER_UP_STATE ; CLEARED        ; Untyped                                                                     ;
-; CBXI_PARAMETER ; shift_taps_fms ; Untyped                                                                     ;
-+----------------+----------------+-----------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+-------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: CCD_Capture:u3 ;
-+----------------+-------+------------------------------------+
-; Parameter Name ; Value ; Type                               ;
-+----------------+-------+------------------------------------+
-; COLUMN_WIDTH   ; 1280  ; Signed Integer                     ;
-+----------------+-------+------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+-----------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: I2C_CCD_Config:u10 ;
-+-----------------------+------------------+----------------------+
-; Parameter Name        ; Value            ; Type                 ;
-+-----------------------+------------------+----------------------+
-; default_exposure      ; 0000011111000000 ; Unsigned Binary      ;
-; exposure_change_value ; 0000000011001000 ; Unsigned Binary      ;
-; CLK_Freq              ; 50000000         ; Signed Integer       ;
-; I2C_Freq              ; 20000            ; Signed Integer       ;
-; LUT_SIZE              ; 25               ; Signed Integer       ;
-+-----------------------+------------------+----------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+--------------------------------------------------------------------+
-; altpll Parameter Settings by Entity Instance                       ;
-+-------------------------------+------------------------------------+
-; Name                          ; Value                              ;
-+-------------------------------+------------------------------------+
-; Number of entity instances    ; 1                                  ;
-; Entity Instance               ; vga_pll:u6|altpll:altpll_component ;
-;     -- OPERATION_MODE         ; NORMAL                             ;
-;     -- PLL_TYPE               ; AUTO                               ;
-;     -- PRIMARY_CLOCK          ; INCLK0                             ;
-;     -- INCLK0_INPUT_FREQUENCY ; 37037                              ;
-;     -- INCLK1_INPUT_FREQUENCY ; 0                                  ;
-;     -- VCO_MULTIPLY_BY        ; 0                                  ;
-;     -- VCO_DIVIDE_BY          ; 0                                  ;
-+-------------------------------+------------------------------------+
-
-
-+-----------------------------------------------------------------------------------------------+
-; altshift_taps Parameter Settings by Entity Instance                                           ;
-+----------------------------+------------------------------------------------------------------+
-; Name                       ; Value                                                            ;
-+----------------------------+------------------------------------------------------------------+
-; Number of entity instances ; 1                                                                ;
-; Entity Instance            ; RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component ;
-;     -- NUMBER_OF_TAPS      ; 3                                                                ;
-;     -- TAP_DISTANCE        ; 1280                                                             ;
-;     -- WIDTH               ; 12                                                               ;
-+----------------------------+------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "I2C_CCD_Config:u10|I2C_Controller:u0"                                                                                                       ;
-+------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type  ; Severity ; Details                                                                                                                                      ;
-+------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; W_R  ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
-+------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-
-
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "RAWToRGB:u4|line_buffer:L1"                                                                                                                      ;
-+----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; Port     ; Type   ; Severity ; Details                                                                                                                                      ;
-+----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; shiftout ; Output ; Info     ; Explicitly unconnected                                                                                                                       ;
-; aclr     ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
-+----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-
-
-+--------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "RAWToRGB:u4"                                                                                  ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port           ; Type   ; Severity ; Details                                                                             ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
-; oRed[11..10]   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; oGreen[11..10] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; oBlue[11..10]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; oDataValid     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "vga_controller:vga"                                                                       ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port       ; Type   ; Severity ; Details                                                                             ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; outRequest ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "SEG7_DISPLAY:segment_display"                                                                                                                 ;
++------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                        ;
++------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------+
+; iDIG ; Input ; Warning  ; Input port expression (1 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "iDIG[31..1]" will be connected to GND. ;
++------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -937,10 +228,36 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Wed Dec 09 15:10:14 2015
+    Info: Processing started: Wed Dec 09 18:49:56 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off GreenScreen -c GreenScreen
+Info: Found 25 design units, including 25 entities, in source file verilog/de2_70_sopc.v
+    Info: Found entity 1: DE2_70_SOPC_clock_0_in_arbitrator
+    Info: Found entity 2: DE2_70_SOPC_clock_0_out_arbitrator
+    Info: Found entity 3: camera_s1_arbitrator
+    Info: Found entity 4: cpu_jtag_debug_module_arbitrator
+    Info: Found entity 5: cpu_data_master_arbitrator
+    Info: Found entity 6: cpu_instruction_master_arbitrator
+    Info: Found entity 7: jtag_uart_avalon_jtag_slave_arbitrator
+    Info: Found entity 8: lcd_control_slave_arbitrator
+    Info: Found entity 9: onchip_mem_s1_arbitrator
+    Info: Found entity 10: pio_led_s1_arbitrator
+    Info: Found entity 11: pll_pll_slave_arbitrator
+    Info: Found entity 12: sysid_control_slave_arbitrator
+    Info: Found entity 13: timer_s1_arbitrator
+    Info: Found entity 14: timer_stamp_s1_arbitrator
+    Info: Found entity 15: tristate_bridge_avalon_slave_arbitrator
+    Info: Found entity 16: tristate_bridge_bridge_arbitrator
+    Info: Found entity 17: uart_s1_arbitrator
+    Info: Found entity 18: DE2_70_SOPC_reset_pll_c0_system_domain_synch_module
+    Info: Found entity 19: DE2_70_SOPC_reset_clk_domain_synch_module
+    Info: Found entity 20: DE2_70_SOPC
+    Info: Found entity 21: ssram_lane0_module
+    Info: Found entity 22: ssram_lane1_module
+    Info: Found entity 23: ssram_lane2_module
+    Info: Found entity 24: ssram_lane3_module
+    Info: Found entity 25: ssram
 Info: Found 1 design units, including 1 entities, in source file verilog/seg7_digit.v
-    Info: Found entity 1: SEG7_LUT
+    Info: Found entity 1: SEG7_DIGIT
 Info: Found 1 design units, including 1 entities, in source file verilog/seg7_display.v
     Info: Found entity 1: SEG7_DISPLAY
 Info: Found 1 design units, including 1 entities, in source file verilog/i2c_controller.v
@@ -960,6 +277,8 @@ Info: Found 1 design units, including 1 entities, in source file vga_pll.v
 Warning (10238): Verilog Module Declaration warning at vga_controller.v(20): ignored anonymous port(s) indicated by duplicate or dangling comma(s) in the port list for module "vga_controller"
 Info: Found 1 design units, including 1 entities, in source file vga_controller.v
     Info: Found entity 1: vga_controller
+Warning (10090): Verilog HDL syntax warning at GreenScreen.v(238): extra block comment delimiter characters /* within block comment
+Warning (10090): Verilog HDL syntax warning at GreenScreen.v(309): extra block comment delimiter characters /* within block comment
 Info: Found 1 design units, including 1 entities, in source file greenscreen.v
     Info: Found entity 1: GreenScreen
 Info: Found 1 design units, including 1 entities, in source file rawtorgb.v
@@ -968,411 +287,47 @@ Info: Found 1 design units, including 1 entities, in source file linebuffer.v
     Info: Found entity 1: LineBuffer
 Info: Found 1 design units, including 1 entities, in source file verilog/resetdelay.v
     Info: Found entity 1: ResetDelay
-Warning (10236): Verilog HDL Implicit Net warning at GreenScreen.v(497): created implicit net for "CCD_CAPTURE_START"
-Warning (10236): Verilog HDL Implicit Net warning at GreenScreen.v(498): created implicit net for "CCD_CAPTURE_STOP"
-Warning (10236): Verilog HDL Implicit Net warning at GreenScreen.v(517): created implicit net for "iDIG"
+Warning (10236): Verilog HDL Implicit Net warning at GreenScreen.v(180): created implicit net for "oTD1_RESET_N"
 Info: Elaborating entity "GreenScreen" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at GreenScreen.v(517): object "iDIG" assigned a value but never read
-Warning (10858): Verilog HDL warning at GreenScreen.v(360): object CCD_MCLK used but never assigned
-Warning (10230): Verilog HDL assignment warning at GreenScreen.v(420): truncated value with size 32 to match size of target (2)
-Warning (10230): Verilog HDL assignment warning at GreenScreen.v(430): truncated value with size 12 to match size of target (10)
-Warning (10230): Verilog HDL assignment warning at GreenScreen.v(431): truncated value with size 12 to match size of target (10)
-Warning (10230): Verilog HDL assignment warning at GreenScreen.v(432): truncated value with size 12 to match size of target (10)
-Warning (10230): Verilog HDL assignment warning at GreenScreen.v(517): truncated value with size 12 to match size of target (1)
-Warning (10030): Net "CCD_MCLK" at GreenScreen.v(360) has no driver or initial value, using a default initial value '0'
-Warning (10034): Output port "oLEDG" at GreenScreen.v(206) has no driver
-Warning (10034): Output port "oDRAM0_A" at GreenScreen.v(218) has no driver
-Warning (10034): Output port "oDRAM1_A" at GreenScreen.v(219) has no driver
-Warning (10034): Output port "oDRAM0_BA" at GreenScreen.v(232) has no driver
-Warning (10034): Output port "oDRAM1_BA" at GreenScreen.v(233) has no driver
-Warning (10034): Output port "oFLASH_A" at GreenScreen.v(241) has no driver
-Warning (10034): Output port "oSRAM_A" at GreenScreen.v(252) has no driver
-Warning (10034): Output port "oSRAM_BE_N" at GreenScreen.v(256) has no driver
-Warning (10034): Output port "oOTG_A" at GreenScreen.v(266) has no driver
-Warning (10034): Output port "oHEX0_DP" at GreenScreen.v(190) has no driver
-Warning (10034): Output port "oHEX1_DP" at GreenScreen.v(192) has no driver
-Warning (10034): Output port "oHEX2_DP" at GreenScreen.v(194) has no driver
-Warning (10034): Output port "oHEX3_DP" at GreenScreen.v(196) has no driver
-Warning (10034): Output port "oHEX4_DP" at GreenScreen.v(198) has no driver
-Warning (10034): Output port "oHEX5_DP" at GreenScreen.v(200) has no driver
-Warning (10034): Output port "oHEX6_DP" at GreenScreen.v(202) has no driver
-Warning (10034): Output port "oHEX7_DP" at GreenScreen.v(204) has no driver
-Warning (10034): Output port "oUART_TXD" at GreenScreen.v(209) has no driver
-Warning (10034): Output port "oUART_CTS" at GreenScreen.v(211) has no driver
-Warning (10034): Output port "oIRDA_TXD" at GreenScreen.v(214) has no driver
-Warning (10034): Output port "oDRAM0_LDQM0" at GreenScreen.v(220) has no driver
-Warning (10034): Output port "oDRAM1_LDQM0" at GreenScreen.v(221) has no driver
-Warning (10034): Output port "oDRAM0_UDQM1" at GreenScreen.v(222) has no driver
-Warning (10034): Output port "oDRAM1_UDQM1" at GreenScreen.v(223) has no driver
-Warning (10034): Output port "oDRAM0_WE_N" at GreenScreen.v(224) has no driver
-Warning (10034): Output port "oDRAM1_WE_N" at GreenScreen.v(225) has no driver
-Warning (10034): Output port "oDRAM0_CAS_N" at GreenScreen.v(226) has no driver
-Warning (10034): Output port "oDRAM1_CAS_N" at GreenScreen.v(227) has no driver
-Warning (10034): Output port "oDRAM0_RAS_N" at GreenScreen.v(228) has no driver
-Warning (10034): Output port "oDRAM1_RAS_N" at GreenScreen.v(229) has no driver
-Warning (10034): Output port "oDRAM0_CS_N" at GreenScreen.v(230) has no driver
-Warning (10034): Output port "oDRAM1_CS_N" at GreenScreen.v(231) has no driver
-Warning (10034): Output port "oDRAM0_CLK" at GreenScreen.v(234) has no driver
-Warning (10034): Output port "oDRAM1_CLK" at GreenScreen.v(235) has no driver
-Warning (10034): Output port "oDRAM0_CKE" at GreenScreen.v(236) has no driver
-Warning (10034): Output port "oDRAM1_CKE" at GreenScreen.v(237) has no driver
-Warning (10034): Output port "oFLASH_WE_N" at GreenScreen.v(242) has no driver
-Warning (10034): Output port "oFLASH_RST_N" at GreenScreen.v(243) has no driver
-Warning (10034): Output port "oFLASH_WP_N" at GreenScreen.v(244) has no driver
-Warning (10034): Output port "oFLASH_BYTE_N" at GreenScreen.v(246) has no driver
-Warning (10034): Output port "oFLASH_OE_N" at GreenScreen.v(247) has no driver
-Warning (10034): Output port "oFLASH_CE_N" at GreenScreen.v(248) has no driver
-Warning (10034): Output port "oSRAM_ADSC_N" at GreenScreen.v(253) has no driver
-Warning (10034): Output port "oSRAM_ADSP_N" at GreenScreen.v(254) has no driver
-Warning (10034): Output port "oSRAM_ADV_N" at GreenScreen.v(255) has no driver
-Warning (10034): Output port "oSRAM_CE1_N" at GreenScreen.v(257) has no driver
-Warning (10034): Output port "oSRAM_CE2" at GreenScreen.v(258) has no driver
-Warning (10034): Output port "oSRAM_CE3_N" at GreenScreen.v(259) has no driver
-Warning (10034): Output port "oSRAM_CLK" at GreenScreen.v(260) has no driver
-Warning (10034): Output port "oSRAM_GW_N" at GreenScreen.v(261) has no driver
-Warning (10034): Output port "oSRAM_OE_N" at GreenScreen.v(262) has no driver
-Warning (10034): Output port "oSRAM_WE_N" at GreenScreen.v(263) has no driver
-Warning (10034): Output port "oOTG_CS_N" at GreenScreen.v(267) has no driver
-Warning (10034): Output port "oOTG_OE_N" at GreenScreen.v(268) has no driver
-Warning (10034): Output port "oOTG_WE_N" at GreenScreen.v(269) has no driver
-Warning (10034): Output port "oOTG_RESET_N" at GreenScreen.v(270) has no driver
-Warning (10034): Output port "oOTG_DACK0_N" at GreenScreen.v(277) has no driver
-Warning (10034): Output port "oOTG_DACK1_N" at GreenScreen.v(278) has no driver
-Warning (10034): Output port "oLCD_ON" at GreenScreen.v(281) has no driver
-Warning (10034): Output port "oLCD_BLON" at GreenScreen.v(282) has no driver
-Warning (10034): Output port "oLCD_RW" at GreenScreen.v(283) has no driver
-Warning (10034): Output port "oLCD_EN" at GreenScreen.v(284) has no driver
-Warning (10034): Output port "oLCD_RS" at GreenScreen.v(285) has no driver
-Warning (10034): Output port "oSD_CLK" at GreenScreen.v(290) has no driver
-Warning (10034): Output port "oI2C_SCLK" at GreenScreen.v(293) has no driver
-Warning (10034): Output port "oENET_CMD" at GreenScreen.v(310) has no driver
-Warning (10034): Output port "oENET_CS_N" at GreenScreen.v(311) has no driver
-Warning (10034): Output port "oENET_IOW_N" at GreenScreen.v(312) has no driver
-Warning (10034): Output port "oENET_IOR_N" at GreenScreen.v(313) has no driver
-Warning (10034): Output port "oENET_RESET_N" at GreenScreen.v(314) has no driver
-Warning (10034): Output port "oENET_CLK" at GreenScreen.v(316) has no driver
-Warning (10034): Output port "oAUD_DACDAT" at GreenScreen.v(321) has no driver
-Warning (10034): Output port "oAUD_XCK" at GreenScreen.v(323) has no driver
-Warning (10034): Output port "oTD2_RESET_N" at GreenScreen.v(334) has no driver
-Info: Elaborating entity "vga_controller" for hierarchy "vga_controller:vga"
-Warning (10230): Verilog HDL assignment warning at vga_controller.v(60): truncated value with size 32 to match size of target (10)
-Warning (10230): Verilog HDL assignment warning at vga_controller.v(63): truncated value with size 32 to match size of target (10)
-Warning (10230): Verilog HDL assignment warning at vga_controller.v(66): truncated value with size 32 to match size of target (10)
-Warning (10230): Verilog HDL assignment warning at vga_controller.v(125): truncated value with size 32 to match size of target (13)
-Warning (10230): Verilog HDL assignment warning at vga_controller.v(151): truncated value with size 32 to match size of target (13)
-Info: Elaborating entity "vga_pll" for hierarchy "vga_pll:u6"
-Info: Elaborating entity "altpll" for hierarchy "vga_pll:u6|altpll:altpll_component"
-Info: Elaborated megafunction instantiation "vga_pll:u6|altpll:altpll_component"
-Info: Instantiated megafunction "vga_pll:u6|altpll:altpll_component" with the following parameter:
-    Info: Parameter "clk0_divide_by" = "1"
-    Info: Parameter "clk0_duty_cycle" = "50"
-    Info: Parameter "clk0_multiply_by" = "4"
-    Info: Parameter "clk0_phase_shift" = "0"
-    Info: Parameter "compensate_clock" = "CLK0"
-    Info: Parameter "inclk0_input_frequency" = "37037"
-    Info: Parameter "intended_device_family" = "Cyclone II"
-    Info: Parameter "lpm_type" = "altpll"
-    Info: Parameter "operation_mode" = "NORMAL"
-    Info: Parameter "port_activeclock" = "PORT_UNUSED"
-    Info: Parameter "port_areset" = "PORT_USED"
-    Info: Parameter "port_clkbad0" = "PORT_UNUSED"
-    Info: Parameter "port_clkbad1" = "PORT_UNUSED"
-    Info: Parameter "port_clkloss" = "PORT_UNUSED"
-    Info: Parameter "port_clkswitch" = "PORT_UNUSED"
-    Info: Parameter "port_configupdate" = "PORT_UNUSED"
-    Info: Parameter "port_fbin" = "PORT_UNUSED"
-    Info: Parameter "port_inclk0" = "PORT_USED"
-    Info: Parameter "port_inclk1" = "PORT_UNUSED"
-    Info: Parameter "port_locked" = "PORT_UNUSED"
-    Info: Parameter "port_pfdena" = "PORT_UNUSED"
-    Info: Parameter "port_phasecounterselect" = "PORT_UNUSED"
-    Info: Parameter "port_phasedone" = "PORT_UNUSED"
-    Info: Parameter "port_phasestep" = "PORT_UNUSED"
-    Info: Parameter "port_phaseupdown" = "PORT_UNUSED"
-    Info: Parameter "port_pllena" = "PORT_UNUSED"
-    Info: Parameter "port_scanaclr" = "PORT_UNUSED"
-    Info: Parameter "port_scanclk" = "PORT_UNUSED"
-    Info: Parameter "port_scanclkena" = "PORT_UNUSED"
-    Info: Parameter "port_scandata" = "PORT_UNUSED"
-    Info: Parameter "port_scandataout" = "PORT_UNUSED"
-    Info: Parameter "port_scandone" = "PORT_UNUSED"
-    Info: Parameter "port_scanread" = "PORT_UNUSED"
-    Info: Parameter "port_scanwrite" = "PORT_UNUSED"
-    Info: Parameter "port_clk0" = "PORT_USED"
-    Info: Parameter "port_clk1" = "PORT_UNUSED"
-    Info: Parameter "port_clk2" = "PORT_UNUSED"
-    Info: Parameter "port_clk3" = "PORT_UNUSED"
-    Info: Parameter "port_clk4" = "PORT_UNUSED"
-    Info: Parameter "port_clk5" = "PORT_UNUSED"
-    Info: Parameter "port_clkena0" = "PORT_UNUSED"
-    Info: Parameter "port_clkena1" = "PORT_UNUSED"
-    Info: Parameter "port_clkena2" = "PORT_UNUSED"
-    Info: Parameter "port_clkena3" = "PORT_UNUSED"
-    Info: Parameter "port_clkena4" = "PORT_UNUSED"
-    Info: Parameter "port_clkena5" = "PORT_UNUSED"
-    Info: Parameter "port_extclk0" = "PORT_UNUSED"
-    Info: Parameter "port_extclk1" = "PORT_UNUSED"
-    Info: Parameter "port_extclk2" = "PORT_UNUSED"
-    Info: Parameter "port_extclk3" = "PORT_UNUSED"
-Info: Elaborating entity "ResetDelay" for hierarchy "ResetDelay:u2"
-Info: Elaborating entity "RAWToRGB" for hierarchy "RAWToRGB:u4"
-Info: Elaborating entity "line_buffer" for hierarchy "RAWToRGB:u4|line_buffer:L1"
-Info: Elaborating entity "altshift_taps" for hierarchy "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component"
-Info: Elaborated megafunction instantiation "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component"
-Info: Instantiated megafunction "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component" with the following parameter:
-    Info: Parameter "lpm_hint" = "RAM_BLOCK_TYPE=M512"
-    Info: Parameter "lpm_type" = "altshift_taps"
-    Info: Parameter "number_of_taps" = "3"
-    Info: Parameter "tap_distance" = "1280"
-    Info: Parameter "width" = "12"
-Warning: Assertion warning: Device family Cyclone II does not have M512 blocks -- using available memory blocks
-Info: Found 1 design units, including 1 entities, in source file db/shift_taps_fms.tdf
-    Info: Found entity 1: shift_taps_fms
-Info: Elaborating entity "shift_taps_fms" for hierarchy "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated"
-Info: Found 1 design units, including 1 entities, in source file db/altsyncram_16d1.tdf
-    Info: Found entity 1: altsyncram_16d1
-Info: Elaborating entity "altsyncram_16d1" for hierarchy "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2"
-Info: Found 1 design units, including 1 entities, in source file db/cntr_3rf.tdf
-    Info: Found entity 1: cntr_3rf
-Info: Elaborating entity "cntr_3rf" for hierarchy "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|cntr_3rf:cntr1"
-Info: Found 1 design units, including 1 entities, in source file db/cmpr_mdc.tdf
-    Info: Found entity 1: cmpr_mdc
-Info: Elaborating entity "cmpr_mdc" for hierarchy "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|cntr_3rf:cntr1|cmpr_mdc:cmpr5"
-Info: Found 1 design units, including 1 entities, in source file db/cntr_pah.tdf
-    Info: Found entity 1: cntr_pah
-Info: Elaborating entity "cntr_pah" for hierarchy "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|cntr_pah:cntr3"
-Info: Elaborating entity "CCD_Capture" for hierarchy "CCD_Capture:u3"
-Warning (10036): Verilog HDL or VHDL warning at ccd_capture.v(126): object "inputFrameValid_fetch" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at ccd_capture.v(127): object "y_count_d" assigned a value but never read
-Warning (10230): Verilog HDL assignment warning at ccd_capture.v(84): truncated value with size 32 to match size of target (16)
-Warning (10230): Verilog HDL assignment warning at ccd_capture.v(88): truncated value with size 32 to match size of target (16)
-Warning (10230): Verilog HDL assignment warning at ccd_capture.v(147): truncated value with size 32 to match size of target (1)
-Info: Elaborating entity "I2C_CCD_Config" for hierarchy "I2C_CCD_Config:u10"
-Warning (10230): Verilog HDL assignment warning at I2C_CCD_Config.v(121): truncated value with size 32 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at I2C_CCD_Config.v(122): truncated value with size 32 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at I2C_CCD_Config.v(155): truncated value with size 32 to match size of target (25)
-Warning (10230): Verilog HDL assignment warning at I2C_CCD_Config.v(160): truncated value with size 32 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at I2C_CCD_Config.v(185): truncated value with size 32 to match size of target (16)
-Warning (10230): Verilog HDL assignment warning at I2C_CCD_Config.v(235): truncated value with size 32 to match size of target (6)
-Info: Elaborating entity "I2C_Controller" for hierarchy "I2C_CCD_Config:u10|I2C_Controller:u0"
-Warning (10230): Verilog HDL assignment warning at I2C_Controller.v(71): truncated value with size 32 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at I2C_Controller.v(70): truncated value with size 32 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at I2C_Controller.v(83): truncated value with size 32 to match size of target (7)
-Info: Elaborating entity "SEG7_DISPLAY" for hierarchy "SEG7_DISPLAY:u5"
-Info: Elaborating entity "SEG7_LUT" for hierarchy "SEG7_DISPLAY:u5|SEG7_LUT:u0"
-Warning: Synthesized away the following node(s):
-    Warning: Synthesized away the following RAM node(s):
-        Warning (14320): Synthesized away node "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|q_b[11]"
-        Warning (14320): Synthesized away node "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|q_b[23]"
-        Warning (14320): Synthesized away node "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|q_b[35]"
-Warning: Synthesized away the following node(s):
-    Warning: Synthesized away the following RAM node(s):
-        Warning (14320): Synthesized away node "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|q_b[24]"
-        Warning (14320): Synthesized away node "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|q_b[25]"
-        Warning (14320): Synthesized away node "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|q_b[26]"
-        Warning (14320): Synthesized away node "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|q_b[27]"
-        Warning (14320): Synthesized away node "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|q_b[28]"
-        Warning (14320): Synthesized away node "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|q_b[29]"
-        Warning (14320): Synthesized away node "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|q_b[30]"
-        Warning (14320): Synthesized away node "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|q_b[31]"
-        Warning (14320): Synthesized away node "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|q_b[32]"
-        Warning (14320): Synthesized away node "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|q_b[33]"
-        Warning (14320): Synthesized away node "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|q_b[34]"
-Warning: Synthesized away the following node(s):
-    Warning: Synthesized away the following RAM node(s):
-        Warning (14320): Synthesized away node "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|q_b[10]"
-        Warning (14320): Synthesized away node "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|q_b[22]"
-Warning: 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (10036): Verilog HDL or VHDL warning at GreenScreen.v(180): object "oTD1_RESET_N" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at GreenScreen.v(125): object "Read_DATA1" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at GreenScreen.v(126): object "Read_DATA2" assigned a value but never read
+Warning (10858): Verilog HDL warning at GreenScreen.v(127): object VGA_CTRL_CLK used but never assigned
+Warning (10036): Verilog HDL or VHDL warning at GreenScreen.v(139): object "rCCD_DATA" assigned a value but never read
+Warning (10858): Verilog HDL warning at GreenScreen.v(142): object sCCD_R used but never assigned
+Warning (10858): Verilog HDL warning at GreenScreen.v(143): object sCCD_G used but never assigned
+Warning (10858): Verilog HDL warning at GreenScreen.v(144): object sCCD_B used but never assigned
+Warning (10230): Verilog HDL assignment warning at GreenScreen.v(183): truncated value with size 32 to match size of target (2)
+Warning (10230): Verilog HDL assignment warning at GreenScreen.v(193): truncated value with size 12 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at GreenScreen.v(194): truncated value with size 12 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at GreenScreen.v(195): truncated value with size 12 to match size of target (10)
+Warning (10030): Net "VGA_CTRL_CLK" at GreenScreen.v(127) has no driver or initial value, using a default initial value '0'
+Warning (10034): Output port "oLEDG[8]" at GreenScreen.v(88) has no driver
+Warning (10034): Output port "oLEDG[3..0]" at GreenScreen.v(88) has no driver
+Warning (10034): Output port "oLEDR" at GreenScreen.v(89) has no driver
+Warning (10034): Output port "oVGA_R" at GreenScreen.v(101) has no driver
+Warning (10034): Output port "oVGA_G" at GreenScreen.v(102) has no driver
+Warning (10034): Output port "oVGA_B" at GreenScreen.v(103) has no driver
+Warning (10034): Output port "oHEX0_DP" at GreenScreen.v(72) has no driver
+Warning (10034): Output port "oHEX1_DP" at GreenScreen.v(74) has no driver
+Warning (10034): Output port "oHEX2_DP" at GreenScreen.v(76) has no driver
+Warning (10034): Output port "oHEX3_DP" at GreenScreen.v(78) has no driver
+Warning (10034): Output port "oHEX4_DP" at GreenScreen.v(80) has no driver
+Warning (10034): Output port "oHEX5_DP" at GreenScreen.v(82) has no driver
+Warning (10034): Output port "oHEX6_DP" at GreenScreen.v(84) has no driver
+Warning (10034): Output port "oHEX7_DP" at GreenScreen.v(86) has no driver
+Warning (10034): Output port "oI2C_SCLK" at GreenScreen.v(94) has no driver
+Warning (10034): Output port "oVGA_HS" at GreenScreen.v(97) has no driver
+Warning (10034): Output port "oVGA_VS" at GreenScreen.v(98) has no driver
+Warning (10034): Output port "oVGA_BLANK_N" at GreenScreen.v(99) has no driver
+Warning (10034): Output port "oVGA_SYNC_N" at GreenScreen.v(100) has no driver
+Info: Elaborating entity "SEG7_DISPLAY" for hierarchy "SEG7_DISPLAY:segment_display"
+Info: Elaborating entity "SEG7_DIGIT" for hierarchy "SEG7_DISPLAY:segment_display|SEG7_DIGIT:u0"
+Warning: 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning: The following nodes have both tri-state and non-tri-state drivers
-    Warning: Inserted always-enabled tri-state buffer between "GPIO_1[14]" and its non-tri-state driver.
-    Warning: Inserted always-enabled tri-state buffer between "GPIO_1[20]" and its non-tri-state driver.
+    Warning: Inserted always-enabled tri-state buffer between "GPIO_CLKOUT_N1" and its non-tri-state driver.
 Warning: The following bidir pins have no drivers
-    Warning: Bidir "DRAM_DQ[0]" has no driver
-    Warning: Bidir "DRAM_DQ[1]" has no driver
-    Warning: Bidir "DRAM_DQ[2]" has no driver
-    Warning: Bidir "DRAM_DQ[3]" has no driver
-    Warning: Bidir "DRAM_DQ[4]" has no driver
-    Warning: Bidir "DRAM_DQ[5]" has no driver
-    Warning: Bidir "DRAM_DQ[6]" has no driver
-    Warning: Bidir "DRAM_DQ[7]" has no driver
-    Warning: Bidir "DRAM_DQ[8]" has no driver
-    Warning: Bidir "DRAM_DQ[9]" has no driver
-    Warning: Bidir "DRAM_DQ[10]" has no driver
-    Warning: Bidir "DRAM_DQ[11]" has no driver
-    Warning: Bidir "DRAM_DQ[12]" has no driver
-    Warning: Bidir "DRAM_DQ[13]" has no driver
-    Warning: Bidir "DRAM_DQ[14]" has no driver
-    Warning: Bidir "DRAM_DQ[15]" has no driver
-    Warning: Bidir "DRAM_DQ[16]" has no driver
-    Warning: Bidir "DRAM_DQ[17]" has no driver
-    Warning: Bidir "DRAM_DQ[18]" has no driver
-    Warning: Bidir "DRAM_DQ[19]" has no driver
-    Warning: Bidir "DRAM_DQ[20]" has no driver
-    Warning: Bidir "DRAM_DQ[21]" has no driver
-    Warning: Bidir "DRAM_DQ[22]" has no driver
-    Warning: Bidir "DRAM_DQ[23]" has no driver
-    Warning: Bidir "DRAM_DQ[24]" has no driver
-    Warning: Bidir "DRAM_DQ[25]" has no driver
-    Warning: Bidir "DRAM_DQ[26]" has no driver
-    Warning: Bidir "DRAM_DQ[27]" has no driver
-    Warning: Bidir "DRAM_DQ[28]" has no driver
-    Warning: Bidir "DRAM_DQ[29]" has no driver
-    Warning: Bidir "DRAM_DQ[30]" has no driver
-    Warning: Bidir "DRAM_DQ[31]" has no driver
-    Warning: Bidir "FLASH_DQ[0]" has no driver
-    Warning: Bidir "FLASH_DQ[1]" has no driver
-    Warning: Bidir "FLASH_DQ[2]" has no driver
-    Warning: Bidir "FLASH_DQ[3]" has no driver
-    Warning: Bidir "FLASH_DQ[4]" has no driver
-    Warning: Bidir "FLASH_DQ[5]" has no driver
-    Warning: Bidir "FLASH_DQ[6]" has no driver
-    Warning: Bidir "FLASH_DQ[7]" has no driver
-    Warning: Bidir "FLASH_DQ[8]" has no driver
-    Warning: Bidir "FLASH_DQ[9]" has no driver
-    Warning: Bidir "FLASH_DQ[10]" has no driver
-    Warning: Bidir "FLASH_DQ[11]" has no driver
-    Warning: Bidir "FLASH_DQ[12]" has no driver
-    Warning: Bidir "FLASH_DQ[13]" has no driver
-    Warning: Bidir "FLASH_DQ[14]" has no driver
-    Warning: Bidir "FLASH_DQ15_AM1" has no driver
-    Warning: Bidir "SRAM_DQ[0]" has no driver
-    Warning: Bidir "SRAM_DQ[1]" has no driver
-    Warning: Bidir "SRAM_DQ[2]" has no driver
-    Warning: Bidir "SRAM_DQ[3]" has no driver
-    Warning: Bidir "SRAM_DQ[4]" has no driver
-    Warning: Bidir "SRAM_DQ[5]" has no driver
-    Warning: Bidir "SRAM_DQ[6]" has no driver
-    Warning: Bidir "SRAM_DQ[7]" has no driver
-    Warning: Bidir "SRAM_DQ[8]" has no driver
-    Warning: Bidir "SRAM_DQ[9]" has no driver
-    Warning: Bidir "SRAM_DQ[10]" has no driver
-    Warning: Bidir "SRAM_DQ[11]" has no driver
-    Warning: Bidir "SRAM_DQ[12]" has no driver
-    Warning: Bidir "SRAM_DQ[13]" has no driver
-    Warning: Bidir "SRAM_DQ[14]" has no driver
-    Warning: Bidir "SRAM_DQ[15]" has no driver
-    Warning: Bidir "SRAM_DQ[16]" has no driver
-    Warning: Bidir "SRAM_DQ[17]" has no driver
-    Warning: Bidir "SRAM_DQ[18]" has no driver
-    Warning: Bidir "SRAM_DQ[19]" has no driver
-    Warning: Bidir "SRAM_DQ[20]" has no driver
-    Warning: Bidir "SRAM_DQ[21]" has no driver
-    Warning: Bidir "SRAM_DQ[22]" has no driver
-    Warning: Bidir "SRAM_DQ[23]" has no driver
-    Warning: Bidir "SRAM_DQ[24]" has no driver
-    Warning: Bidir "SRAM_DQ[25]" has no driver
-    Warning: Bidir "SRAM_DQ[26]" has no driver
-    Warning: Bidir "SRAM_DQ[27]" has no driver
-    Warning: Bidir "SRAM_DQ[28]" has no driver
-    Warning: Bidir "SRAM_DQ[29]" has no driver
-    Warning: Bidir "SRAM_DQ[30]" has no driver
-    Warning: Bidir "SRAM_DQ[31]" has no driver
-    Warning: Bidir "SRAM_DPA[0]" has no driver
-    Warning: Bidir "SRAM_DPA[1]" has no driver
-    Warning: Bidir "SRAM_DPA[2]" has no driver
-    Warning: Bidir "SRAM_DPA[3]" has no driver
-    Warning: Bidir "OTG_D[0]" has no driver
-    Warning: Bidir "OTG_D[1]" has no driver
-    Warning: Bidir "OTG_D[2]" has no driver
-    Warning: Bidir "OTG_D[3]" has no driver
-    Warning: Bidir "OTG_D[4]" has no driver
-    Warning: Bidir "OTG_D[5]" has no driver
-    Warning: Bidir "OTG_D[6]" has no driver
-    Warning: Bidir "OTG_D[7]" has no driver
-    Warning: Bidir "OTG_D[8]" has no driver
-    Warning: Bidir "OTG_D[9]" has no driver
-    Warning: Bidir "OTG_D[10]" has no driver
-    Warning: Bidir "OTG_D[11]" has no driver
-    Warning: Bidir "OTG_D[12]" has no driver
-    Warning: Bidir "OTG_D[13]" has no driver
-    Warning: Bidir "OTG_D[14]" has no driver
-    Warning: Bidir "OTG_D[15]" has no driver
-    Warning: Bidir "OTG_FSPEED" has no driver
-    Warning: Bidir "OTG_LSPEED" has no driver
-    Warning: Bidir "LCD_D[0]" has no driver
-    Warning: Bidir "LCD_D[1]" has no driver
-    Warning: Bidir "LCD_D[2]" has no driver
-    Warning: Bidir "LCD_D[3]" has no driver
-    Warning: Bidir "LCD_D[4]" has no driver
-    Warning: Bidir "LCD_D[5]" has no driver
-    Warning: Bidir "LCD_D[6]" has no driver
-    Warning: Bidir "LCD_D[7]" has no driver
-    Warning: Bidir "SD_DAT" has no driver
-    Warning: Bidir "SD_DAT3" has no driver
-    Warning: Bidir "SD_CMD" has no driver
     Warning: Bidir "I2C_SDAT" has no driver
-    Warning: Bidir "PS2_KBDAT" has no driver
-    Warning: Bidir "PS2_KBCLK" has no driver
-    Warning: Bidir "PS2_MSDAT" has no driver
-    Warning: Bidir "PS2_MSCLK" has no driver
-    Warning: Bidir "ENET_D[0]" has no driver
-    Warning: Bidir "ENET_D[1]" has no driver
-    Warning: Bidir "ENET_D[2]" has no driver
-    Warning: Bidir "ENET_D[3]" has no driver
-    Warning: Bidir "ENET_D[4]" has no driver
-    Warning: Bidir "ENET_D[5]" has no driver
-    Warning: Bidir "ENET_D[6]" has no driver
-    Warning: Bidir "ENET_D[7]" has no driver
-    Warning: Bidir "ENET_D[8]" has no driver
-    Warning: Bidir "ENET_D[9]" has no driver
-    Warning: Bidir "ENET_D[10]" has no driver
-    Warning: Bidir "ENET_D[11]" has no driver
-    Warning: Bidir "ENET_D[12]" has no driver
-    Warning: Bidir "ENET_D[13]" has no driver
-    Warning: Bidir "ENET_D[14]" has no driver
-    Warning: Bidir "ENET_D[15]" has no driver
-    Warning: Bidir "AUD_ADCLRCK" has no driver
-    Warning: Bidir "AUD_DACLRCK" has no driver
-    Warning: Bidir "AUD_BCLK" has no driver
-    Warning: Bidir "GPIO_0[0]" has no driver
-    Warning: Bidir "GPIO_0[1]" has no driver
-    Warning: Bidir "GPIO_0[2]" has no driver
-    Warning: Bidir "GPIO_0[3]" has no driver
-    Warning: Bidir "GPIO_0[4]" has no driver
-    Warning: Bidir "GPIO_0[5]" has no driver
-    Warning: Bidir "GPIO_0[6]" has no driver
-    Warning: Bidir "GPIO_0[7]" has no driver
-    Warning: Bidir "GPIO_0[8]" has no driver
-    Warning: Bidir "GPIO_0[9]" has no driver
-    Warning: Bidir "GPIO_0[10]" has no driver
-    Warning: Bidir "GPIO_0[11]" has no driver
-    Warning: Bidir "GPIO_0[12]" has no driver
-    Warning: Bidir "GPIO_0[13]" has no driver
-    Warning: Bidir "GPIO_0[14]" has no driver
-    Warning: Bidir "GPIO_0[15]" has no driver
-    Warning: Bidir "GPIO_0[16]" has no driver
-    Warning: Bidir "GPIO_0[17]" has no driver
-    Warning: Bidir "GPIO_0[18]" has no driver
-    Warning: Bidir "GPIO_0[19]" has no driver
-    Warning: Bidir "GPIO_0[20]" has no driver
-    Warning: Bidir "GPIO_0[21]" has no driver
-    Warning: Bidir "GPIO_0[22]" has no driver
-    Warning: Bidir "GPIO_0[23]" has no driver
-    Warning: Bidir "GPIO_0[24]" has no driver
-    Warning: Bidir "GPIO_0[25]" has no driver
-    Warning: Bidir "GPIO_0[26]" has no driver
-    Warning: Bidir "GPIO_0[27]" has no driver
-    Warning: Bidir "GPIO_0[28]" has no driver
-    Warning: Bidir "GPIO_0[29]" has no driver
-    Warning: Bidir "GPIO_0[30]" has no driver
-    Warning: Bidir "GPIO_0[31]" has no driver
-    Warning: Bidir "GPIO_CLKOUT_N0" has no driver
-    Warning: Bidir "GPIO_CLKOUT_P0" has no driver
-    Warning: Bidir "GPIO_1[12]" has no driver
-    Warning: Bidir "GPIO_1[13]" has no driver
-    Warning: Bidir "GPIO_1[16]" has no driver
-    Warning: Bidir "GPIO_1[21]" has no driver
-    Warning: Bidir "GPIO_1[22]" has no driver
-    Warning: Bidir "GPIO_1[23]" has no driver
-    Warning: Bidir "GPIO_1[24]" has no driver
-    Warning: Bidir "GPIO_1[25]" has no driver
-    Warning: Bidir "GPIO_1[26]" has no driver
-    Warning: Bidir "GPIO_1[27]" has no driver
-    Warning: Bidir "GPIO_1[28]" has no driver
-    Warning: Bidir "GPIO_1[29]" has no driver
-    Warning: Bidir "GPIO_1[30]" has no driver
-    Warning: Bidir "GPIO_1[31]" has no driver
-    Warning: Bidir "GPIO_CLKOUT_P1" has no driver
     Warning: Bidir "GPIO_1[0]" has no driver
     Warning: Bidir "GPIO_1[1]" has no driver
     Warning: Bidir "GPIO_1[2]" has no driver
@@ -1385,24 +340,34 @@ Warning: The following bidir pins have no drivers
     Warning: Bidir "GPIO_1[9]" has no driver
     Warning: Bidir "GPIO_1[10]" has no driver
     Warning: Bidir "GPIO_1[11]" has no driver
+    Warning: Bidir "GPIO_1[12]" has no driver
+    Warning: Bidir "GPIO_1[13]" has no driver
+    Warning: Bidir "GPIO_1[16]" has no driver
+    Warning: Bidir "GPIO_1[19]" has no driver
+    Warning: Bidir "GPIO_1[20]" has no driver
+    Warning: Bidir "GPIO_1[21]" has no driver
+    Warning: Bidir "GPIO_1[22]" has no driver
+    Warning: Bidir "GPIO_1[23]" has no driver
+    Warning: Bidir "GPIO_1[24]" has no driver
+    Warning: Bidir "GPIO_1[25]" has no driver
+    Warning: Bidir "GPIO_1[26]" has no driver
+    Warning: Bidir "GPIO_1[27]" has no driver
+    Warning: Bidir "GPIO_1[28]" has no driver
+    Warning: Bidir "GPIO_1[29]" has no driver
+    Warning: Bidir "GPIO_1[30]" has no driver
+    Warning: Bidir "GPIO_1[31]" has no driver
+    Warning: Bidir "GPIO_CLKOUT_P1" has no driver
     Warning: Bidir "GPIO_1[17]" has no driver
     Warning: Bidir "GPIO_1[18]" has no driver
 Warning: The following tri-state nodes are fed by constants
+    Warning: The pin "GPIO_1[14]" is fed by GND
     Warning: The pin "GPIO_1[15]" is fed by VCC
-    Warning: The pin "GPIO_CLKOUT_N1" is fed by GND
-Info: Registers with preset signals will power-up high
-Info: DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning: TRI or OPNDRN buffers permanently enabled
-    Warning: Node "GPIO_1[14]~synth"
     Warning: Node "GPIO_1[15]~synth"
-    Warning: Node "GPIO_1[20]~synth"
+    Warning: Node "GPIO_CLKOUT_N1~synth"
 Warning: Output pins are stuck at VCC or GND
-    Warning (13410): Pin "oHEX0_D[0]" is stuck at GND
     Warning (13410): Pin "oHEX0_D[1]" is stuck at GND
     Warning (13410): Pin "oHEX0_D[2]" is stuck at GND
-    Warning (13410): Pin "oHEX0_D[3]" is stuck at GND
-    Warning (13410): Pin "oHEX0_D[4]" is stuck at GND
-    Warning (13410): Pin "oHEX0_D[5]" is stuck at GND
     Warning (13410): Pin "oHEX0_D[6]" is stuck at VCC
     Warning (13410): Pin "oHEX0_DP" is stuck at GND
     Warning (13410): Pin "oHEX1_D[0]" is stuck at GND
@@ -1465,212 +430,101 @@ Warning: Output pins are stuck at VCC or GND
     Warning (13410): Pin "oLEDG[1]" is stuck at GND
     Warning (13410): Pin "oLEDG[2]" is stuck at GND
     Warning (13410): Pin "oLEDG[3]" is stuck at GND
-    Warning (13410): Pin "oLEDG[4]" is stuck at GND
-    Warning (13410): Pin "oLEDG[5]" is stuck at GND
-    Warning (13410): Pin "oLEDG[6]" is stuck at GND
-    Warning (13410): Pin "oLEDG[7]" is stuck at GND
+    Warning (13410): Pin "oLEDG[4]" is stuck at VCC
     Warning (13410): Pin "oLEDG[8]" is stuck at GND
-    Warning (13410): Pin "oUART_TXD" is stuck at GND
-    Warning (13410): Pin "oUART_CTS" is stuck at GND
-    Warning (13410): Pin "oIRDA_TXD" is stuck at GND
-    Warning (13410): Pin "oDRAM0_A[0]" is stuck at GND
-    Warning (13410): Pin "oDRAM0_A[1]" is stuck at GND
-    Warning (13410): Pin "oDRAM0_A[2]" is stuck at GND
-    Warning (13410): Pin "oDRAM0_A[3]" is stuck at GND
-    Warning (13410): Pin "oDRAM0_A[4]" is stuck at GND
-    Warning (13410): Pin "oDRAM0_A[5]" is stuck at GND
-    Warning (13410): Pin "oDRAM0_A[6]" is stuck at GND
-    Warning (13410): Pin "oDRAM0_A[7]" is stuck at GND
-    Warning (13410): Pin "oDRAM0_A[8]" is stuck at GND
-    Warning (13410): Pin "oDRAM0_A[9]" is stuck at GND
-    Warning (13410): Pin "oDRAM0_A[10]" is stuck at GND
-    Warning (13410): Pin "oDRAM0_A[11]" is stuck at GND
-    Warning (13410): Pin "oDRAM0_A[12]" is stuck at GND
-    Warning (13410): Pin "oDRAM1_A[0]" is stuck at GND
-    Warning (13410): Pin "oDRAM1_A[1]" is stuck at GND
-    Warning (13410): Pin "oDRAM1_A[2]" is stuck at GND
-    Warning (13410): Pin "oDRAM1_A[3]" is stuck at GND
-    Warning (13410): Pin "oDRAM1_A[4]" is stuck at GND
-    Warning (13410): Pin "oDRAM1_A[5]" is stuck at GND
-    Warning (13410): Pin "oDRAM1_A[6]" is stuck at GND
-    Warning (13410): Pin "oDRAM1_A[7]" is stuck at GND
-    Warning (13410): Pin "oDRAM1_A[8]" is stuck at GND
-    Warning (13410): Pin "oDRAM1_A[9]" is stuck at GND
-    Warning (13410): Pin "oDRAM1_A[10]" is stuck at GND
-    Warning (13410): Pin "oDRAM1_A[11]" is stuck at GND
-    Warning (13410): Pin "oDRAM1_A[12]" is stuck at GND
-    Warning (13410): Pin "oDRAM0_LDQM0" is stuck at GND
-    Warning (13410): Pin "oDRAM1_LDQM0" is stuck at GND
-    Warning (13410): Pin "oDRAM0_UDQM1" is stuck at GND
-    Warning (13410): Pin "oDRAM1_UDQM1" is stuck at GND
-    Warning (13410): Pin "oDRAM0_WE_N" is stuck at GND
-    Warning (13410): Pin "oDRAM1_WE_N" is stuck at GND
-    Warning (13410): Pin "oDRAM0_CAS_N" is stuck at GND
-    Warning (13410): Pin "oDRAM1_CAS_N" is stuck at GND
-    Warning (13410): Pin "oDRAM0_RAS_N" is stuck at GND
-    Warning (13410): Pin "oDRAM1_RAS_N" is stuck at GND
-    Warning (13410): Pin "oDRAM0_CS_N" is stuck at GND
-    Warning (13410): Pin "oDRAM1_CS_N" is stuck at GND
-    Warning (13410): Pin "oDRAM0_BA[0]" is stuck at GND
-    Warning (13410): Pin "oDRAM0_BA[1]" is stuck at GND
-    Warning (13410): Pin "oDRAM1_BA[0]" is stuck at GND
-    Warning (13410): Pin "oDRAM1_BA[1]" is stuck at GND
-    Warning (13410): Pin "oDRAM0_CLK" is stuck at GND
-    Warning (13410): Pin "oDRAM1_CLK" is stuck at GND
-    Warning (13410): Pin "oDRAM0_CKE" is stuck at GND
-    Warning (13410): Pin "oDRAM1_CKE" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[0]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[1]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[2]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[3]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[4]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[5]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[6]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[7]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[8]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[9]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[10]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[11]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[12]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[13]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[14]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[15]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[16]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[17]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[18]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[19]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[20]" is stuck at GND
-    Warning (13410): Pin "oFLASH_A[21]" is stuck at GND
-    Warning (13410): Pin "oFLASH_WE_N" is stuck at GND
-    Warning (13410): Pin "oFLASH_RST_N" is stuck at GND
-    Warning (13410): Pin "oFLASH_WP_N" is stuck at GND
-    Warning (13410): Pin "oFLASH_BYTE_N" is stuck at GND
-    Warning (13410): Pin "oFLASH_OE_N" is stuck at GND
-    Warning (13410): Pin "oFLASH_CE_N" is stuck at GND
-    Warning (13410): Pin "oSRAM_A[0]" is stuck at GND
-    Warning (13410): Pin "oSRAM_A[1]" is stuck at GND
-    Warning (13410): Pin "oSRAM_A[2]" is stuck at GND
-    Warning (13410): Pin "oSRAM_A[3]" is stuck at GND
-    Warning (13410): Pin "oSRAM_A[4]" is stuck at GND
-    Warning (13410): Pin "oSRAM_A[5]" is stuck at GND
-    Warning (13410): Pin "oSRAM_A[6]" is stuck at GND
-    Warning (13410): Pin "oSRAM_A[7]" is stuck at GND
-    Warning (13410): Pin "oSRAM_A[8]" is stuck at GND
-    Warning (13410): Pin "oSRAM_A[9]" is stuck at GND
-    Warning (13410): Pin "oSRAM_A[10]" is stuck at GND
-    Warning (13410): Pin "oSRAM_A[11]" is stuck at GND
-    Warning (13410): Pin "oSRAM_A[12]" is stuck at GND
-    Warning (13410): Pin "oSRAM_A[13]" is stuck at GND
-    Warning (13410): Pin "oSRAM_A[14]" is stuck at GND
-    Warning (13410): Pin "oSRAM_A[15]" is stuck at GND
-    Warning (13410): Pin "oSRAM_A[16]" is stuck at GND
-    Warning (13410): Pin "oSRAM_A[17]" is stuck at GND
-    Warning (13410): Pin "oSRAM_A[18]" is stuck at GND
-    Warning (13410): Pin "oSRAM_ADSC_N" is stuck at GND
-    Warning (13410): Pin "oSRAM_ADSP_N" is stuck at GND
-    Warning (13410): Pin "oSRAM_ADV_N" is stuck at GND
-    Warning (13410): Pin "oSRAM_BE_N[0]" is stuck at GND
-    Warning (13410): Pin "oSRAM_BE_N[1]" is stuck at GND
-    Warning (13410): Pin "oSRAM_BE_N[2]" is stuck at GND
-    Warning (13410): Pin "oSRAM_BE_N[3]" is stuck at GND
-    Warning (13410): Pin "oSRAM_CE1_N" is stuck at GND
-    Warning (13410): Pin "oSRAM_CE2" is stuck at GND
-    Warning (13410): Pin "oSRAM_CE3_N" is stuck at GND
-    Warning (13410): Pin "oSRAM_CLK" is stuck at GND
-    Warning (13410): Pin "oSRAM_GW_N" is stuck at GND
-    Warning (13410): Pin "oSRAM_OE_N" is stuck at GND
-    Warning (13410): Pin "oSRAM_WE_N" is stuck at GND
-    Warning (13410): Pin "oOTG_A[0]" is stuck at GND
-    Warning (13410): Pin "oOTG_A[1]" is stuck at GND
-    Warning (13410): Pin "oOTG_CS_N" is stuck at GND
-    Warning (13410): Pin "oOTG_OE_N" is stuck at GND
-    Warning (13410): Pin "oOTG_WE_N" is stuck at GND
-    Warning (13410): Pin "oOTG_RESET_N" is stuck at GND
-    Warning (13410): Pin "oOTG_DACK0_N" is stuck at GND
-    Warning (13410): Pin "oOTG_DACK1_N" is stuck at GND
-    Warning (13410): Pin "oLCD_ON" is stuck at GND
-    Warning (13410): Pin "oLCD_BLON" is stuck at GND
-    Warning (13410): Pin "oLCD_RW" is stuck at GND
-    Warning (13410): Pin "oLCD_EN" is stuck at GND
-    Warning (13410): Pin "oLCD_RS" is stuck at GND
-    Warning (13410): Pin "oSD_CLK" is stuck at GND
+    Warning (13410): Pin "oLEDR[0]" is stuck at GND
+    Warning (13410): Pin "oLEDR[1]" is stuck at GND
+    Warning (13410): Pin "oLEDR[2]" is stuck at GND
+    Warning (13410): Pin "oLEDR[3]" is stuck at GND
+    Warning (13410): Pin "oLEDR[4]" is stuck at GND
+    Warning (13410): Pin "oLEDR[5]" is stuck at GND
+    Warning (13410): Pin "oLEDR[6]" is stuck at GND
+    Warning (13410): Pin "oLEDR[7]" is stuck at GND
+    Warning (13410): Pin "oLEDR[8]" is stuck at GND
+    Warning (13410): Pin "oLEDR[9]" is stuck at GND
+    Warning (13410): Pin "oLEDR[10]" is stuck at GND
+    Warning (13410): Pin "oLEDR[11]" is stuck at GND
+    Warning (13410): Pin "oLEDR[12]" is stuck at GND
+    Warning (13410): Pin "oLEDR[13]" is stuck at GND
+    Warning (13410): Pin "oLEDR[14]" is stuck at GND
+    Warning (13410): Pin "oLEDR[15]" is stuck at GND
+    Warning (13410): Pin "oLEDR[16]" is stuck at GND
+    Warning (13410): Pin "oLEDR[17]" is stuck at GND
     Warning (13410): Pin "oI2C_SCLK" is stuck at GND
+    Warning (13410): Pin "oVGA_CLOCK" is stuck at VCC
+    Warning (13410): Pin "oVGA_HS" is stuck at GND
+    Warning (13410): Pin "oVGA_VS" is stuck at GND
+    Warning (13410): Pin "oVGA_BLANK_N" is stuck at GND
     Warning (13410): Pin "oVGA_SYNC_N" is stuck at GND
-    Warning (13410): Pin "oENET_CMD" is stuck at GND
-    Warning (13410): Pin "oENET_CS_N" is stuck at GND
-    Warning (13410): Pin "oENET_IOW_N" is stuck at GND
-    Warning (13410): Pin "oENET_IOR_N" is stuck at GND
-    Warning (13410): Pin "oENET_RESET_N" is stuck at GND
-    Warning (13410): Pin "oENET_CLK" is stuck at GND
-    Warning (13410): Pin "oAUD_DACDAT" is stuck at GND
-    Warning (13410): Pin "oAUD_XCK" is stuck at GND
-    Warning (13410): Pin "oTD1_RESET_N" is stuck at VCC
-    Warning (13410): Pin "oTD2_RESET_N" is stuck at GND
-Info: 10 registers lost all their fanouts during netlist optimizations. The first 10 are displayed below.
-    Info: Register "RAWToRGB:u4|wData0_d1[11]" lost all its fanouts during netlist optimizations.
-    Info: Register "RAWToRGB:u4|wData1_d1[11]" lost all its fanouts during netlist optimizations.
-    Info: Register "RAWToRGB:u4|wData2_d1[11]" lost all its fanouts during netlist optimizations.
-    Info: Register "CCD_Capture:u3|mCCD_DATA[11]" lost all its fanouts during netlist optimizations.
-    Info: Register "rCCD_DATA[11]" lost all its fanouts during netlist optimizations.
-    Info: Register "RAWToRGB:u4|wData2_d1[10]" lost all its fanouts during netlist optimizations.
-    Info: Register "CCD_Capture:u3|mCCD_DATA[10]" lost all its fanouts during netlist optimizations.
-    Info: Register "rCCD_DATA[10]" lost all its fanouts during netlist optimizations.
-    Info: Register "I2C_CCD_Config:u10|mSetup_ST~9" lost all its fanouts during netlist optimizations.
-    Info: Register "I2C_CCD_Config:u10|mSetup_ST~10" lost all its fanouts during netlist optimizations.
-Info: Removed 10 MSB VCC or GND address nodes from RAM block "RAWToRGB:u4|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|ALTSYNCRAM"
-Warning: Design contains 41 input pin(s) that do not drive logic
+    Warning (13410): Pin "oVGA_R[0]" is stuck at GND
+    Warning (13410): Pin "oVGA_R[1]" is stuck at GND
+    Warning (13410): Pin "oVGA_R[2]" is stuck at GND
+    Warning (13410): Pin "oVGA_R[3]" is stuck at GND
+    Warning (13410): Pin "oVGA_R[4]" is stuck at GND
+    Warning (13410): Pin "oVGA_R[5]" is stuck at GND
+    Warning (13410): Pin "oVGA_R[6]" is stuck at GND
+    Warning (13410): Pin "oVGA_R[7]" is stuck at GND
+    Warning (13410): Pin "oVGA_R[8]" is stuck at GND
+    Warning (13410): Pin "oVGA_R[9]" is stuck at GND
+    Warning (13410): Pin "oVGA_G[0]" is stuck at GND
+    Warning (13410): Pin "oVGA_G[1]" is stuck at GND
+    Warning (13410): Pin "oVGA_G[2]" is stuck at GND
+    Warning (13410): Pin "oVGA_G[3]" is stuck at GND
+    Warning (13410): Pin "oVGA_G[4]" is stuck at GND
+    Warning (13410): Pin "oVGA_G[5]" is stuck at GND
+    Warning (13410): Pin "oVGA_G[6]" is stuck at GND
+    Warning (13410): Pin "oVGA_G[7]" is stuck at GND
+    Warning (13410): Pin "oVGA_G[8]" is stuck at GND
+    Warning (13410): Pin "oVGA_G[9]" is stuck at GND
+    Warning (13410): Pin "oVGA_B[0]" is stuck at GND
+    Warning (13410): Pin "oVGA_B[1]" is stuck at GND
+    Warning (13410): Pin "oVGA_B[2]" is stuck at GND
+    Warning (13410): Pin "oVGA_B[3]" is stuck at GND
+    Warning (13410): Pin "oVGA_B[4]" is stuck at GND
+    Warning (13410): Pin "oVGA_B[5]" is stuck at GND
+    Warning (13410): Pin "oVGA_B[6]" is stuck at GND
+    Warning (13410): Pin "oVGA_B[7]" is stuck at GND
+    Warning (13410): Pin "oVGA_B[8]" is stuck at GND
+    Warning (13410): Pin "oVGA_B[9]" is stuck at GND
+Warning: Design contains 29 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "iCLK_28"
     Warning (15610): No output dependent on input pin "iCLK_50_2"
     Warning (15610): No output dependent on input pin "iCLK_50_3"
     Warning (15610): No output dependent on input pin "iCLK_50_4"
     Warning (15610): No output dependent on input pin "iEXT_CLOCK"
+    Warning (15610): No output dependent on input pin "iKEY[0]"
+    Warning (15610): No output dependent on input pin "iKEY[1]"
     Warning (15610): No output dependent on input pin "iKEY[2]"
     Warning (15610): No output dependent on input pin "iKEY[3]"
-    Warning (15610): No output dependent on input pin "iUART_RXD"
-    Warning (15610): No output dependent on input pin "iUART_RTS"
-    Warning (15610): No output dependent on input pin "iIRDA_RXD"
-    Warning (15610): No output dependent on input pin "iFLASH_RY_N"
-    Warning (15610): No output dependent on input pin "iOTG_INT0"
-    Warning (15610): No output dependent on input pin "iOTG_INT1"
-    Warning (15610): No output dependent on input pin "iOTG_DREQ0"
-    Warning (15610): No output dependent on input pin "iOTG_DREQ1"
-    Warning (15610): No output dependent on input pin "iENET_INT"
-    Warning (15610): No output dependent on input pin "iAUD_ADCDAT"
-    Warning (15610): No output dependent on input pin "iTD1_D[0]"
-    Warning (15610): No output dependent on input pin "iTD1_D[1]"
-    Warning (15610): No output dependent on input pin "iTD1_D[2]"
-    Warning (15610): No output dependent on input pin "iTD1_D[3]"
-    Warning (15610): No output dependent on input pin "iTD1_D[4]"
-    Warning (15610): No output dependent on input pin "iTD1_D[5]"
-    Warning (15610): No output dependent on input pin "iTD1_D[6]"
-    Warning (15610): No output dependent on input pin "iTD1_D[7]"
-    Warning (15610): No output dependent on input pin "iTD1_HS"
-    Warning (15610): No output dependent on input pin "iTD1_VS"
-    Warning (15610): No output dependent on input pin "iTD2_CLK27"
-    Warning (15610): No output dependent on input pin "iTD2_D[0]"
-    Warning (15610): No output dependent on input pin "iTD2_D[1]"
-    Warning (15610): No output dependent on input pin "iTD2_D[2]"
-    Warning (15610): No output dependent on input pin "iTD2_D[3]"
-    Warning (15610): No output dependent on input pin "iTD2_D[4]"
-    Warning (15610): No output dependent on input pin "iTD2_D[5]"
-    Warning (15610): No output dependent on input pin "iTD2_D[6]"
-    Warning (15610): No output dependent on input pin "iTD2_D[7]"
-    Warning (15610): No output dependent on input pin "iTD2_HS"
-    Warning (15610): No output dependent on input pin "iTD2_VS"
-    Warning (15610): No output dependent on input pin "GPIO_CLKIN_N0"
-    Warning (15610): No output dependent on input pin "GPIO_CLKIN_P0"
+    Warning (15610): No output dependent on input pin "iSW[0]"
+    Warning (15610): No output dependent on input pin "iSW[1]"
+    Warning (15610): No output dependent on input pin "iSW[2]"
+    Warning (15610): No output dependent on input pin "iSW[3]"
+    Warning (15610): No output dependent on input pin "iSW[4]"
+    Warning (15610): No output dependent on input pin "iSW[5]"
+    Warning (15610): No output dependent on input pin "iSW[6]"
+    Warning (15610): No output dependent on input pin "iSW[7]"
+    Warning (15610): No output dependent on input pin "iSW[8]"
+    Warning (15610): No output dependent on input pin "iSW[9]"
+    Warning (15610): No output dependent on input pin "iSW[10]"
+    Warning (15610): No output dependent on input pin "iSW[11]"
+    Warning (15610): No output dependent on input pin "iSW[12]"
+    Warning (15610): No output dependent on input pin "iSW[13]"
+    Warning (15610): No output dependent on input pin "iSW[14]"
+    Warning (15610): No output dependent on input pin "iSW[15]"
+    Warning (15610): No output dependent on input pin "iSW[16]"
+    Warning (15610): No output dependent on input pin "iSW[17]"
+    Warning (15610): No output dependent on input pin "iTD1_CLK27"
     Warning (15610): No output dependent on input pin "GPIO_CLKIN_P1"
-Info: Implemented 1026 device resources after synthesis - the final resource count might be different
-    Info: Implemented 64 input pins
-    Info: Implemented 261 output pins
-    Info: Implemented 205 bidirectional pins
-    Info: Implemented 475 logic cells
-    Info: Implemented 20 RAM segments
-    Info: Implemented 1 PLLs
-Info: Quartus II Analysis & Synthesis was successful. 0 errors, 592 warnings
-    Info: Peak virtual memory: 246 megabytes
-    Info: Processing ended: Wed Dec 09 15:10:33 2015
-    Info: Elapsed time: 00:00:19
-    Info: Total CPU time (on all processors): 00:00:17
+Info: Implemented 195 device resources after synthesis - the final resource count might be different
+    Info: Implemented 31 input pins
+    Info: Implemented 127 output pins
+    Info: Implemented 35 bidirectional pins
+    Info: Implemented 2 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 229 warnings
+    Info: Peak virtual memory: 233 megabytes
+    Info: Processing ended: Wed Dec 09 18:50:02 2015
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:08
 
 
