@@ -45,8 +45,7 @@ wire				mVGA_SYNC;
 wire				mVGA_BLANK;
 
 //	Control Signal
-input				iCLK;
-input				iRST_N;
+
 
 //	Internal Registers and Wires
 reg		[12:0]		H_Cont;
