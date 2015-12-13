@@ -44,14 +44,12 @@ reg					mVGA_V_SYNC;
 wire				mVGA_SYNC;
 wire				mVGA_BLANK;
 
-//	Control Signal
 
-
-//	Internal Registers and Wires
+//	Counters for X and Y
 reg		[12:0]		H_Cont;
 reg		[12:0]		V_Cont;
 
-// 		Screen border checking
+// 	Checking the screen borders
 
 assign	mVGA_BLANK	=	mVGA_H_SYNC & mVGA_V_SYNC;
 assign	mVGA_SYNC	=	1'b0;
@@ -66,10 +64,10 @@ assign	mVGA_B	=	(	H_Cont >= X_START && H_Cont<X_START + H_SYNC_ACT &&
 						V_Cont >= Y_START && V_Cont<Y_START + V_SYNC_ACT )
 						?	inBlue	:	0;
 
-// 		Checking if the screen should be active
+
 always@(posedge iCLK or negedge iRST_N)
 	begin
-		if (!iRST_N)
+		if (!iRST_N) // 	Checking if reset is high
 			begin
 				outVGA_R <= 0;
 				outVGA_G <= 0;
@@ -91,9 +89,6 @@ always@(posedge iCLK or negedge iRST_N)
 			end               
 end
 
-
-
-//		Pixel LUT Address Generator
 //		Informing the master module that we are in drawing area
 always@(posedge iCLK or negedge iRST_N)
 begin
@@ -109,17 +104,16 @@ begin
 		end
 end
 
-//		Generator of H_Sync , Requires 25.175 MHz Clock
 always@(posedge iCLK or negedge iRST_N)
 begin
-	if(!iRST_N) // Do not draw
+	if(!iRST_N) // Do not draw when reset
 		begin
 			H_Cont		<= 0;
 			mVGA_H_SYNC	<= 0;
 		end
 	else
 		begin
-			// increments while in h_sync range
+			// Increments while in correct horizontal area
 			if( H_Cont < H_SYNC_TOTAL )
 				H_Cont <= H_Cont + 1;
 			else
@@ -132,25 +126,24 @@ begin
 		end
 end
 
-//		V_Sync Generator, Ref. H_Sync
 always@(posedge iCLK or negedge iRST_N)
 begin
-	if(!iRST_N)
+	if(!iRST_N) // Do not draw when reset
 	begin
 		V_Cont		<=	0;
 		mVGA_V_SYNC	<=	0;
 	end
 	else
 		begin
-			//	When H_Sync Re-start
+			//	When we are at the start of the line
 			if(H_Cont==0)
 				begin
-					// increments while in v_sync range
+					// Increments while we are in correct vertical area
 					if( V_Cont < V_SYNC_TOTAL )
 						V_Cont <= V_Cont + 1;
 					else
 						V_Cont <= 0;
-					//
+					// Checking if we are in the area in which sync should be low
 					if(	V_Cont < V_SYNC_CYC )
 						mVGA_V_SYNC <= 0;
 					else

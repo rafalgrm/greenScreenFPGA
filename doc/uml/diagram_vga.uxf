@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>800</x>
+      <y>200</y>
+      <w>320</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Dane RGB</panel_attributes>
+    <additional_attributes>10.0;260.0;300.0;260.0;300.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>440</x>
+      <y>200</y>
+      <w>180</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Zegar</panel_attributes>
+    <additional_attributes>160.0;270.0;10.0;270.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>600</x>
+      <y>450</y>
+      <w>210</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Sprawdź granice obrazu
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>600</x>
+      <y>380</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>LicznikX
+bg=gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>710</x>
+      <y>380</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>LicznikY
+
+bg=gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>640</x>
+      <y>400</y>
+      <w>30</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>400</y>
+      <w>30</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>600</x>
+      <y>280</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Inkrementuj licznik X i Y
+
+Sprawdzaj HSync i VSync
+
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>640</x>
+      <y>340</y>
+      <w>30</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>340</y>
+      <w>30</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>440</x>
+      <y>270</y>
+      <w>180</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Zegar</panel_attributes>
+    <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>800</x>
+      <y>200</y>
+      <w>230</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Reset</panel_attributes>
+    <additional_attributes>10.0;100.0;210.0;100.0;210.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>300</y>
+      <w>350</w>
+      <h>380</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+HSync</panel_attributes>
+    <additional_attributes>10.0;360.0;10.0;10.0;330.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>330</x>
+      <y>320</y>
+      <w>290</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+VSync</panel_attributes>
+    <additional_attributes>10.0;340.0;10.0;10.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>410</x>
+      <y>150</y>
+      <w>760</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Moduł główny</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>690</x>
+      <y>470</y>
+      <w>160</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Wyjściowe dane RGB</panel_attributes>
+    <additional_attributes>10.0;190.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>240</x>
+      <y>660</y>
+      <w>760</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Moduł główny</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>470</y>
+      <w>260</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Żądanie danych</panel_attributes>
+    <additional_attributes>10.0;190.0;10.0;50.0;240.0;50.0;240.0;10.0</additional_attributes>
+  </element>
+</diagram>
