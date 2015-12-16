@@ -30,8 +30,6 @@ module GreenScreen(
 		////////////////////////	LED		////////////////////////
 		oLEDG,							//	LED Green[8:0]
 		oLEDR,							//	LED Red[17:0]		
-		////////////////	TV Decoder		////////////////////////
-		iTD1_CLK27,						//	TV Decoder1 Line_Lock Output Clock 
 		////////////////////	I2C		////////////////////////////
 		I2C_SDAT,						//	I2C Data
 		oI2C_SCLK,						//	I2C Clock
@@ -57,14 +55,14 @@ module GreenScreen(
 // Deklaracje portow
 //===========================================================================
 ////////////////////////	Wejsca zegarowe	 	////////////////////////
-	input			iCLK_28;				//  28.63636 MHz
-	input			iCLK_50;				//	50 MHz
-	input			iCLK_50_2;				//	50 MHz
-	input           iCLK_50_3;				//	50 MHz
-	input           iCLK_50_4;				//	50 MHz
-	input           iEXT_CLOCK;				//	External Clock
+	input				iCLK_28;					//  28.63636 MHz
+	input				iCLK_50;					//	50 MHz
+	input				iCLK_50_2;				//	50 MHz
+	input          iCLK_50_3;			//	50 MHz
+	input          iCLK_50_4;				//	50 MHz
+	input          iEXT_CLOCK;				//	External Clock
 	////////////////////////	Push Button		////////////////////////
-	input	[3:0]	iKEY;					//	Pushbutton[3:0]
+	input	[3:0]		iKEY;					//	Pushbutton[3:0]
 	////////////////////////	DPDT Switch		////////////////////////
 	input	[17:0]	iSW;					//	Toggle Switch[17:0]
 	////////////////////////	7-SEG Dispaly	////////////////////////
@@ -87,10 +85,8 @@ module GreenScreen(
 	////////////////////////////	LED		////////////////////////////
 	output	[8:0]	oLEDG;					//	LED Green[8:0]
 	output	[17:0]	oLEDR;					//	LED Red[17:0]		
-	////////////////////	TV Devoder		////////////////////////////
-	input			iTD1_CLK27;				//	TV Decoder1 Line_Lock Output Clock 
 	////////////////////////	I2C		////////////////////////////////
-	inout			I2C_SDAT;				//	I2C Data
+	inout				I2C_SDAT;				//	I2C Data
 	output			oI2C_SCLK;				//	I2C Clock
 	////////////////////////	VGA			////////////////////////////
 	output			oVGA_CLOCK;   			//	VGA Clock
@@ -102,7 +98,7 @@ module GreenScreen(
 	output	[9:0]	oVGA_G;	 				//	VGA Green[9:0]
 	output	[9:0]	oVGA_B;   				//	VGA Blue[9:0]
 	////////////////////////	GPIO	////////////////////////////////
-	inout	[31:0]	GPIO_1;					//	GPIO Connection 1 I/O
+	inout		[31:0]	GPIO_1;					//	GPIO Connection 1 I/O
 	input			GPIO_CLKIN_N1;          //	GPIO Connection 1 Clock Input 0
 	input			GPIO_CLKIN_P1;          //	GPIO Connection 1 Clock Input 1
 	inout			GPIO_CLKOUT_N1;         //	GPIO Connection 1 Clock Output 0
@@ -124,30 +120,30 @@ module GreenScreen(
 
 	wire	[15:0]	Read_DATA1;
 	wire	[15:0]	Read_DATA2;
-	wire			VGA_CTRL_CLK;
+	wire				VGA_CTRL_CLK;
 	wire	[11:0]	mCCD_DATA;
-	wire			mCCD_DVAL;
-	wire			mCCD_DVAL_d;
+	wire				mCCD_DVAL;
+	wire				mCCD_DVAL_d;
 	wire	[15:0]	X_Cont;
 	wire	[15:0]	Y_Cont;
-	wire	[9:0]	X_ADDR;
+	wire	[9:0]		X_ADDR;
 	wire	[31:0]	Frame_Cont;
-	wire			DLY_RST_0;
-	wire			DLY_RST_1;
-	wire			DLY_RST_2;
-	wire			Read;
-	reg		[11:0]	rCCD_DATA;
+	wire				DLY_RST_0;
+	wire				DLY_RST_1;
+	wire				DLY_RST_2;
+	wire				Read;
+	reg	[11:0]	rCCD_DATA;
 	reg				rCCD_LVAL;
 	reg				rCCD_FVAL;
 	wire	[11:0]	sCCD_R;
 	wire	[11:0]	sCCD_G;
 	wire	[11:0]	sCCD_B;
-	wire			sCCD_DVAL;
-	wire	[9:0]	oVGA_R;   				//	VGA Red[9:0]
-	wire	[9:0]	oVGA_G;	 				//	VGA Green[9:0]
-	wire	[9:0]	oVGA_B;   				//	VGA Blue[9:0]
-	reg		[1:0]	rClk;
-	wire			sdram_ctrl_clk;
+	wire				sCCD_DVAL;
+	wire	[9:0]		oVGA_R;
+	wire	[9:0]		oVGA_G;
+	wire	[9:0]		oVGA_B;
+	reg	[1:0]		rClk;
+	wire				sdram_ctrl_clk;
 	
 	
 /* LOGIC */
@@ -166,16 +162,16 @@ module GreenScreen(
 	assign	CCD_DATA[11]=	GPIO_1[0];
 
 
-	//assign	GPIO_CLKOUT_N1	=	CCD_MCLK;
+	assign	GPIO_CLKOUT_N1	=	CCD_MCLK;
 	assign	CCD_FVAL	=	GPIO_1[18];
 	assign	CCD_LVAL	=	GPIO_1[17];
 	assign	CCD_PIXCLK	=	GPIO_CLKIN_N1;
 
 	assign	GPIO_1[15]	=	1'b1;  // tRIGGER
 
-	//assign	GPIO_1[14]	=	DLY_RST_1;
+	assign	GPIO_1[14]	=	DLY_RST_1;
 
-	//assign	oLEDR		=	iSW;
+	assign	oLEDR		=	iSW;
 
 	assign	oTD1_RESET_N = 1'b1;
 	assign	oVGA_CLOCK	=	~VGA_CTRL_CLK;
@@ -190,9 +186,9 @@ module GreenScreen(
 		rCCD_FVAL	<=	CCD_FVAL;
 	end
 	
-assign Read_DATA2[9:0] = sCCD_R;
-assign {Read_DATA1[14:10],Read_DATA2[14:10]} = sCCD_G;
-assign Read_DATA1[9:0] = sCCD_B;
+//	assign Read_DATA2[9:0] = sCCD_R;
+//	assign {Read_DATA1[14:10],Read_DATA2[14:10]} = sCCD_G;
+//	assign Read_DATA1[9:0] = sCCD_B;
 
 /* VGA Module */ 
 
@@ -221,7 +217,7 @@ vga_controller	vga	(	//	Host Side
 					
 vga_pll   phase_loop	(
 				.areset(!DLY_RST_0),
-				.inclk0(iTD1_CLK27),
+				.inclk0(iCLK_50),
 				.c0(VGA_CTRL_CLK)
 );
 
@@ -252,15 +248,20 @@ RAWToRGB		image_conversion	(	.iCLK(CCD_PIXCLK),
 
 
 assign oLEDG[7] = rCCD_FVAL;
-assign GPIO_1[14] = 0;
 
 assign oLEDG[6] = rCCD_LVAL;
 
 assign oLEDG[5] = CCD_PIXCLK;
+// Zebysmy wiedzieli ktory reset
+//assign oLEDG[3] = iKEY[0];
+//assign oLEDG[2] = DLY_RST_2;
+//assign oLEDG[1] = DLY_RST_1;
+//assign oLEDG[0] = DLY_RST_0;
 
-assign oLEDG[4] = 1;
-
-assign GPIO_CLKOUT_N1 = iCLK_50;
+assign oLEDG[3] = oVGA_HS;
+assign oLEDG[2] = oVGA_VS;
+assign oLEDG[1] = VGA_CTRL_CLK;
+assign oLEDG[0] = iCLK_50;
 
 
 /* */
@@ -272,42 +273,15 @@ CCD_Capture		camera_capture	(	.oDATA(mCCD_DATA),
 							.iDATA(rCCD_DATA),
 							.inputFrameValid(rCCD_FVAL),
 							.inputLineValid(rCCD_LVAL),
-							.iSTART(CCD_CAPTURE_START),
-							.iEND(CCD_CAPTURE_STOP),
 							.iCLK(CCD_PIXCLK),
 							.iRST(DLY_RST_2)
 						);		
 
-// ccd control
-
-`define DATA_PORT		0
-`define CMD_PORT		1
-`define STATUS_PORT		2
-`define TIGGLE_CNT_END	5
-
-wire					CCD_CAPTURE_START;
-wire					CCD_CAPTURE_STOP;
-reg		[3:0]			tiggle_cnt;
-reg		[3:0]			nios_tiggle_cnt;
-reg						start_triggle;
-reg						stop_triggle;
-assign CCD_CAPTURE_START = !iKEY[3] | start_triggle;
-assign CCD_CAPTURE_STOP = !iKEY[2] | stop_triggle;
-
-//========== control start/stop triggle ==========
-always @ (posedge CCD_PIXCLK)
-begin
-	if (DLY_RST_1 || (!start_triggle && !stop_triggle))
-		tiggle_cnt = 0;
-	else if (tiggle_cnt < `TIGGLE_CNT_END)
-		tiggle_cnt = tiggle_cnt + 1;		
-
-end
-
+/*
 						
 
 /* */						
-					
+				
 I2C_CCD_Config 		i2c_Config	(	//	Host Side
 							.iCLK(iCLK_50),
 							.iRST_N(DLY_RST_2),
@@ -325,9 +299,8 @@ SEG7_DISPLAY 			segment_display	(	.oSEG0(oHEX0_D),.oSEG1(oHEX1_D),
 							.oSEG2(oHEX2_D),.oSEG3(oHEX3_D),
 							.oSEG4(oHEX4_D),.oSEG5(oHEX5_D),
 							.oSEG6(oHEX6_D),.oSEG7(oHEX7_D),
-							.iDIG(CCD_PIXCLK)
+							.iDIG(Frame_Cont)
 						);
-// 							.iDIG({mCCD_DATA,Frame_Cont,rCCD_FVAL})
 
 
 endmodule

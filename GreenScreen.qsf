@@ -51,7 +51,6 @@ set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
 set_location_assignment PIN_H24 -to GPIO_0[19]
-set_global_assignment -name MISC_FILE "C:/Users/rafal_000/Desktop/TM/tm_projekt/GreenScreen.dpf"
 set_location_assignment PIN_D15 -to iTD2_VS
 set_location_assignment PIN_T25 -to GPIO_CLKIN_N0
 set_location_assignment PIN_K30 -to GPIO_1[12]

@@ -20,7 +20,7 @@ begin
 			oRST_2	<=	0;
 		end
 	else
-		begin // Magical values
+		begin
 			if(Cont != 32'h114FFFF) // 18 153 471 dec
 				Cont	<=	Cont+1;
 			if(Cont >= 32'h1FFFFF) // 2 097 151 dec ~9x times
