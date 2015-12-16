@@ -20,6 +20,7 @@ begin
 			oRST_2	<=	0;
 		end
 	else
+		// Returns to normal operation after some time
 		begin
 			if(Cont != 32'h114FFFF) // 18 153 471 dec
 				Cont	<=	Cont+1;

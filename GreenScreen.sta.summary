@@ -2,31 +2,15 @@
 TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
-Type  : Slow Model Setup 'I2C_CCD_Config:i2c_Config|mI2C_CTRL_CLK'
-Slack : -3.538
-TNS   : -208.109
-
-Type  : Slow Model Setup 'GPIO_CLKIN_N1'
-Slack : -2.933
-TNS   : -56.544
-
-Type  : Slow Model Setup 'iCLK_50'
-Slack : 2.947
+Type  : Slow Model Setup 'phase_loop|altpll_component|pll|clk[0]'
+Slack : 3.306
 TNS   : 0.000
 
-Type  : Slow Model Setup 'phase_loop|altpll_component|pll|clk[0]'
-Slack : 6.538
+Type  : Slow Model Setup 'iCLK_50'
+Slack : 15.030
 TNS   : 0.000
 
 Type  : Slow Model Hold 'iCLK_50'
-Slack : -2.677
-TNS   : -2.677
-
-Type  : Slow Model Hold 'GPIO_CLKIN_N1'
-Slack : 0.391
-TNS   : 0.000
-
-Type  : Slow Model Hold 'I2C_CCD_Config:i2c_Config|mI2C_CTRL_CLK'
 Slack : 0.391
 TNS   : 0.000
 
@@ -34,79 +18,31 @@ Type  : Slow Model Hold 'phase_loop|altpll_component|pll|clk[0]'
 Slack : 0.391
 TNS   : 0.000
 
-Type  : Slow Model Recovery 'I2C_CCD_Config:i2c_Config|mI2C_CTRL_CLK'
-Slack : -3.322
-TNS   : -74.525
-
-Type  : Slow Model Recovery 'GPIO_CLKIN_N1'
-Slack : -2.014
-TNS   : -66.430
-
 Type  : Slow Model Recovery 'phase_loop|altpll_component|pll|clk[0]'
-Slack : 4.292
-TNS   : 0.000
-
-Type  : Slow Model Recovery 'iCLK_50'
-Slack : 15.159
-TNS   : 0.000
-
-Type  : Slow Model Removal 'I2C_CCD_Config:i2c_Config|mI2C_CTRL_CLK'
-Slack : 2.034
-TNS   : 0.000
-
-Type  : Slow Model Removal 'GPIO_CLKIN_N1'
-Slack : 2.783
-TNS   : 0.000
-
-Type  : Slow Model Removal 'iCLK_50'
-Slack : 2.813
+Slack : 2.446
 TNS   : 0.000
 
 Type  : Slow Model Removal 'phase_loop|altpll_component|pll|clk[0]'
-Slack : 5.446
+Slack : 6.221
 TNS   : 0.000
 
-Type  : Slow Model Minimum Pulse Width 'GPIO_CLKIN_N1'
-Slack : -1.380
-TNS   : -36.380
-
-Type  : Slow Model Minimum Pulse Width 'I2C_CCD_Config:i2c_Config|mI2C_CTRL_CLK'
-Slack : -0.500
-TNS   : -72.000
-
 Type  : Slow Model Minimum Pulse Width 'phase_loop|altpll_component|pll|clk[0]'
-Slack : 4.000
+Slack : 2.873
 TNS   : 0.000
 
 Type  : Slow Model Minimum Pulse Width 'iCLK_50'
 Slack : 9.000
 TNS   : 0.000
 
-Type  : Fast Model Setup 'I2C_CCD_Config:i2c_Config|mI2C_CTRL_CLK'
-Slack : -1.165
-TNS   : -60.782
-
-Type  : Fast Model Setup 'GPIO_CLKIN_N1'
-Slack : -0.887
-TNS   : -10.380
-
-Type  : Fast Model Setup 'iCLK_50'
-Slack : 2.049
+Type  : Fast Model Setup 'phase_loop|altpll_component|pll|clk[0]'
+Slack : 7.038
 TNS   : 0.000
 
-Type  : Fast Model Setup 'phase_loop|altpll_component|pll|clk[0]'
-Slack : 8.389
+Type  : Fast Model Setup 'iCLK_50'
+Slack : 17.707
 TNS   : 0.000
 
 Type  : Fast Model Hold 'iCLK_50'
-Slack : -1.669
-TNS   : -1.669
-
-Type  : Fast Model Hold 'I2C_CCD_Config:i2c_Config|mI2C_CTRL_CLK'
-Slack : 0.175
-TNS   : 0.000
-
-Type  : Fast Model Hold 'GPIO_CLKIN_N1'
 Slack : 0.215
 TNS   : 0.000
 
@@ -114,48 +50,16 @@ Type  : Fast Model Hold 'phase_loop|altpll_component|pll|clk[0]'
 Slack : 0.215
 TNS   : 0.000
 
-Type  : Fast Model Recovery 'I2C_CCD_Config:i2c_Config|mI2C_CTRL_CLK'
-Slack : -1.114
-TNS   : -24.311
-
-Type  : Fast Model Recovery 'GPIO_CLKIN_N1'
-Slack : -0.807
-TNS   : -26.615
-
 Type  : Fast Model Recovery 'phase_loop|altpll_component|pll|clk[0]'
-Slack : 6.493
-TNS   : 0.000
-
-Type  : Fast Model Recovery 'iCLK_50'
-Slack : 17.635
-TNS   : 0.000
-
-Type  : Fast Model Removal 'I2C_CCD_Config:i2c_Config|mI2C_CTRL_CLK'
-Slack : 0.990
-TNS   : 0.000
-
-Type  : Fast Model Removal 'iCLK_50'
-Slack : 1.365
-TNS   : 0.000
-
-Type  : Fast Model Removal 'GPIO_CLKIN_N1'
-Slack : 1.686
+Slack : 5.906
 TNS   : 0.000
 
 Type  : Fast Model Removal 'phase_loop|altpll_component|pll|clk[0]'
-Slack : 3.361
+Slack : 3.489
 TNS   : 0.000
 
-Type  : Fast Model Minimum Pulse Width 'GPIO_CLKIN_N1'
-Slack : -1.380
-TNS   : -36.380
-
-Type  : Fast Model Minimum Pulse Width 'I2C_CCD_Config:i2c_Config|mI2C_CTRL_CLK'
-Slack : -0.500
-TNS   : -72.000
-
 Type  : Fast Model Minimum Pulse Width 'phase_loop|altpll_component|pll|clk[0]'
-Slack : 4.000
+Slack : 2.873
 TNS   : 0.000
 
 Type  : Fast Model Minimum Pulse Width 'iCLK_50'

@@ -82,15 +82,12 @@ always@(posedge iCLK or negedge iRST_N)
 			end
 		else
 			begin
-				//if (H_Cont > V_Cont + X_START)
-				//begin
-					outVGA_R <= 10'b1111111111;
-					outVGA_G <= 10'b1111111111;
-					outVGA_B <= 10'b1111111111;
-				//end
-				//outVGA_R <= mVGA_R;
-				//outVGA_G <= mVGA_G;
-				//outVGA_B <= mVGA_B;
+					//outVGA_R <= 10'b1111111111;
+					//outVGA_G <= 10'b1111111111;
+					//outVGA_B <= 10'b1111111111;
+				outVGA_R <= mVGA_R;
+				outVGA_G <= mVGA_G;
+				outVGA_B <= mVGA_B;
 				outVGA_BLANK <= mVGA_BLANK;
 				outVGA_SYNC <= mVGA_SYNC;
 				outVGA_H_SYNC <= mVGA_H_SYNC;

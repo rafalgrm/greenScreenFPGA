@@ -15,11 +15,13 @@ input					inputFrameValid;
 input					inputLineValid;
 input					iCLK;
 input					iRST;
+
 output	[11:0]	oDATA;
 output	[15:0]	oX_Counter;
 output	[15:0]	oY_Counter;
 output	[31:0]	oFrame_Counter;
 output				oDataValid;
+
 reg					Pre_FrameValid;
 reg					mCCD_FrameValid;
 reg					mCCD_LineValid;
@@ -35,7 +37,7 @@ assign	oX_Counter		=	X_Counter;
 assign	oY_Counter		=	Y_Counter;
 assign	oFrame_Counter	=	Frame_Cont;
 // Tak samo dane
-assign	oDATA				=			mCCD_DATA;
+assign	oDATA				=	mCCD_DATA;
 assign	oDataValid		=	mCCD_FrameValid & mCCD_LineValid;
 
 always@(posedge iCLK or negedge iRST)
@@ -126,6 +128,7 @@ begin
 		inputFrameValid_delay	<=	inputFrameValid;	
 end
 
+// Delay i fetch wywalic jak bedzie dzialalo
 assign inputFrameValid_fetch = ({inputFrameValid_delay,inputFrameValid}==2'b10)?1:0;  
 
 

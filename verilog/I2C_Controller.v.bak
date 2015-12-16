@@ -15,24 +15,22 @@ module I2C_Controller (
 	input  GO;
 	input  RESET;	
 	input  W_R;
-	
  	inout  I2C_SDAT;	
-	
 	output I2C_SCLK;
 	output END;	
 	output ACK;
 
-	reg SDO;
-	reg SCLK;
-	reg END;
-	reg [31:0]SD;
-	reg [6:0]SD_COUNTER;
+reg SDO;
+reg SCLK;
+reg END;
+reg [31:0]SD;
+reg [6:0]SD_COUNTER;
 
-	wire I2C_SCLK=SCLK | ( ((SD_COUNTER >= 4) & (SD_COUNTER <=39))? ~CLOCK :0 );
-	wire I2C_SDAT=SDO?1'bz:0 ;
+wire I2C_SCLK=SCLK | ( ((SD_COUNTER >= 4) & (SD_COUNTER <=39))? ~CLOCK :0 );
+wire I2C_SDAT=SDO?1'bz:0 ;
 
-	reg ACK1,ACK2,ACK3,ACK4;
-	wire ACK=ACK1 | ACK2 |ACK3 |ACK4;
+reg ACK1,ACK2,ACK3,ACK4;
+wire ACK=ACK1 | ACK2 |ACK3 |ACK4;
 
 //--I2C COUNTER
 always @(negedge RESET or posedge CLOCK ) begin

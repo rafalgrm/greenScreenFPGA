@@ -44,10 +44,10 @@ module GreenScreen(
 		oVGA_B,  						//	VGA Blue[9:0]
 		////////////////////	GPIO	////////////////////////////
 		GPIO_1,							//	GPIO Connection 1 I/O
-		GPIO_CLKIN_N1,                  //	GPIO Connection 1 Clock Input 0
+		GPIO_CLKIN_N1,                  //	GPIO Connection 1 Clock Input 0 pin GPIO Connection 1 PLL Out 
 		GPIO_CLKIN_P1,                  //	GPIO Connection 1 Clock Input 1
 		GPIO_CLKOUT_N1,                 //	GPIO Connection 1 Clock Output 0
-		GPIO_CLKOUT_P1                  //	GPIO Connection 1 Clock Output 1
+		GPIO_CLKOUT_P1                  //	GPIO Connection 1 Clock Output 1 GPIO Connection 1 PLL Out 
 	   
 	);
 
@@ -99,10 +99,10 @@ module GreenScreen(
 	output	[9:0]	oVGA_B;   				//	VGA Blue[9:0]
 	////////////////////////	GPIO	////////////////////////////////
 	inout		[31:0]	GPIO_1;					//	GPIO Connection 1 I/O
-	input			GPIO_CLKIN_N1;          //	GPIO Connection 1 Clock Input 0
-	input			GPIO_CLKIN_P1;          //	GPIO Connection 1 Clock Input 1
-	inout			GPIO_CLKOUT_N1;         //	GPIO Connection 1 Clock Output 0
-	inout			GPIO_CLKOUT_P1;         //	GPIO Connection 1 Clock Output 1
+	input			GPIO_CLKIN_N1;          //	GPIO Connection 1 Clock Input 0 GPIO Connection 1 PLL In
+	input			GPIO_CLKIN_P1;          //	GPIO Connection 1 Clock Input 1 GPIO Connection 1 PLL In // unused
+	inout			GPIO_CLKOUT_N1;         //	GPIO Connection 1 Clock Output 0 GPIO Connection 1 PLL Out 
+	inout			GPIO_CLKOUT_P1;         //	GPIO Connection 1 Clock Output 1 GPIO Connection 1 PLL Out // unused 
 ///////////////////////////////////////////////////////////////////
 //=============================================================================
 // Deklaracje REG/WIRE
@@ -148,47 +148,46 @@ module GreenScreen(
 	
 /* LOGIC */
 
-	assign	CCD_DATA[0]	=	GPIO_1[11];
-	assign	CCD_DATA[1]	=	GPIO_1[10];
-	assign	CCD_DATA[2]	=	GPIO_1[9];
-	assign	CCD_DATA[3]	=	GPIO_1[8];
-	assign	CCD_DATA[4]	=	GPIO_1[7];
-	assign	CCD_DATA[5]	=	GPIO_1[6];
-	assign	CCD_DATA[6]	=	GPIO_1[5];
-	assign	CCD_DATA[7]	=	GPIO_1[4];
-	assign	CCD_DATA[8]	=	GPIO_1[3];
-	assign	CCD_DATA[9]	=	GPIO_1[2];
-	assign	CCD_DATA[10]=	GPIO_1[1];
-	assign	CCD_DATA[11]=	GPIO_1[0];
+	assign	CCD_DATA[0]	=	GPIO_1[11]; // Pin 16
+	assign	CCD_DATA[1]	=	GPIO_1[10]; // Pin 15
+	assign	CCD_DATA[2]	=	GPIO_1[9]; // Pin 14
+	assign	CCD_DATA[3]	=	GPIO_1[8]; // Pin 13
+	assign	CCD_DATA[4]	=	GPIO_1[7]; // Pin 10
+	assign	CCD_DATA[5]	=	GPIO_1[6]; // Pin 9
+	assign	CCD_DATA[6]	=	GPIO_1[5]; // Pin 8
+	assign	CCD_DATA[7]	=	GPIO_1[4]; // Pin 7
+	assign	CCD_DATA[8]	=	GPIO_1[3]; // Pin 6
+	assign	CCD_DATA[9]	=	GPIO_1[2]; // Pin 5
+	assign	CCD_DATA[10]=	GPIO_1[1]; // Pin 4
+	assign	CCD_DATA[11]=	GPIO_1[0]; // Pin 2
 
-
-	assign	GPIO_CLKOUT_N1	=	CCD_MCLK;
-	assign	CCD_FVAL	=	GPIO_1[18];
+	assign	GPIO_CLKOUT_N1	=	CCD_MCLK; // GPIO Connection 1 PLL Out // unused for now :)
+	assign 	CCD_MCLK =	VGA_CTRL_CLK;
+	assign	CCD_FVAL	=	GPIO_1[18]; // GPIO Connection 1 IO[31]
 	assign	CCD_LVAL	=	GPIO_1[17];
-	assign	CCD_PIXCLK	=	GPIO_CLKIN_N1;
+	assign	CCD_PIXCLK	=	GPIO_CLKIN_N1; // GPIO Connection 1 PLL In
 
-	assign	GPIO_1[15]	=	1'b1;  // tRIGGER
+	assign	GPIO_1[15]	=	1'b1;  // TRIGGER Pin 22
 
-	assign	GPIO_1[14]	=	DLY_RST_1;
+	assign	GPIO_1[14]	=	DLY_RST_1; // Pin 20 RESET_N
 
 	assign	oLEDR		=	iSW;
 
-	assign	oTD1_RESET_N = 1'b1;
 	assign	oVGA_CLOCK	=	~VGA_CTRL_CLK;
 
 	always@(posedge iCLK_50)	rClk	<=	rClk+1;
 
 
-	always@(posedge CCD_PIXCLK)
+	always@(posedge VGA_CTRL_CLK)
 	begin
 		rCCD_DATA	<=	CCD_DATA;
 		rCCD_LVAL	<=	CCD_LVAL;
 		rCCD_FVAL	<=	CCD_FVAL;
 	end
 	
-//	assign Read_DATA2[9:0] = sCCD_R;
-//	assign {Read_DATA1[14:10],Read_DATA2[14:10]} = sCCD_G;
-//	assign Read_DATA1[9:0] = sCCD_B;
+	assign Read_DATA2[9:0] = sCCD_R;
+	assign {Read_DATA1[14:10],Read_DATA2[14:10]} = sCCD_G;
+	assign Read_DATA1[9:0] = sCCD_B;
 
 /* VGA Module */ 
 
@@ -233,7 +232,7 @@ ResetDelay		reset_delayer	(	.iCLK(iCLK_50),
 
 /* Image conversion */ 
 
-RAWToRGB		image_conversion	(	.iCLK(CCD_PIXCLK),
+RAWToRGB		image_conversion	(	.iCLK(VGA_CTRL_CLK),
 					.iRST_n(DLY_RST_1),
 					.iData(mCCD_DATA),
 					.iDataValid(mCCD_DVAL),
@@ -253,15 +252,12 @@ assign oLEDG[6] = rCCD_LVAL;
 
 assign oLEDG[5] = CCD_PIXCLK;
 // Zebysmy wiedzieli ktory reset
-//assign oLEDG[3] = iKEY[0];
-//assign oLEDG[2] = DLY_RST_2;
-//assign oLEDG[1] = DLY_RST_1;
-//assign oLEDG[0] = DLY_RST_0;
+assign oLEDG[3] = iKEY[0];
+assign oLEDG[2] = DLY_RST_2;
+assign oLEDG[1] = DLY_RST_1;
+assign oLEDG[0] = DLY_RST_0;
 
-assign oLEDG[3] = oVGA_HS;
-assign oLEDG[2] = oVGA_VS;
-assign oLEDG[1] = VGA_CTRL_CLK;
-assign oLEDG[0] = iCLK_50;
+assign oLEDG[4] = rCCD_FVAL;
 
 
 /* */
@@ -273,7 +269,7 @@ CCD_Capture		camera_capture	(	.oDATA(mCCD_DATA),
 							.iDATA(rCCD_DATA),
 							.inputFrameValid(rCCD_FVAL),
 							.inputLineValid(rCCD_LVAL),
-							.iCLK(CCD_PIXCLK),
+							.iCLK(VGA_CTRL_CLK),
 							.iRST(DLY_RST_2)
 						);		
 
@@ -281,7 +277,7 @@ CCD_Capture		camera_capture	(	.oDATA(mCCD_DATA),
 						
 
 /* */						
-				
+/*				
 I2C_CCD_Config 		i2c_Config	(	//	Host Side
 							.iCLK(iCLK_50),
 							.iRST_N(DLY_RST_2),
@@ -292,7 +288,7 @@ I2C_CCD_Config 		i2c_Config	(	//	Host Side
 							.I2C_SCLK(GPIO_1[20]),
 							.I2C_SDAT(GPIO_1[19])
 						);
-					
+*/					
 /* Module for displaying information about color captured by camera*/
 						
 SEG7_DISPLAY 			segment_display	(	.oSEG0(oHEX0_D),.oSEG1(oHEX1_D),
