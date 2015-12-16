@@ -196,7 +196,7 @@ assign Read_DATA1[9:0] = sCCD_B;
 
 /* VGA Module */ 
 
-/*
+
 vga_controller	vga	(	//	Host Side
 					.outRequest(Read),
 					.inRed(Read_DATA2[9:0]),
@@ -214,19 +214,19 @@ vga_controller	vga	(	//	Host Side
 					.iCLK(VGA_CTRL_CLK),
 					.iRST_N(DLY_RST_2)
 );	
-*/
+
 						
 /* VGA Phase locked loop Module */ 
 		
-/*						
+					
 vga_pll   phase_loop	(
 				.areset(!DLY_RST_0),
 				.inclk0(iTD1_CLK27),
 				.c0(VGA_CTRL_CLK)
 );
-*/
 
-/* Reset delay */ /*
+
+/* Reset delay */ 
 
 ResetDelay		reset_delayer	(	.iCLK(iCLK_50),
 							.iRST(iKEY[0]),
@@ -235,7 +235,7 @@ ResetDelay		reset_delayer	(	.iCLK(iCLK_50),
 							.oRST_2(DLY_RST_2)
 );
 
-/* Image conversion */ /*
+/* Image conversion */ 
 
 RAWToRGB		image_conversion	(	.iCLK(CCD_PIXCLK),
 					.iRST_n(DLY_RST_1),
@@ -248,7 +248,7 @@ RAWToRGB		image_conversion	(	.iCLK(CCD_PIXCLK),
 					.iZoom(iSW[17:16]),
 					.iX_Counter(X_Cont),
 					.iY_Counter(Y_Cont)
-); */
+);
 
 
 assign oLEDG[7] = rCCD_FVAL;
@@ -263,7 +263,7 @@ assign oLEDG[4] = 1;
 assign GPIO_CLKOUT_N1 = iCLK_50;
 
 
-/* *//*
+/* */
 CCD_Capture		camera_capture	(	.oDATA(mCCD_DATA),
 							.oDataValid(mCCD_DVAL),
 							.oX_Counter(X_Cont),
@@ -277,9 +277,9 @@ CCD_Capture		camera_capture	(	.oDATA(mCCD_DATA),
 							.iCLK(CCD_PIXCLK),
 							.iRST(DLY_RST_2)
 						);		
-*/
+
 // ccd control
-/*
+
 `define DATA_PORT		0
 `define CMD_PORT		1
 `define STATUS_PORT		2
@@ -306,7 +306,7 @@ end
 
 						
 
-/* */		/*				
+/* */						
 					
 I2C_CCD_Config 		i2c_Config	(	//	Host Side
 							.iCLK(iCLK_50),
@@ -318,7 +318,7 @@ I2C_CCD_Config 		i2c_Config	(	//	Host Side
 							.I2C_SCLK(GPIO_1[20]),
 							.I2C_SDAT(GPIO_1[19])
 						);
-*/						
+					
 /* Module for displaying information about color captured by camera*/
 						
 SEG7_DISPLAY 			segment_display	(	.oSEG0(oHEX0_D),.oSEG1(oHEX1_D),

@@ -39,11 +39,14 @@ output	reg			outVGA_BLANK;
 wire		[9:0]	mVGA_R;
 wire		[9:0]	mVGA_G;
 wire		[9:0]	mVGA_B;
-reg					mVGA_H_SYNC;
-reg					mVGA_V_SYNC;
+reg				mVGA_H_SYNC;
+reg				mVGA_V_SYNC;
 wire				mVGA_SYNC;
 wire				mVGA_BLANK;
 
+//	Clock and reset
+input				iCLK;
+input				iRST_N;
 
 //	Counters for X and Y
 reg		[12:0]		H_Cont;

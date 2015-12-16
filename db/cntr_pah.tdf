@@ -1,8 +1,8 @@
 --lpm_counter CBX_DECLARE_ALL_CONNECTED_PORTS="OFF" DEVICE_FAMILY="Cyclone II" lpm_avalue=1278 lpm_direction="DOWN" lpm_port_updown="PORT_UNUSED" lpm_width=11 aset clk_en clock cnt_en cout
---VERSION_BEGIN 9.1SP2 cbx_cycloneii 2010:03:24:20:43:43:SJ cbx_lpm_add_sub 2010:03:24:20:43:43:SJ cbx_lpm_compare 2010:03:24:20:43:43:SJ cbx_lpm_counter 2010:03:24:20:43:43:SJ cbx_lpm_decode 2010:03:24:20:43:43:SJ cbx_mgl 2010:03:24:21:01:05:SJ cbx_stratix 2010:03:24:20:43:43:SJ cbx_stratixii 2010:03:24:20:43:43:SJ  VERSION_END
+--VERSION_BEGIN 13.0 cbx_cycloneii 2013:06:12:18:03:43:SJ cbx_lpm_add_sub 2013:06:12:18:03:43:SJ cbx_lpm_compare 2013:06:12:18:03:43:SJ cbx_lpm_counter 2013:06:12:18:03:43:SJ cbx_lpm_decode 2013:06:12:18:03:43:SJ cbx_mgl 2013:06:12:18:05:10:SJ cbx_stratix 2013:06:12:18:03:43:SJ cbx_stratixii 2013:06:12:18:03:43:SJ  VERSION_END
 
 
--- Copyright (C) 1991-2010 Altera Corporation
+-- Copyright (C) 1991-2013 Altera Corporation
 --  Your use of Altera Corporation's design tools, logic functions 
 --  and other software and tools, and its AMPP partner logic 
 --  functions, and any output files from any of the foregoing 
@@ -89,7 +89,7 @@ VARIABLE
 			LUT_MASK = "5A60",
 			SUM_LUTC_INPUT = "cin"
 		);
-	counter_reg_bit6a[10..0] : cycloneii_lcell_ff;
+	counter_reg_bit8a[10..0] : cycloneii_lcell_ff;
 	a_val[10..0]	: WIRE;
 	aclr_actual	: WIRE;
 	cout_actual	: WIRE;
@@ -105,22 +105,22 @@ VARIABLE
 
 BEGIN 
 	counter_comb_bita[10..0].cin = ( counter_comb_bita[9..0].cout, external_cin);
-	counter_comb_bita[10..0].dataa = ( counter_reg_bit6a[10..0].regout);
+	counter_comb_bita[10..0].dataa = ( counter_reg_bit8a[10..0].regout);
 	counter_comb_bita[10..0].datab = ( updown_dir, updown_dir, updown_dir, updown_dir, updown_dir, updown_dir, updown_dir, updown_dir, updown_dir, updown_dir, updown_dir);
 	counter_comb_bita[10..0].datad = ( B"1", B"1", B"1", B"1", B"1", B"1", B"1", B"1", B"1", B"1", B"1");
-	counter_reg_bit6a[].aclr = aclr_actual;
-	counter_reg_bit6a[].clk = clock;
-	counter_reg_bit6a[].datain = ( counter_comb_bita[10..0].combout);
-	counter_reg_bit6a[].ena = (clk_en & (((cnt_en # sclr) # sset) # sload));
-	counter_reg_bit6a[].sdata = (a_val[] $ ((! sclr) & ((sset & s_val[]) # ((! sset) & data[]))));
-	counter_reg_bit6a[].sload = ((sclr # sset) # sload);
+	counter_reg_bit8a[].aclr = aclr_actual;
+	counter_reg_bit8a[].clk = clock;
+	counter_reg_bit8a[].datain = ( counter_comb_bita[10..0].combout);
+	counter_reg_bit8a[].ena = (clk_en & (((cnt_en # sclr) # sset) # sload));
+	counter_reg_bit8a[].sdata = (a_val[] $ ((! sclr) & ((sset & s_val[]) # ((! sset) & data[]))));
+	counter_reg_bit8a[].sload = ((sclr # sset) # sload);
 	a_val[] = B"10011111110";
 	aclr_actual = aset;
 	cout = cout_actual;
 	cout_actual = (counter_comb_bita[10].cout # (time_to_clear & updown_dir));
 	data[] = GND;
 	external_cin = B"1";
-	pre_hazard[] = counter_reg_bit6a[].regout;
+	pre_hazard[] = counter_reg_bit8a[].regout;
 	s_val[] = B"11111111111";
 	sclr = GND;
 	sload = GND;
