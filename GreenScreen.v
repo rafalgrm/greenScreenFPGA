@@ -14,7 +14,7 @@ module GreenScreen(
 		oHEX0_D,						//	Seven Segment Digit 0
 		oHEX0_DP,						//  Seven Segment Digit 0 decimal point
 		oHEX1_D,						//	Seven Segment Digit 1
-		oHEX1_DP,						//  Seven Segment Digit 1 decimal pointddd
+		oHEX1_DP,						//  Seven Segment Digit 1 decimal point
 		oHEX2_D,						//	Seven Segment Digit 2
 		oHEX2_DP,						//  Seven Segment Digit 2 decimal point
 		oHEX3_D,						//	Seven Segment Digit 3
