@@ -1,15 +1,15 @@
 |GreenScreen
 iCLK_28 => ~NO_FANOUT~
 iCLK_50 => iCLK_50.IN3
-iCLK_50_2 => ~NO_FANOUT~
+iCLK_50_2 => iCLK_50_2.IN1
 iCLK_50_3 => ~NO_FANOUT~
 iCLK_50_4 => ~NO_FANOUT~
 iEXT_CLOCK => ~NO_FANOUT~
 iKEY[0] => iKEY[0].IN1
-iKEY[1] => iKEY[1].IN1
+iKEY[1] => ~NO_FANOUT~
 iKEY[2] => ~NO_FANOUT~
 iKEY[3] => ~NO_FANOUT~
-iSW[0] => iSW[0].IN1
+iSW[0] => oLEDR[0].DATAIN
 iSW[1] => oLEDR[1].DATAIN
 iSW[2] => oLEDR[2].DATAIN
 iSW[3] => oLEDR[3].DATAIN
@@ -25,7 +25,7 @@ iSW[12] => oLEDR[12].DATAIN
 iSW[13] => oLEDR[13].DATAIN
 iSW[14] => oLEDR[14].DATAIN
 iSW[15] => oLEDR[15].DATAIN
-iSW[16] => iSW[16].IN2
+iSW[16] => iSW[16].IN1
 iSW[17] => iSW[17].IN1
 oHEX0_D[0] <= SEG7_DISPLAY:segment_display.oSEG0
 oHEX0_D[1] <= SEG7_DISPLAY:segment_display.oSEG0
@@ -95,7 +95,7 @@ oLEDG[0] <= ResetDelay:reset_delayer.oRST_0
 oLEDG[1] <= DLY_RST_1.DB_MAX_OUTPUT_PORT_TYPE
 oLEDG[2] <= DLY_RST_2.DB_MAX_OUTPUT_PORT_TYPE
 oLEDG[3] <= iKEY[0].DB_MAX_OUTPUT_PORT_TYPE
-oLEDG[4] <= rCCD_FVAL.DB_MAX_OUTPUT_PORT_TYPE
+oLEDG[4] <= <GND>
 oLEDG[5] <= GPIO_CLKIN_N1.DB_MAX_OUTPUT_PORT_TYPE
 oLEDG[6] <= rCCD_LVAL.DB_MAX_OUTPUT_PORT_TYPE
 oLEDG[7] <= rCCD_FVAL.DB_MAX_OUTPUT_PORT_TYPE
@@ -173,10 +173,43 @@ GPIO_1[28] <> <UNC>
 GPIO_1[29] <> <UNC>
 GPIO_1[30] <> <UNC>
 GPIO_1[31] <> <UNC>
+GPIO_CLKIN_N1 => GPIO_0[0].DATAIN
 GPIO_CLKIN_N1 => oLEDG[5].DATAIN
 GPIO_CLKIN_P1 => ~NO_FANOUT~
 GPIO_CLKOUT_N1 <> GPIO_CLKOUT_N1
 GPIO_CLKOUT_P1 <> <UNC>
+GPIO_0[0] <> GPIO_0[0]
+GPIO_0[1] <> GPIO_0[1]
+GPIO_0[2] <> <UNC>
+GPIO_0[3] <> GPIO_0[3]
+GPIO_0[4] <> <UNC>
+GPIO_0[5] <> <UNC>
+GPIO_0[6] <> <UNC>
+GPIO_0[7] <> <UNC>
+GPIO_0[8] <> <UNC>
+GPIO_0[9] <> <UNC>
+GPIO_0[10] <> <UNC>
+GPIO_0[11] <> <UNC>
+GPIO_0[12] <> <UNC>
+GPIO_0[13] <> <UNC>
+GPIO_0[14] <> <UNC>
+GPIO_0[15] <> <UNC>
+GPIO_0[16] <> <UNC>
+GPIO_0[17] <> <UNC>
+GPIO_0[18] <> <UNC>
+GPIO_0[19] <> <UNC>
+GPIO_0[20] <> <UNC>
+GPIO_0[21] <> <UNC>
+GPIO_0[22] <> <UNC>
+GPIO_0[23] <> <UNC>
+GPIO_0[24] <> <UNC>
+GPIO_0[25] <> <UNC>
+GPIO_0[26] <> <UNC>
+GPIO_0[27] <> <UNC>
+GPIO_0[28] <> <UNC>
+GPIO_0[29] <> <UNC>
+GPIO_0[30] <> <UNC>
+GPIO_0[31] <> <UNC>
 
 
 |GreenScreen|vga_controller:vga
@@ -371,6 +404,8 @@ iRST_N => H_Cont[9].ACLR
 iRST_N => H_Cont[10].ACLR
 iRST_N => H_Cont[11].ACLR
 iRST_N => H_Cont[12].ACLR
+in_H_SYNC => ~NO_FANOUT~
+in_V_SYNC => ~NO_FANOUT~
 
 
 |GreenScreen|vga_pll:phase_loop
@@ -2302,6 +2337,73 @@ iRST => Frame_Cont[30].ACLR
 iRST => Frame_Cont[31].ACLR
 
 
+|GreenScreen|camera_pll:phase_loop2
+areset => areset.IN1
+inclk0 => sub_wire3[0].IN1
+c0 <= altpll:altpll_component.clk
+
+
+|GreenScreen|camera_pll:phase_loop2|altpll:altpll_component
+inclk[0] => pll.CLK
+inclk[1] => ~NO_FANOUT~
+fbin => ~NO_FANOUT~
+pllena => ~NO_FANOUT~
+clkswitch => ~NO_FANOUT~
+areset => pll.ARESET
+pfdena => ~NO_FANOUT~
+clkena[0] => ~NO_FANOUT~
+clkena[1] => ~NO_FANOUT~
+clkena[2] => ~NO_FANOUT~
+clkena[3] => ~NO_FANOUT~
+clkena[4] => ~NO_FANOUT~
+clkena[5] => ~NO_FANOUT~
+extclkena[0] => ~NO_FANOUT~
+extclkena[1] => ~NO_FANOUT~
+extclkena[2] => ~NO_FANOUT~
+extclkena[3] => ~NO_FANOUT~
+scanclk => ~NO_FANOUT~
+scanclkena => ~NO_FANOUT~
+scanaclr => ~NO_FANOUT~
+scanread => ~NO_FANOUT~
+scanwrite => ~NO_FANOUT~
+scandata => ~NO_FANOUT~
+phasecounterselect[0] => ~NO_FANOUT~
+phasecounterselect[1] => ~NO_FANOUT~
+phasecounterselect[2] => ~NO_FANOUT~
+phasecounterselect[3] => ~NO_FANOUT~
+phaseupdown => ~NO_FANOUT~
+phasestep => ~NO_FANOUT~
+configupdate => ~NO_FANOUT~
+fbmimicbidir <> <GND>
+clk[0] <= clk[0].DB_MAX_OUTPUT_PORT_TYPE
+clk[1] <= <GND>
+clk[2] <= <GND>
+clk[3] <= <GND>
+clk[4] <= <GND>
+clk[5] <= <GND>
+extclk[0] <= <GND>
+extclk[1] <= <GND>
+extclk[2] <= <GND>
+extclk[3] <= <GND>
+clkbad[0] <= <GND>
+clkbad[1] <= <GND>
+enable1 <= <GND>
+enable0 <= <GND>
+activeclock <= <GND>
+clkloss <= <GND>
+locked <= <GND>
+scandataout <= <GND>
+scandone <= <GND>
+sclkout0 <= <GND>
+sclkout1 <= sclkout1.DB_MAX_OUTPUT_PORT_TYPE
+phasedone <= <GND>
+vcooverrange <= <GND>
+vcounderrange <= <GND>
+fbout <= <GND>
+fref <= <GND>
+icdrclk <= <GND>
+
+
 |GreenScreen|I2C_CCD_Config:i2c_Config
 iCLK => mI2C_CLK_DIV[0].CLK
 iCLK => mI2C_CLK_DIV[1].CLK
@@ -2345,26 +2447,6 @@ iCLK => combo_cnt[21].CLK
 iCLK => combo_cnt[22].CLK
 iCLK => combo_cnt[23].CLK
 iCLK => combo_cnt[24].CLK
-iCLK => sensor_exposure[0].CLK
-iCLK => sensor_exposure[1].CLK
-iCLK => sensor_exposure[2].CLK
-iCLK => sensor_exposure[3].CLK
-iCLK => sensor_exposure[4].CLK
-iCLK => sensor_exposure[5].CLK
-iCLK => sensor_exposure[6].CLK
-iCLK => sensor_exposure[7].CLK
-iCLK => sensor_exposure[8].CLK
-iCLK => sensor_exposure[9].CLK
-iCLK => sensor_exposure[10].CLK
-iCLK => sensor_exposure[11].CLK
-iCLK => sensor_exposure[12].CLK
-iCLK => sensor_exposure[13].CLK
-iCLK => sensor_exposure[14].CLK
-iCLK => sensor_exposure[15].CLK
-iCLK => iexposure_adj_delay[0].CLK
-iCLK => iexposure_adj_delay[1].CLK
-iCLK => iexposure_adj_delay[2].CLK
-iCLK => iexposure_adj_delay[3].CLK
 iRST_N => i2c_reset.IN1
 iRST_N => combo_cnt[0].ACLR
 iRST_N => combo_cnt[1].ACLR
@@ -2391,45 +2473,6 @@ iRST_N => combo_cnt[21].ACLR
 iRST_N => combo_cnt[22].ACLR
 iRST_N => combo_cnt[23].ACLR
 iRST_N => combo_cnt[24].ACLR
-iRST_N => sensor_exposure[0].ACLR
-iRST_N => sensor_exposure[1].ACLR
-iRST_N => sensor_exposure[2].ACLR
-iRST_N => sensor_exposure[3].ACLR
-iRST_N => sensor_exposure[4].ACLR
-iRST_N => sensor_exposure[5].ACLR
-iRST_N => sensor_exposure[6].PRESET
-iRST_N => sensor_exposure[7].PRESET
-iRST_N => sensor_exposure[8].PRESET
-iRST_N => sensor_exposure[9].PRESET
-iRST_N => sensor_exposure[10].PRESET
-iRST_N => sensor_exposure[11].ACLR
-iRST_N => sensor_exposure[12].ACLR
-iRST_N => sensor_exposure[13].ACLR
-iRST_N => sensor_exposure[14].ACLR
-iRST_N => sensor_exposure[15].ACLR
-iRST_N => iexposure_adj_delay[0].ACLR
-iRST_N => iexposure_adj_delay[1].ACLR
-iRST_N => iexposure_adj_delay[2].ACLR
-iRST_N => iexposure_adj_delay[3].ACLR
-iZOOM_MODE_SW => ~NO_FANOUT~
-iEXPOSURE_ADJ => iexposure_adj_delay[0].DATAIN
-iEXPOSURE_ADJ => Equal0.IN0
-iEXPOSURE_DEC_p => sensor_exposure.OUTPUTSELECT
-iEXPOSURE_DEC_p => sensor_exposure.OUTPUTSELECT
-iEXPOSURE_DEC_p => sensor_exposure.OUTPUTSELECT
-iEXPOSURE_DEC_p => sensor_exposure.OUTPUTSELECT
-iEXPOSURE_DEC_p => sensor_exposure.OUTPUTSELECT
-iEXPOSURE_DEC_p => sensor_exposure.OUTPUTSELECT
-iEXPOSURE_DEC_p => sensor_exposure.OUTPUTSELECT
-iEXPOSURE_DEC_p => sensor_exposure.OUTPUTSELECT
-iEXPOSURE_DEC_p => sensor_exposure.OUTPUTSELECT
-iEXPOSURE_DEC_p => sensor_exposure.OUTPUTSELECT
-iEXPOSURE_DEC_p => sensor_exposure.OUTPUTSELECT
-iEXPOSURE_DEC_p => sensor_exposure.OUTPUTSELECT
-iEXPOSURE_DEC_p => sensor_exposure.OUTPUTSELECT
-iEXPOSURE_DEC_p => sensor_exposure.OUTPUTSELECT
-iEXPOSURE_DEC_p => sensor_exposure.OUTPUTSELECT
-iEXPOSURE_DEC_p => sensor_exposure.OUTPUTSELECT
 I2C_SCLK <= I2C_Controller:u0.I2C_SCLK
 I2C_SDAT <> I2C_Controller:u0.I2C_SDAT
 

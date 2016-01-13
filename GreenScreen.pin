@@ -452,8 +452,8 @@ GND                          : C25       : gnd    :                   :         
 GND*                         : C26       :        :                   :         : 4         :                
 GND*                         : C27       :        :                   :         : 4         :                
 GND*                         : C28       :        :                   :         : 4         :                
-GND*                         : C29       :        :                   :         : 5         :                
-GND*                         : C30       :        :                   :         : 5         :                
+GPIO_0[1]                    : C29       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
+GPIO_0[0]                    : C30       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 VCCIO2                       : D1        : power  :                   : 3.3V    : 2         :                
 GND*                         : D2        :        :                   :         : 2         :                
 GND*                         : D3        :        :                   :         : 2         :                
@@ -481,8 +481,8 @@ oVGA_CLOCK                   : D24       : output : 3.3-V LVTTL       :         
 GND*                         : D25       :        :                   :         : 4         :                
 GND*                         : D26       :        :                   :         : 4         :                
 GND*                         : D27       :        :                   :         : 4         :                
-GND*                         : D28       :        :                   :         : 5         :                
-GND*                         : D29       :        :                   :         : 5         :                
+GPIO_0[5]                    : D28       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
+GPIO_0[3]                    : D29       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 VCCIO5                       : D30       : power  :                   : 3.3V    : 5         :                
 GND*                         : E1        :        :                   :         : 2         :                
 GND*                         : E2        :        :                   :         : 2         :                
@@ -510,10 +510,10 @@ oVGA_R[1]                    : E23       : output : 3.3-V LVTTL       :         
 GND*                         : E24       :        :                   :         : 4         :                
 VCCIO4                       : E25       : power  :                   : 3.3V    : 4         :                
 GND                          : E26       : gnd    :                   :         :           :                
-GND*                         : E27       :        :                   :         : 5         :                
-GND*                         : E28       :        :                   :         : 5         :                
-GND*                         : E29       :        :                   :         : 5         :                
-GND*                         : E30       :        :                   :         : 5         :                
+GPIO_0[4]                    : E27       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
+GPIO_0[2]                    : E28       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
+GPIO_0[6]                    : E29       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
+GPIO_0[8]                    : E30       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 GND*                         : F1        :        :                   :         : 2         :                
 GND*                         : F2        :        :                   :         : 2         :                
 GND*                         : F3        :        :                   :         : 2         :                
@@ -542,8 +542,8 @@ GND                          : F25       : gnd    :                   :         
 VCCIO5                       : F26       : power  :                   : 3.3V    : 5         :                
 GND*                         : F27       :        :                   :         : 5         :                
 GND*                         : F28       :        :                   :         : 5         :                
-GND*                         : F29       :        :                   :         : 5         :                
-GND*                         : F30       :        :                   :         : 5         :                
+GPIO_0[10]                   : F29       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
+GPIO_0[12]                   : F30       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 oHEX7_D[6]                   : G1        : output : 3.3-V LVTTL       :         : 2         : Y              
 oHEX7_DP                     : G2        : output : 3.3-V LVTTL       :         : 2         : Y              
 GND*                         : G3        :        :                   :         : 2         :                
@@ -568,12 +568,12 @@ oVGA_R[5]                    : G21       : output : 3.3-V LVTTL       :         
 GND*                         : G22       :        :                   :         : 4         :                
 GNDA_PLL2                    : G23       : gnd    :                   :         :           :                
 GND*                         : G24       :        :                   :         : 5         :                
-GND*                         : G25       :        :                   :         : 5         :                
-GND*                         : G26       :        :                   :         : 5         :                
+GPIO_0[7]                    : G25       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
+GPIO_0[9]                    : G26       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 GPIO_1[0]                    : G27       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 GPIO_1[1]                    : G28       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
-GND*                         : G29       :        :                   :         : 5         :                
-GND*                         : G30       :        :                   :         : 5         :                
+GPIO_0[11]                   : G29       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
+GPIO_0[13]                   : G30       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 oHEX7_D[3]                   : H1        : output : 3.3-V LVTTL       :         : 2         : Y              
 oHEX7_D[4]                   : H2        : output : 3.3-V LVTTL       :         : 2         : Y              
 oHEX7_D[5]                   : H3        : output : 3.3-V LVTTL       :         : 2         : Y              
@@ -597,13 +597,13 @@ oVGA_R[6]                    : H20       : output : 3.3-V LVTTL       :         
 oVGA_R[4]                    : H21       : output : 3.3-V LVTTL       :         : 4         : Y              
 VCCA_PLL2                    : H22       : power  :                   : 1.2V    :           :                
 GND*                         : H23       :        :                   :         : 5         :                
-GND*                         : H24       :        :                   :         : 5         :                
-GND*                         : H25       :        :                   :         : 5         :                
+GPIO_0[19]                   : H24       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
+GPIO_0[17]                   : H25       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 GND*                         : H26       :        :                   :         : 5         :                
 GPIO_1[2]                    : H27       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 GPIO_1[4]                    : H28       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
-GND*                         : H29       :        :                   :         : 5         :                
-GND*                         : H30       :        :                   :         : 5         :                
+GPIO_0[14]                   : H29       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
+GPIO_0[15]                   : H30       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 oHEX7_D[1]                   : J1        : output : 3.3-V LVTTL       :         : 2         : Y              
 oHEX7_D[2]                   : J2        : output : 3.3-V LVTTL       :         : 2         : Y              
 VCCIO2                       : J3        : power  :                   : 3.3V    : 2         :                
@@ -627,13 +627,13 @@ VCCIO4                       : J20       : power  :                   : 3.3V    
 GND                          : J21       : gnd    :                   :         :           :                
 VCCD_PLL2                    : J22       : power  :                   : 1.2V    :           :                
 VCCIO5                       : J23       : power  :                   : 3.3V    : 5         :                
-GND*                         : J24       :        :                   :         : 5         :                
-GND*                         : J25       :        :                   :         : 5         :                
+GPIO_0[22]                   : J24       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
+GPIO_0[20]                   : J25       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 GND*                         : J26       :        :                   :         : 5         :                
 GND                          : J27       : gnd    :                   :         :           :                
 VCCIO5                       : J28       : power  :                   : 3.3V    : 5         :                
-GND*                         : J29       :        :                   :         : 5         :                
-GND*                         : J30       :        :                   :         : 5         :                
+GPIO_0[16]                   : J29       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
+GPIO_0[18]                   : J30       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 oHEX5_D[4]                   : K1        : output : 3.3-V LVTTL       :         : 2         : Y              
 oHEX6_DP                     : K2        : output : 3.3-V LVTTL       :         : 2         : Y              
 oHEX7_D[0]                   : K3        : output : 3.3-V LVTTL       :         : 2         : Y              
@@ -657,8 +657,8 @@ GND                          : K20       : gnd    :                   :         
 GND_PLL2                     : K21       : gnd    :                   :         :           :                
 GND_PLL2                     : K22       : gnd    :                   :         :           :                
 GND*                         : K23       :        :                   :         : 5         :                
-GND*                         : K24       :        :                   :         : 5         :                
-GND*                         : K25       :        :                   :         : 5         :                
+GPIO_0[21]                   : K24       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
+GPIO_0[23]                   : K25       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 GND*                         : K26       :        :                   :         : 5         :                
 GPIO_1[6]                    : K27       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 GPIO_1[8]                    : K28       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
@@ -684,8 +684,8 @@ VCCINT                       : L17       : power  :                   : 1.2V    
 VCCINT                       : L18       : power  :                   : 1.2V    :           :                
 VCCINT                       : L19       : power  :                   : 1.2V    :           :                
 VCCIO5                       : L20       : power  :                   : 3.3V    : 5         :                
-GND*                         : L21       :        :                   :         : 5         :                
-GND*                         : L22       :        :                   :         : 5         :                
+GPIO_0[26]                   : L21       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
+GPIO_0[24]                   : L22       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 GND                          : L23       : gnd    :                   :         :           :                
 GPIO_1[3]                    : L24       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 GPIO_1[5]                    : L25       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
@@ -714,8 +714,8 @@ VCCINT                       : M17       : power  :                   : 1.2V    
 VCCINT                       : M18       : power  :                   : 1.2V    :           :                
 VCCINT                       : M19       : power  :                   : 1.2V    :           :                
 GND                          : M20       : gnd    :                   :         :           :                
-GND*                         : M21       :        :                   :         : 5         :                
-GND*                         : M22       :        :                   :         : 5         :                
+GPIO_0[25]                   : M21       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
+GPIO_0[27]                   : M22       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 GND*                         : M23       :        :                   :         : 5         :                
 GPIO_1[13]                   : M24       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 GPIO_1[11]                   : M25       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
@@ -744,11 +744,11 @@ GND                          : N17       : gnd    :                   :         
 GND                          : N18       : gnd    :                   :         :           :                
 VCCINT                       : N19       : power  :                   : 1.2V    :           :                
 VCCINT                       : N20       : power  :                   : 1.2V    :           :                
-GND*                         : N21       :        :                   :         : 5         :                
-GND*                         : N22       :        :                   :         : 5         :                
+GPIO_0[30]                   : N21       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
+GPIO_0[28]                   : N22       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 GND*                         : N23       :        :                   :         : 5         :                
-GND*                         : N24       :        :                   :         : 5         :                
-GND*                         : N25       :        :                   :         : 5         :                
+GPIO_0[31]                   : N24       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
+GPIO_0[29]                   : N25       : bidir  : 3.3-V LVTTL       :         : 5         : Y              
 GND                          : N26       : gnd    :                   :         :           :                
 VCCIO5                       : N27       : power  :                   : 3.3V    : 5         :                
 GPIO_1[25]                   : N28       : bidir  : 3.3-V LVTTL       :         : 5         : Y              

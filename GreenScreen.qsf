@@ -583,6 +583,10 @@ set_location_assignment PIN_B15 -to oVGA_SYNC_N
 set_global_assignment -name USE_CONFIGURATION_DEVICE ON
 set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
 set_global_assignment -name RESERVE_ASDO_AFTER_CONFIGURATION "AS INPUT TRI-STATED"
+set_global_assignment -name OPTIMIZE_HOLD_TIMING OFF
+set_global_assignment -name OPTIMIZE_POWER_DURING_FITTING OFF
+set_global_assignment -name FITTER_EFFORT "FAST FIT"
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name VERILOG_FILE verilog/DE2_70_SOPC.v
 set_global_assignment -name VERILOG_FILE verilog/SEG7_DIGIT.v
 set_global_assignment -name VERILOG_FILE verilog/SEG7_DISPLAY.v
@@ -599,8 +603,6 @@ set_global_assignment -name VERILOG_FILE GreenScreen.v
 set_global_assignment -name VERILOG_FILE RAWToRGB.v
 set_global_assignment -name VERILOG_FILE LineBuffer.v
 set_global_assignment -name VERILOG_FILE verilog/ResetDelay.v
-set_global_assignment -name OPTIMIZE_HOLD_TIMING OFF
-set_global_assignment -name OPTIMIZE_POWER_DURING_FITTING OFF
-set_global_assignment -name FITTER_EFFORT "FAST FIT"
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name QIP_FILE vga_pll.qip
+set_global_assignment -name QIP_FILE camera_pll.qip
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

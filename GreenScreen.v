@@ -47,7 +47,8 @@ module GreenScreen(
 		GPIO_CLKIN_N1,                  //	GPIO Connection 1 Clock Input 0 pin GPIO Connection 1 PLL Out 
 		GPIO_CLKIN_P1,                  //	GPIO Connection 1 Clock Input 1
 		GPIO_CLKOUT_N1,                 //	GPIO Connection 1 Clock Output 0
-		GPIO_CLKOUT_P1                  //	GPIO Connection 1 Clock Output 1 GPIO Connection 1 PLL Out 
+		GPIO_CLKOUT_P1,                  //	GPIO Connection 1 Clock Output 1 GPIO Connection 1 PLL Out 
+		GPIO_0							//	GPIO Connection 2 I/O
 	   
 	);
 
@@ -103,6 +104,8 @@ module GreenScreen(
 	input			GPIO_CLKIN_P1;          //	GPIO Connection 1 Clock Input 1 GPIO Connection 1 PLL In // unused
 	inout			GPIO_CLKOUT_N1;         //	GPIO Connection 1 Clock Output 0 GPIO Connection 1 PLL Out 
 	inout			GPIO_CLKOUT_P1;         //	GPIO Connection 1 Clock Output 1 GPIO Connection 1 PLL Out // unused 
+	
+	inout		[31:0]	GPIO_0;					//	GPIO Connection 1 I/O
 ///////////////////////////////////////////////////////////////////
 //=============================================================================
 // Deklaracje REG/WIRE
@@ -120,7 +123,8 @@ module GreenScreen(
 
 	wire	[15:0]	Read_DATA1;
 	wire	[15:0]	Read_DATA2;
-	wire				VGA_CTRL_CLK;
+	wire				VGA_CTRL_CLK;	
+	wire				CAMERA_CTRL_CLK;
 	wire	[11:0]	mCCD_DATA;
 	wire				mCCD_DVAL;
 	wire				mCCD_DVAL_d;
@@ -147,6 +151,10 @@ module GreenScreen(
 	
 	
 /* LOGIC */
+
+	assign	GPIO_0[0] = CCD_PIXCLK;
+	assign	GPIO_0[1] = rCCD_LVAL;
+	assign	GPIO_0[3] = rCCD_FVAL;
 
 	assign	CCD_DATA[0]	=	GPIO_1[11]; // Pin 16
 	assign	CCD_DATA[1]	=	GPIO_1[10]; // Pin 15
@@ -207,7 +215,9 @@ vga_controller	vga	(	//	Host Side
 					.outVGA_BLANK(oVGA_BLANK_N),
 					//	Control Signal
 					.iCLK(VGA_CTRL_CLK),
-					.iRST_N(DLY_RST_2)
+					.iRST_N(DLY_RST_2),
+					.in_H_SYNC(rCCD_LVAL),
+					.in_V_SYNC(rCCD_FVAL)
 );	
 
 						
@@ -232,7 +242,7 @@ ResetDelay		reset_delayer	(	.iCLK(iCLK_50),
 
 /* Image conversion */ 
 
-RAWToRGB		image_conversion	(	.iCLK(VGA_CTRL_CLK),
+RAWToRGB		image_conversion	(	.iCLK(CAMERA_CTRL_CLK),
 					.iRST_n(DLY_RST_1),
 					.iData(mCCD_DATA),
 					.iDataValid(mCCD_DVAL),
@@ -257,8 +267,6 @@ assign oLEDG[2] = DLY_RST_2;
 assign oLEDG[1] = DLY_RST_1;
 assign oLEDG[0] = DLY_RST_0;
 
-assign oLEDG[4] = rCCD_FVAL;
-
 
 /* */
 CCD_Capture		camera_capture	(	.oDATA(mCCD_DATA),
@@ -269,25 +277,29 @@ CCD_Capture		camera_capture	(	.oDATA(mCCD_DATA),
 							.iDATA(rCCD_DATA),
 							.inputFrameValid(rCCD_FVAL),
 							.inputLineValid(rCCD_LVAL),
-							.iCLK(VGA_CTRL_CLK),
+							.iCLK(CAMERA_CTRL_CLK),
 							.iRST(DLY_RST_2)
 						);		
 
-/*
+
+
+camera_pll   phase_loop2	(
+				.areset(!DLY_RST_0),
+				.inclk0(iCLK_50_2),
+				.c0(CAMERA_CTRL_CLK)
+);
 						
 
-/* */						
+/* */					
 				
 I2C_CCD_Config 		i2c_Config	(	//	Host Side
 							.iCLK(iCLK_50),
 							.iRST_N(DLY_RST_2),
-							.iZOOM_MODE_SW(iSW[16]),
-							.iEXPOSURE_ADJ(iKEY[1]),
-							.iEXPOSURE_DEC_p(iSW[0]),
 							//	I2C Side
 							.I2C_SCLK(GPIO_1[20]),
 							.I2C_SDAT(GPIO_1[19])
-						);
+						); 
+						
 				
 /* Module for displaying information about color captured by camera*/
 						

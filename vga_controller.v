@@ -17,6 +17,11 @@ module	vga_controller(
 		//	Control Signal
 		iCLK,
 		iRST_N,
+		
+		// Input control signals from H_Sync
+		
+		in_H_SYNC,
+		in_V_SYNC
 );
 // Config file
 `include "vga_config.txt"
@@ -51,6 +56,11 @@ input				iRST_N;
 //	Counters for X and Y
 reg		[12:0]		H_Cont;
 reg		[12:0]		V_Cont;
+
+// Input sync
+
+input		in_H_SYNC;
+input		in_V_SYNC;
 
 // 	Checking the screen borders
 
