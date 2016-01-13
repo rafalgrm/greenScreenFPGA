@@ -277,7 +277,7 @@ CCD_Capture		camera_capture	(	.oDATA(mCCD_DATA),
 						
 
 /* */						
-/*				
+				
 I2C_CCD_Config 		i2c_Config	(	//	Host Side
 							.iCLK(iCLK_50),
 							.iRST_N(DLY_RST_2),
@@ -288,7 +288,7 @@ I2C_CCD_Config 		i2c_Config	(	//	Host Side
 							.I2C_SCLK(GPIO_1[20]),
 							.I2C_SDAT(GPIO_1[19])
 						);
-*/					
+				
 /* Module for displaying information about color captured by camera*/
 						
 SEG7_DISPLAY 			segment_display	(	.oSEG0(oHEX0_D),.oSEG1(oHEX1_D),

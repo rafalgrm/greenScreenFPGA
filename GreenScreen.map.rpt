@@ -1,5 +1,5 @@
 Analysis & Synthesis report for GreenScreen
-Wed Dec 16 17:07:41 2015
+Wed Jan 13 17:00:16 2016
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -15,22 +15,26 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis IP Cores Summary
- 10. Registers Removed During Synthesis
- 11. Removed Registers Triggering Further Register Optimizations
- 12. General Register Statistics
- 13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Source assignments for RAWToRGB:image_conversion|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2
- 15. Parameter Settings for User Entity Instance: vga_controller:vga
- 16. Parameter Settings for User Entity Instance: vga_pll:phase_loop|altpll:altpll_component
- 17. Parameter Settings for User Entity Instance: RAWToRGB:image_conversion|line_buffer:L1|altshift_taps:altshift_taps_component
- 18. Parameter Settings for User Entity Instance: CCD_Capture:camera_capture
- 19. altpll Parameter Settings by Entity Instance
- 20. altshift_taps Parameter Settings by Entity Instance
- 21. Port Connectivity Checks: "RAWToRGB:image_conversion|line_buffer:L1"
- 22. Port Connectivity Checks: "RAWToRGB:image_conversion"
- 23. Port Connectivity Checks: "vga_controller:vga"
- 24. Elapsed Time Per Partition
- 25. Analysis & Synthesis Messages
+ 10. State Machine - |GreenScreen|I2C_CCD_Config:i2c_Config|mSetup_ST
+ 11. Registers Removed During Synthesis
+ 12. Removed Registers Triggering Further Register Optimizations
+ 13. General Register Statistics
+ 14. Inverted Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Source assignments for RAWToRGB:image_conversion|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2
+ 17. Parameter Settings for User Entity Instance: vga_controller:vga
+ 18. Parameter Settings for User Entity Instance: vga_pll:phase_loop|altpll:altpll_component
+ 19. Parameter Settings for User Entity Instance: RAWToRGB:image_conversion|line_buffer:L1|altshift_taps:altshift_taps_component
+ 20. Parameter Settings for User Entity Instance: CCD_Capture:camera_capture
+ 21. Parameter Settings for User Entity Instance: I2C_CCD_Config:i2c_Config
+ 22. altpll Parameter Settings by Entity Instance
+ 23. altshift_taps Parameter Settings by Entity Instance
+ 24. Port Connectivity Checks: "I2C_CCD_Config:i2c_Config|I2C_Controller:u0"
+ 25. Port Connectivity Checks: "RAWToRGB:image_conversion|line_buffer:L1"
+ 26. Port Connectivity Checks: "RAWToRGB:image_conversion"
+ 27. Port Connectivity Checks: "vga_controller:vga"
+ 28. Elapsed Time Per Partition
+ 29. Analysis & Synthesis Messages
 
 
 
@@ -56,15 +60,15 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Dec 16 17:07:40 2015           ;
+; Analysis & Synthesis Status        ; Successful - Wed Jan 13 17:00:16 2016           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; GreenScreen                                     ;
 ; Top-level Entity Name              ; GreenScreen                                     ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 566                                             ;
-;     Total combinational functions  ; 486                                             ;
-;     Dedicated logic registers      ; 291                                             ;
-; Total registers                    ; 291                                             ;
+; Total logic elements               ; 802                                             ;
+;     Total combinational functions  ; 694                                             ;
+;     Dedicated logic registers      ; 422                                             ;
+; Total registers                    ; 422                                             ;
 ; Total pins                         ; 192                                             ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 42,174                                          ;
@@ -176,6 +180,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------+---------+
 ; verilog/SEG7_DIGIT.v             ; yes             ; User Verilog HDL File        ; E:/Kod/greenScreenFPGA/verilog/SEG7_DIGIT.v                           ;         ;
 ; verilog/SEG7_DISPLAY.v           ; yes             ; User Verilog HDL File        ; E:/Kod/greenScreenFPGA/verilog/SEG7_DISPLAY.v                         ;         ;
+; verilog/I2C_Controller.v         ; yes             ; User Verilog HDL File        ; E:/Kod/greenScreenFPGA/verilog/I2C_Controller.v                       ;         ;
+; verilog/I2C_CCD_Config.v         ; yes             ; User Verilog HDL File        ; E:/Kod/greenScreenFPGA/verilog/I2C_CCD_Config.v                       ;         ;
 ; verilog/line_buffer.v            ; yes             ; User Wizard-Generated File   ; E:/Kod/greenScreenFPGA/verilog/line_buffer.v                          ;         ;
 ; verilog/ccd_capture.v            ; yes             ; User Verilog HDL File        ; E:/Kod/greenScreenFPGA/verilog/ccd_capture.v                          ;         ;
 ; vga_pll.v                        ; yes             ; User Wizard-Generated File   ; E:/Kod/greenScreenFPGA/vga_pll.v                                      ;         ;
@@ -207,20 +213,20 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+--------------------------------------------------+
 ; Resource                                    ; Usage                                            ;
 +---------------------------------------------+--------------------------------------------------+
-; Estimated Total logic elements              ; 566                                              ;
+; Estimated Total logic elements              ; 802                                              ;
 ;                                             ;                                                  ;
-; Total combinational functions               ; 486                                              ;
+; Total combinational functions               ; 694                                              ;
 ; Logic element usage by number of LUT inputs ;                                                  ;
-;     -- 4 input functions                    ; 223                                              ;
-;     -- 3 input functions                    ; 75                                               ;
-;     -- <=2 input functions                  ; 188                                              ;
+;     -- 4 input functions                    ; 318                                              ;
+;     -- 3 input functions                    ; 115                                              ;
+;     -- <=2 input functions                  ; 261                                              ;
 ;                                             ;                                                  ;
 ; Logic elements by mode                      ;                                                  ;
-;     -- normal mode                          ; 321                                              ;
-;     -- arithmetic mode                      ; 165                                              ;
+;     -- normal mode                          ; 472                                              ;
+;     -- arithmetic mode                      ; 222                                              ;
 ;                                             ;                                                  ;
-; Total registers                             ; 291                                              ;
-;     -- Dedicated logic registers            ; 291                                              ;
+; Total registers                             ; 422                                              ;
+;     -- Dedicated logic registers            ; 422                                              ;
 ;     -- I/O registers                        ; 0                                                ;
 ;                                             ;                                                  ;
 ; I/O pins                                    ; 192                                              ;
@@ -231,8 +237,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;                                             ;                                                  ;
 ; Maximum fan-out node                        ; vga_pll:phase_loop|altpll:altpll_component|_clk0 ;
 ; Maximum fan-out                             ; 291                                              ;
-; Total fan-out                               ; 3132                                             ;
-; Average fan-out                             ; 3.12                                             ;
+; Total fan-out                               ; 4261                                             ;
+; Average fan-out                             ; 3.18                                             ;
 +---------------------------------------------+--------------------------------------------------+
 
 
@@ -241,9 +247,11 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +--------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                       ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                     ; Library Name ;
 +--------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |GreenScreen                                     ; 486 (1)           ; 291 (13)     ; 42174       ; 0            ; 0       ; 0         ; 192  ; 0            ; |GreenScreen                                                                                                                                            ; work         ;
+; |GreenScreen                                     ; 694 (2)           ; 422 (13)     ; 42174       ; 0            ; 0       ; 0         ; 192  ; 0            ; |GreenScreen                                                                                                                                            ; work         ;
 ;    |CCD_Capture:camera_capture|                  ; 87 (87)           ; 78 (78)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |GreenScreen|CCD_Capture:camera_capture                                                                                                                 ; work         ;
-;    |RAWToRGB:image_conversion|                   ; 207 (191)         ; 104 (93)     ; 42174       ; 0            ; 0       ; 0         ; 0    ; 0            ; |GreenScreen|RAWToRGB:image_conversion                                                                                                                  ; work         ;
+;    |I2C_CCD_Config:i2c_Config|                   ; 223 (152)         ; 131 (93)     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |GreenScreen|I2C_CCD_Config:i2c_Config                                                                                                                  ; work         ;
+;       |I2C_Controller:u0|                        ; 71 (71)           ; 38 (38)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |GreenScreen|I2C_CCD_Config:i2c_Config|I2C_Controller:u0                                                                                                ; work         ;
+;    |RAWToRGB:image_conversion|                   ; 191 (175)         ; 104 (93)     ; 42174       ; 0            ; 0       ; 0         ; 0    ; 0            ; |GreenScreen|RAWToRGB:image_conversion                                                                                                                  ; work         ;
 ;       |line_buffer:L1|                           ; 16 (0)            ; 11 (0)       ; 42174       ; 0            ; 0       ; 0         ; 0    ; 0            ; |GreenScreen|RAWToRGB:image_conversion|line_buffer:L1                                                                                                   ; work         ;
 ;          |altshift_taps:altshift_taps_component| ; 16 (0)            ; 11 (0)       ; 42174       ; 0            ; 0       ; 0         ; 0    ; 0            ; |GreenScreen|RAWToRGB:image_conversion|line_buffer:L1|altshift_taps:altshift_taps_component                                                             ; work         ;
 ;             |shift_taps_fms:auto_generated|      ; 16 (0)            ; 11 (0)       ; 42174       ; 0            ; 0       ; 0         ; 0    ; 0            ; |GreenScreen|RAWToRGB:image_conversion|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated                               ; work         ;
@@ -286,31 +294,75 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------+----------------------------+---------+--------------+--------------+-------------------------------------------------------+----------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                                                                                                     ;
-+-----------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
-; Register name                                                                                                                                 ; Reason for Removal                     ;
-+-----------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
-; RAWToRGB:image_conversion|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|dffe4                            ; Stuck at VCC due to stuck port preset  ;
-; RAWToRGB:image_conversion|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|cntr_pah:cntr3|pre_hazard[0..10] ; Stuck at GND due to stuck port aclear  ;
-; vga_controller:vga|outVGA_SYNC                                                                                                                ; Stuck at GND due to stuck port data_in ;
-; RAWToRGB:image_conversion|wData0_d1[11]                                                                                                       ; Lost fanout                            ;
-; RAWToRGB:image_conversion|wData1_d1[11]                                                                                                       ; Lost fanout                            ;
-; RAWToRGB:image_conversion|wData2_d1[11]                                                                                                       ; Lost fanout                            ;
-; CCD_Capture:camera_capture|mCCD_DATA[11]                                                                                                      ; Lost fanout                            ;
-; rCCD_DATA[11]                                                                                                                                 ; Lost fanout                            ;
-; Total Number of Removed Registers = 18                                                                                                        ;                                        ;
-+-----------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------+
+; State Machine - |GreenScreen|I2C_CCD_Config:i2c_Config|mSetup_ST  ;
++----------------+----------------+----------------+----------------+
+; Name           ; mSetup_ST.0000 ; mSetup_ST.0010 ; mSetup_ST.0001 ;
++----------------+----------------+----------------+----------------+
+; mSetup_ST.0000 ; 0              ; 0              ; 0              ;
+; mSetup_ST.0001 ; 1              ; 0              ; 1              ;
+; mSetup_ST.0010 ; 1              ; 1              ; 0              ;
++----------------+----------------+----------------+----------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                                                                             ;
-+--------------------------------------------------------------------------------------------------------------------+--------------------------+---------------------------------------------------------+
-; Register name                                                                                                      ; Reason for Removal       ; Registers Removed due to This Register                  ;
-+--------------------------------------------------------------------------------------------------------------------+--------------------------+---------------------------------------------------------+
-; RAWToRGB:image_conversion|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|dffe4 ; Stuck at VCC             ; CCD_Capture:camera_capture|mCCD_DATA[11], rCCD_DATA[11] ;
-;                                                                                                                    ; due to stuck port preset ;                                                         ;
-+--------------------------------------------------------------------------------------------------------------------+--------------------------+---------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                                                                       ;
++-----------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------+
+; Register name                                                                                                                                 ; Reason for Removal                                       ;
++-----------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------+
+; RAWToRGB:image_conversion|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|dffe4                            ; Stuck at VCC due to stuck port preset                    ;
+; RAWToRGB:image_conversion|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|cntr_pah:cntr3|pre_hazard[0..10] ; Stuck at GND due to stuck port aclear                    ;
+; vga_controller:vga|outVGA_SYNC                                                                                                                ; Stuck at GND due to stuck port data_in                   ;
+; I2C_CCD_Config:i2c_Config|mI2C_DATA[31]                                                                                                       ; Stuck at VCC due to stuck port data_in                   ;
+; I2C_CCD_Config:i2c_Config|mI2C_DATA[30]                                                                                                       ; Stuck at GND due to stuck port data_in                   ;
+; I2C_CCD_Config:i2c_Config|mI2C_DATA[27..29]                                                                                                   ; Stuck at VCC due to stuck port data_in                   ;
+; I2C_CCD_Config:i2c_Config|mI2C_DATA[26]                                                                                                       ; Stuck at GND due to stuck port data_in                   ;
+; I2C_CCD_Config:i2c_Config|mI2C_DATA[25]                                                                                                       ; Stuck at VCC due to stuck port data_in                   ;
+; I2C_CCD_Config:i2c_Config|mI2C_DATA[24]                                                                                                       ; Stuck at GND due to stuck port data_in                   ;
+; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD[31]                                                                                            ; Stuck at VCC due to stuck port data_in                   ;
+; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD[30]                                                                                            ; Stuck at GND due to stuck port data_in                   ;
+; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD[27..29]                                                                                        ; Stuck at VCC due to stuck port data_in                   ;
+; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD[26]                                                                                            ; Stuck at GND due to stuck port data_in                   ;
+; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD[25]                                                                                            ; Stuck at VCC due to stuck port data_in                   ;
+; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD[24]                                                                                            ; Stuck at GND due to stuck port data_in                   ;
+; RAWToRGB:image_conversion|wData0_d1[11]                                                                                                       ; Lost fanout                                              ;
+; RAWToRGB:image_conversion|wData1_d1[11]                                                                                                       ; Lost fanout                                              ;
+; RAWToRGB:image_conversion|wData2_d1[11]                                                                                                       ; Lost fanout                                              ;
+; CCD_Capture:camera_capture|mCCD_DATA[11]                                                                                                      ; Lost fanout                                              ;
+; rCCD_DATA[11]                                                                                                                                 ; Lost fanout                                              ;
+; I2C_CCD_Config:i2c_Config|sensor_exposure[0,1]                                                                                                ; Merged with I2C_CCD_Config:i2c_Config|sensor_exposure[2] ;
+; I2C_CCD_Config:i2c_Config|mSetup_ST~9                                                                                                         ; Lost fanout                                              ;
+; I2C_CCD_Config:i2c_Config|mSetup_ST~10                                                                                                        ; Lost fanout                                              ;
+; I2C_CCD_Config:i2c_Config|LUT_INDEX[5]                                                                                                        ; Stuck at GND due to stuck port data_in                   ;
+; Total Number of Removed Registers = 39                                                                                                        ;                                                          ;
++-----------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                                                              ;
++--------------------------------------------------------------------------------------------------------------------+---------------------------+---------------------------------------------------------+
+; Register name                                                                                                      ; Reason for Removal        ; Registers Removed due to This Register                  ;
++--------------------------------------------------------------------------------------------------------------------+---------------------------+---------------------------------------------------------+
+; RAWToRGB:image_conversion|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|dffe4 ; Stuck at VCC              ; CCD_Capture:camera_capture|mCCD_DATA[11], rCCD_DATA[11] ;
+;                                                                                                                    ; due to stuck port preset  ;                                                         ;
+; I2C_CCD_Config:i2c_Config|mI2C_DATA[31]                                                                            ; Stuck at VCC              ; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD[31]      ;
+;                                                                                                                    ; due to stuck port data_in ;                                                         ;
+; I2C_CCD_Config:i2c_Config|mI2C_DATA[30]                                                                            ; Stuck at GND              ; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD[30]      ;
+;                                                                                                                    ; due to stuck port data_in ;                                                         ;
+; I2C_CCD_Config:i2c_Config|mI2C_DATA[29]                                                                            ; Stuck at VCC              ; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD[29]      ;
+;                                                                                                                    ; due to stuck port data_in ;                                                         ;
+; I2C_CCD_Config:i2c_Config|mI2C_DATA[28]                                                                            ; Stuck at VCC              ; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD[28]      ;
+;                                                                                                                    ; due to stuck port data_in ;                                                         ;
+; I2C_CCD_Config:i2c_Config|mI2C_DATA[27]                                                                            ; Stuck at VCC              ; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD[27]      ;
+;                                                                                                                    ; due to stuck port data_in ;                                                         ;
+; I2C_CCD_Config:i2c_Config|mI2C_DATA[26]                                                                            ; Stuck at GND              ; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD[26]      ;
+;                                                                                                                    ; due to stuck port data_in ;                                                         ;
+; I2C_CCD_Config:i2c_Config|mI2C_DATA[25]                                                                            ; Stuck at VCC              ; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD[25]      ;
+;                                                                                                                    ; due to stuck port data_in ;                                                         ;
+; I2C_CCD_Config:i2c_Config|mI2C_DATA[24]                                                                            ; Stuck at GND              ; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD[24]      ;
+;                                                                                                                    ; due to stuck port data_in ;                                                         ;
++--------------------------------------------------------------------------------------------------------------------+---------------------------+---------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -318,27 +370,54 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 291   ;
-; Number of registers using Synchronous Clear  ; 58    ;
-; Number of registers using Synchronous Load   ; 21    ;
-; Number of registers using Asynchronous Clear ; 267   ;
+; Total registers                              ; 422   ;
+; Number of registers using Synchronous Clear  ; 100   ;
+; Number of registers using Synchronous Load   ; 34    ;
+; Number of registers using Asynchronous Clear ; 350   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 118   ;
+; Number of registers using Clock Enable       ; 191   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
-; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |GreenScreen|CCD_Capture:camera_capture|X_Counter[6] ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |GreenScreen|CCD_Capture:camera_capture|Y_Counter[5] ;
-; 9:1                ; 10 bits   ; 60 LEs        ; 40 LEs               ; 20 LEs                 ; Yes        ; |GreenScreen|RAWToRGB:image_conversion|rRed[9]       ;
-; 10:1               ; 10 bits   ; 60 LEs        ; 40 LEs               ; 20 LEs                 ; Yes        ; |GreenScreen|RAWToRGB:image_conversion|rBlue[0]      ;
-; 10:1               ; 10 bits   ; 60 LEs        ; 40 LEs               ; 20 LEs                 ; Yes        ; |GreenScreen|RAWToRGB:image_conversion|rGreen[6]     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
++---------------------------------------------------------------------+
+; Inverted Register Statistics                                        ;
++-----------------------------------------------------------+---------+
+; Inverted Register                                         ; Fan out ;
++-----------------------------------------------------------+---------+
+; I2C_CCD_Config:i2c_Config|sensor_exposure[8]              ; 4       ;
+; I2C_CCD_Config:i2c_Config|sensor_exposure[10]             ; 4       ;
+; I2C_CCD_Config:i2c_Config|sensor_exposure[9]              ; 4       ;
+; I2C_CCD_Config:i2c_Config|sensor_exposure[7]              ; 4       ;
+; I2C_CCD_Config:i2c_Config|sensor_exposure[6]              ; 4       ;
+; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SDO           ; 6       ;
+; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD_COUNTER[5] ; 13      ;
+; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD_COUNTER[4] ; 13      ;
+; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD_COUNTER[3] ; 22      ;
+; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD_COUNTER[2] ; 19      ;
+; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SCLK          ; 4       ;
+; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD_COUNTER[0] ; 19      ;
+; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD_COUNTER[1] ; 17      ;
+; I2C_CCD_Config:i2c_Config|I2C_Controller:u0|END           ; 5       ;
+; Total number of inverted registers = 14                   ;         ;
++-----------------------------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------+
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |GreenScreen|I2C_CCD_Config:i2c_Config|sensor_exposure[12]             ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |GreenScreen|CCD_Capture:camera_capture|X_Counter[11]                  ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |GreenScreen|CCD_Capture:camera_capture|Y_Counter[14]                  ;
+; 64:1               ; 12 bits   ; 504 LEs       ; 192 LEs              ; 312 LEs                ; Yes        ; |GreenScreen|I2C_CCD_Config:i2c_Config|mI2C_DATA[7]                    ;
+; 9:1                ; 10 bits   ; 60 LEs        ; 40 LEs               ; 20 LEs                 ; Yes        ; |GreenScreen|RAWToRGB:image_conversion|rRed[1]                         ;
+; 10:1               ; 10 bits   ; 60 LEs        ; 40 LEs               ; 20 LEs                 ; Yes        ; |GreenScreen|RAWToRGB:image_conversion|rBlue[8]                        ;
+; 10:1               ; 10 bits   ; 60 LEs        ; 40 LEs               ; 20 LEs                 ; Yes        ; |GreenScreen|RAWToRGB:image_conversion|rGreen[2]                       ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |GreenScreen|I2C_CCD_Config:i2c_Config|I2C_Controller:u0|SD_COUNTER[4] ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |GreenScreen|I2C_CCD_Config:i2c_Config|sensor_exposure[10]             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -770,6 +849,20 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: I2C_CCD_Config:i2c_Config ;
++-----------------------+------------------+-----------------------------+
+; Parameter Name        ; Value            ; Type                        ;
++-----------------------+------------------+-----------------------------+
+; default_exposure      ; 0000011111000000 ; Unsigned Binary             ;
+; exposure_change_value ; 0000000011001000 ; Unsigned Binary             ;
+; CLK_Freq              ; 50000000         ; Signed Integer              ;
+; I2C_Freq              ; 20000            ; Signed Integer              ;
+; LUT_SIZE              ; 25               ; Signed Integer              ;
++-----------------------+------------------+-----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +----------------------------------------------------------------------------+
 ; altpll Parameter Settings by Entity Instance                               ;
 +-------------------------------+--------------------------------------------+
@@ -798,6 +891,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     -- TAP_DISTANCE        ; 1280                                                                           ;
 ;     -- WIDTH               ; 12                                                                             ;
 +----------------------------+--------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "I2C_CCD_Config:i2c_Config|I2C_Controller:u0"                                                                                                ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                      ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; W_R  ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -846,7 +948,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Wed Dec 16 17:07:38 2015
+    Info: Processing started: Wed Jan 13 17:00:12 2016
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off GreenScreen -c GreenScreen
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 25 design units, including 25 entities, in source file verilog/de2_70_sopc.v
@@ -1013,6 +1115,17 @@ Warning (10036): Verilog HDL or VHDL warning at ccd_capture.v(111): object "y_co
 Warning (10230): Verilog HDL assignment warning at ccd_capture.v(68): truncated value with size 32 to match size of target (16)
 Warning (10230): Verilog HDL assignment warning at ccd_capture.v(72): truncated value with size 32 to match size of target (16)
 Warning (10230): Verilog HDL assignment warning at ccd_capture.v(132): truncated value with size 32 to match size of target (1)
+Info (12128): Elaborating entity "I2C_CCD_Config" for hierarchy "I2C_CCD_Config:i2c_Config"
+Warning (10230): Verilog HDL assignment warning at I2C_CCD_Config.v(80): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at I2C_CCD_Config.v(81): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at I2C_CCD_Config.v(114): truncated value with size 32 to match size of target (25)
+Warning (10230): Verilog HDL assignment warning at I2C_CCD_Config.v(119): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at I2C_CCD_Config.v(144): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at I2C_CCD_Config.v(194): truncated value with size 32 to match size of target (6)
+Info (12128): Elaborating entity "I2C_Controller" for hierarchy "I2C_CCD_Config:i2c_Config|I2C_Controller:u0"
+Warning (10230): Verilog HDL assignment warning at I2C_Controller.v(32): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at I2C_Controller.v(31): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at I2C_Controller.v(44): truncated value with size 32 to match size of target (7)
 Info (12128): Elaborating entity "SEG7_DISPLAY" for hierarchy "SEG7_DISPLAY:segment_display"
 Info (12128): Elaborating entity "SEG7_DIGIT" for hierarchy "SEG7_DISPLAY:segment_display|SEG7_DIGIT:u0"
 Warning (14284): Synthesized away the following node(s):
@@ -1020,9 +1133,10 @@ Warning (14284): Synthesized away the following node(s):
         Warning (14320): Synthesized away node "RAWToRGB:image_conversion|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|q_b[11]"
         Warning (14320): Synthesized away node "RAWToRGB:image_conversion|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|q_b[23]"
         Warning (14320): Synthesized away node "RAWToRGB:image_conversion|line_buffer:L1|altshift_taps:altshift_taps_component|shift_taps_fms:auto_generated|altsyncram_16d1:altsyncram2|q_b[35]"
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13034): The following nodes have both tri-state and non-tri-state drivers
     Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_1[14]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_1[20]" and its non-tri-state driver.
     Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_CLKOUT_N1" and its non-tri-state driver.
 Warning (13039): The following bidir pins have no drivers
     Warning (13040): Bidir "GPIO_1[0]" has no driver
@@ -1043,8 +1157,6 @@ Warning (13039): The following bidir pins have no drivers
     Warning (13040): Bidir "GPIO_1[12]" has no driver
     Warning (13040): Bidir "GPIO_1[13]" has no driver
     Warning (13040): Bidir "GPIO_1[16]" has no driver
-    Warning (13040): Bidir "GPIO_1[19]" has no driver
-    Warning (13040): Bidir "GPIO_1[20]" has no driver
     Warning (13040): Bidir "GPIO_1[21]" has no driver
     Warning (13040): Bidir "GPIO_1[22]" has no driver
     Warning (13040): Bidir "GPIO_1[23]" has no driver
@@ -1059,9 +1171,12 @@ Warning (13039): The following bidir pins have no drivers
     Warning (13040): Bidir "GPIO_CLKOUT_P1" has no driver
 Warning (13032): The following tri-state nodes are fed by constants
     Warning (13033): The pin "GPIO_1[15]" is fed by VCC
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13009): TRI or OPNDRN buffers permanently enabled
     Warning (13010): Node "GPIO_1[14]~synth"
     Warning (13010): Node "GPIO_1[15]~synth"
+    Warning (13010): Node "GPIO_1[20]~synth"
     Warning (13010): Node "GPIO_CLKOUT_N1~synth"
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "oHEX0_DP" is stuck at GND
@@ -1075,30 +1190,29 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "oLEDG[8]" is stuck at GND
     Warning (13410): Pin "oI2C_SCLK" is stuck at GND
     Warning (13410): Pin "oVGA_SYNC_N" is stuck at GND
-Info (17049): 5 registers lost all their fanouts during netlist optimizations.
+Info (17049): 7 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 9 input pin(s) that do not drive logic
+Warning (21074): Design contains 8 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "iCLK_28"
     Warning (15610): No output dependent on input pin "iCLK_50_2"
     Warning (15610): No output dependent on input pin "iCLK_50_3"
     Warning (15610): No output dependent on input pin "iCLK_50_4"
     Warning (15610): No output dependent on input pin "iEXT_CLOCK"
-    Warning (15610): No output dependent on input pin "iKEY[1]"
     Warning (15610): No output dependent on input pin "iKEY[2]"
     Warning (15610): No output dependent on input pin "iKEY[3]"
     Warning (15610): No output dependent on input pin "GPIO_CLKIN_P1"
-Info (21057): Implemented 792 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1030 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 30 input pins
     Info (21059): Implemented 127 output pins
     Info (21060): Implemented 35 bidirectional pins
-    Info (21061): Implemented 566 logic cells
+    Info (21061): Implemented 804 logic cells
     Info (21064): Implemented 33 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 98 warnings
-    Info: Peak virtual memory: 508 megabytes
-    Info: Processing ended: Wed Dec 16 17:07:41 2015
-    Info: Elapsed time: 00:00:03
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 106 warnings
+    Info: Peak virtual memory: 512 megabytes
+    Info: Processing ended: Wed Jan 13 17:00:16 2016
+    Info: Elapsed time: 00:00:04
     Info: Total CPU time (on all processors): 00:00:03
 
 

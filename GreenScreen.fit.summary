@@ -1,14 +1,14 @@
-Fitter Status : Successful - Wed Dec 16 17:07:49 2015
+Fitter Status : Successful - Wed Jan 13 17:00:25 2016
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
 Revision Name : GreenScreen
 Top-level Entity Name : GreenScreen
 Family : Cyclone II
 Device : EP2C70F896C6
 Timing Models : Final
-Total logic elements : 507 / 68,416 ( < 1 % )
-    Total combinational functions : 486 / 68,416 ( < 1 % )
-    Dedicated logic registers : 291 / 68,416 ( < 1 % )
-Total registers : 291
+Total logic elements : 727 / 68,416 ( 1 % )
+    Total combinational functions : 694 / 68,416 ( 1 % )
+    Dedicated logic registers : 422 / 68,416 ( < 1 % )
+Total registers : 422
 Total pins : 192 / 622 ( 31 % )
 Total virtual pins : 0
 Total memory bits : 42,174 / 1,152,000 ( 4 % )

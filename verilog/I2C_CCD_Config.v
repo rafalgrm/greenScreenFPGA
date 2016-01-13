@@ -34,10 +34,10 @@ reg	[3:0]	mSetup_ST;
 //////////////   CMOS sensor registers setting //////////////////////
 
 input 		iEXPOSURE_ADJ;
-input		iEXPOSURE_DEC_p;	
+input			iEXPOSURE_DEC_p;	
 
 parameter 	default_exposure 			= 16'h07c0;
-parameter 	exposure_change_value	 	= 16'd200;
+parameter 	exposure_change_value	= 16'd200;
 
 reg	[24:0]	combo_cnt;
 wire		combo_pulse;
@@ -45,9 +45,9 @@ wire		combo_pulse;
 reg	[1:0]	izoom_mode_sw_delay;
 
 reg	[3:0]	iexposure_adj_delay;
-wire		exposure_adj_set;	
-wire		exposure_adj_reset;
-reg	[15:0]	senosr_exposure;
+wire			exposure_adj_set;	
+wire			exposure_adj_reset;
+reg	[15:0]	sensor_exposure;
 
 
 wire [23:0] sensor_start_row;
@@ -57,12 +57,12 @@ wire [23:0] sensor_column_size;
 wire [23:0] sensor_row_mode;
 wire [23:0] sensor_column_mode;
 
-assign sensor_start_row 		= iZOOM_MODE_SW ?  24'h010036 : 24'h010000;
-assign sensor_start_column 		= iZOOM_MODE_SW ?  24'h020010 : 24'h020000;
-assign sensor_row_size	 		= iZOOM_MODE_SW ?  24'h0303FF : 24'h0307FF;
-assign sensor_column_size 		= iZOOM_MODE_SW ?  24'h0404FF : 24'h0409FF;
-assign sensor_row_mode 			= iZOOM_MODE_SW ?  24'h220000 : 24'h220011;
-assign sensor_column_mode		= iZOOM_MODE_SW ?  24'h230000 : 24'h230011;
+assign sensor_start_row 		= 24'h010036; // 24'h010000;
+assign sensor_start_column 	= 24'h020010; // 24'h020000;
+assign sensor_row_size	 		= 24'h0307D5;// 24'h0301E0;
+assign sensor_column_size 		= 24'h040ABF; // 24'h040280;
+assign sensor_row_mode 			= 24'h220000; // 24'h22001A;
+assign sensor_column_mode		= 24'h230000; // 24'h23001A;
 
 	
 always@(posedge iCLK or negedge iRST_N)
@@ -83,24 +83,24 @@ assign  exposure_adj_reset = ({iexposure_adj_delay[3:2]}==2'b10) ? 1 : 0 ;
 always@(posedge iCLK or negedge iRST_N)
 	begin
 		if (!iRST_N)
-			senosr_exposure <= default_exposure;
+			sensor_exposure <= default_exposure;
 		else if (exposure_adj_set|combo_pulse)
 			begin
 				if (iEXPOSURE_DEC_p)
 					begin
-						if ((senosr_exposure < exposure_change_value)||
-							(senosr_exposure == 16'h0))
-							senosr_exposure <= 0;
+						if ((sensor_exposure < exposure_change_value)||
+							(sensor_exposure == 16'h0))
+							sensor_exposure <= 0;
 						else	
-							senosr_exposure <= senosr_exposure - exposure_change_value;
+							sensor_exposure <= sensor_exposure - exposure_change_value;
 					end		
 				else
 					begin
-						if (((16'hffff -senosr_exposure) <exposure_change_value)||
-							(senosr_exposure == 16'hffff))
-							senosr_exposure <= 16'hffff;
+						if (((16'hffff -sensor_exposure) <exposure_change_value)||
+							(sensor_exposure == 16'hffff))
+							sensor_exposure <= 16'hffff;
 						else
-							senosr_exposure <= senosr_exposure + exposure_change_value;	
+							sensor_exposure <= sensor_exposure + exposure_change_value;	
 					end		
 			end
 	end			
@@ -204,7 +204,7 @@ begin
 	case(LUT_INDEX)
 	0	:	LUT_DATA	<=	24'h000000;
 	1	:	LUT_DATA	<=	24'h20c000;				//	Mirror Row and Columns
-	2	:	LUT_DATA	<=	{8'h09,senosr_exposure};//	Exposure
+	2	:	LUT_DATA	<=	{8'h09,sensor_exposure};//	Exposure
 	3	:	LUT_DATA	<=	24'h050000;				//	H_Blanking
 	4	:	LUT_DATA	<=	24'h060019;				//	V_Blanking	
 	5	:	LUT_DATA	<=	24'h0A8000;				//	change latch
@@ -230,9 +230,9 @@ begin
 	19	:	LUT_DATA	<=	sensor_start_column ;	//	set start column 	
 
 	20	:	LUT_DATA	<=	sensor_row_size;		//	set row size to 	
-	21	:	LUT_DATA	<=	sensor_column_size;		//	set column size to 2047
+	21	:	LUT_DATA	<=	sensor_column_size;	//	set column size to 2047
 	22	:	LUT_DATA	<=	sensor_row_mode;		//	set row mode in bin mode
-	23	:	LUT_DATA	<=	sensor_column_mode;		//	set column mode	 in bin mode
+	23	:	LUT_DATA	<=	sensor_column_mode;	//	set column mode in bin mode
 	24	:	LUT_DATA	<=	24'h4901A8;				//	row black target		
 	default:LUT_DATA	<=	24'h000000;
 	endcase

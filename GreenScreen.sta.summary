@@ -2,29 +2,57 @@
 TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
-Type  : Slow Model Setup 'phase_loop|altpll_component|pll|clk[0]'
-Slack : 3.306
-TNS   : 0.000
+Type  : Slow Model Setup 'I2C_CCD_Config:i2c_Config|mI2C_CTRL_CLK'
+Slack : -3.154
+TNS   : -181.597
 
 Type  : Slow Model Setup 'iCLK_50'
-Slack : 15.030
+Slack : 2.965
+TNS   : 0.000
+
+Type  : Slow Model Setup 'phase_loop|altpll_component|pll|clk[0]'
+Slack : 3.181
 TNS   : 0.000
 
 Type  : Slow Model Hold 'iCLK_50'
-Slack : 0.391
-TNS   : 0.000
+Slack : -2.695
+TNS   : -2.695
+
+Type  : Slow Model Hold 'I2C_CCD_Config:i2c_Config|mI2C_CTRL_CLK'
+Slack : -0.069
+TNS   : -0.069
 
 Type  : Slow Model Hold 'phase_loop|altpll_component|pll|clk[0]'
 Slack : 0.391
 TNS   : 0.000
 
+Type  : Slow Model Recovery 'I2C_CCD_Config:i2c_Config|mI2C_CTRL_CLK'
+Slack : -2.653
+TNS   : -60.181
+
 Type  : Slow Model Recovery 'phase_loop|altpll_component|pll|clk[0]'
-Slack : 2.446
+Slack : 2.663
+TNS   : 0.000
+
+Type  : Slow Model Recovery 'iCLK_50'
+Slack : 15.327
+TNS   : 0.000
+
+Type  : Slow Model Removal 'I2C_CCD_Config:i2c_Config|mI2C_CTRL_CLK'
+Slack : 2.186
+TNS   : 0.000
+
+Type  : Slow Model Removal 'iCLK_50'
+Slack : 3.025
 TNS   : 0.000
 
 Type  : Slow Model Removal 'phase_loop|altpll_component|pll|clk[0]'
-Slack : 6.221
+Slack : 4.765
 TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'I2C_CCD_Config:i2c_Config|mI2C_CTRL_CLK'
+Slack : -0.500
+TNS   : -71.000
 
 Type  : Slow Model Minimum Pulse Width 'phase_loop|altpll_component|pll|clk[0]'
 Slack : 2.873
@@ -34,29 +62,57 @@ Type  : Slow Model Minimum Pulse Width 'iCLK_50'
 Slack : 9.000
 TNS   : 0.000
 
-Type  : Fast Model Setup 'phase_loop|altpll_component|pll|clk[0]'
-Slack : 7.038
-TNS   : 0.000
+Type  : Fast Model Setup 'I2C_CCD_Config:i2c_Config|mI2C_CTRL_CLK'
+Slack : -0.972
+TNS   : -47.280
 
 Type  : Fast Model Setup 'iCLK_50'
-Slack : 17.707
+Slack : 2.066
+TNS   : 0.000
+
+Type  : Fast Model Setup 'phase_loop|altpll_component|pll|clk[0]'
+Slack : 6.912
 TNS   : 0.000
 
 Type  : Fast Model Hold 'iCLK_50'
-Slack : 0.215
-TNS   : 0.000
+Slack : -1.686
+TNS   : -1.686
+
+Type  : Fast Model Hold 'I2C_CCD_Config:i2c_Config|mI2C_CTRL_CLK'
+Slack : -0.036
+TNS   : -0.036
 
 Type  : Fast Model Hold 'phase_loop|altpll_component|pll|clk[0]'
 Slack : 0.215
 TNS   : 0.000
 
+Type  : Fast Model Recovery 'I2C_CCD_Config:i2c_Config|mI2C_CTRL_CLK'
+Slack : -0.763
+TNS   : -17.037
+
 Type  : Fast Model Recovery 'phase_loop|altpll_component|pll|clk[0]'
-Slack : 5.906
+Slack : 5.698
+TNS   : 0.000
+
+Type  : Fast Model Recovery 'iCLK_50'
+Slack : 17.368
+TNS   : 0.000
+
+Type  : Fast Model Removal 'I2C_CCD_Config:i2c_Config|mI2C_CTRL_CLK'
+Slack : 1.072
+TNS   : 0.000
+
+Type  : Fast Model Removal 'iCLK_50'
+Slack : 1.461
 TNS   : 0.000
 
 Type  : Fast Model Removal 'phase_loop|altpll_component|pll|clk[0]'
-Slack : 3.489
+Slack : 2.762
 TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'I2C_CCD_Config:i2c_Config|mI2C_CTRL_CLK'
+Slack : -0.500
+TNS   : -71.000
 
 Type  : Fast Model Minimum Pulse Width 'phase_loop|altpll_component|pll|clk[0]'
 Slack : 2.873
