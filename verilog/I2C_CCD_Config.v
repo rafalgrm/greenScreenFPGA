@@ -12,34 +12,26 @@ input			iCLK;
 input			iRST_N;
 
 //	I2C Side
-output		I2C_SCLK;
+output			I2C_SCLK;
 
 inout			I2C_SDAT;
 
-//	Internal Registers/Wires
-reg	[15:0]	mI2C_CLK_DIV;
-reg	[31:0]	mI2C_DATA;
-reg				mI2C_CTRL_CLK;
-reg				mI2C_GO;
-wire				mI2C_END;
-wire				mI2C_ACK;
-reg	[23:0]	LUT_DATA;
-reg	[5:0]	LUT_INDEX;
-reg	[3:0]	mSetup_ST;
+//	Wewnętrzne rejestry / przewody
+
+reg	[15:0]	masterI2C_CLK_DIV;
+reg	[31:0]	masterI2C_DATA;
+reg			masterI2C_CTRL_CLK;
+reg			masterI2C_GO;
+wire		masterI2C_END;
+wire		masterI2C_ACK;
+reg	[23:0]	DATA_DATA;
+reg	[5:0]	DATA_INDEX;
+reg	[3:0]	masterSetup_ST;
 
 
-//   CMOS sensor registers setting //
+//   Ustawienia matrycy
 
-reg	[24:0]	combo_cnt;
-wire			combo_pulse;
-
-reg	[1:0]	izoom_mode_sw_delay;
-
-reg	[3:0]	iexposure_adj_delay;
-wire			exposure_adj_set;	
-wire			exposure_adj_reset;
 reg	[15:0]	sensor_exposure;
-
 
 wire [23:0] sensor_start_row;
 wire [23:0] sensor_start_column;
@@ -57,129 +49,121 @@ assign sensor_column_mode		= 24'h23001A; // 24'h23001A;
 
 // 256x192
 // 20x20
-		
-always@(posedge iCLK or negedge iRST_N)
-	begin
-		if (!iRST_N)
-			combo_cnt <= 0;
-		else if (!iexposure_adj_delay[3])
-			combo_cnt <= combo_cnt + 1;
-		else
-			combo_cnt <= 0;	
-	end
-	
-assign combo_pulse = (combo_cnt == 25'h1fffff) ? 1 : 0;				
-		
+						
 wire	i2c_reset;		
 
-assign i2c_reset = iRST_N & ~exposure_adj_reset & ~combo_pulse ;
+assign 	i2c_reset = iRST_N;
 
 // Configuration constants
 
 //	Clock Setting
 parameter	CLK_Freq	=	50000000;	//	50	MHz
 parameter	I2C_Freq	=	20000;		//	20	KHz
-//	LUT Data Number
-parameter	LUT_SIZE	=	26;
+//	DATA Number
+parameter	DATA_SIZE	=	26;
 
-/////////////////////	I2C Control Clock	////////////////////////
+
+// Deklaracja modułu I2C_Controller
+
+I2C_Controller 	u0	(	.iCLK(masterI2C_CTRL_CLK),	
+						.I2C_SCLK(I2C_SCLK),		
+ 	 	 	 	 	 	.I2C_SDAT(I2C_SDAT),		
+						.I2C_DATA(masterI2C_DATA),		
+						.GO(masterI2C_GO),      			
+						.END(masterI2C_END),				
+						.ACK(masterI2C_ACK),
+						.RESET(i2c_reset)
+					);
+					
+
+// Stworzenie zegara dla interfejsu I2C
+
 always@(posedge iCLK or negedge i2c_reset)
 begin
 	if(!i2c_reset)
 	begin
-		mI2C_CTRL_CLK	<=	0;
-		mI2C_CLK_DIV	<=	0;
+		masterI2C_CTRL_CLK	<=	0;
+		masterI2C_CLK_DIV	<=	0;
 	end
 	else
 	begin
-		if( mI2C_CLK_DIV	< (CLK_Freq / I2C_Freq) )
-		mI2C_CLK_DIV	<=	mI2C_CLK_DIV + 1;
+		if( masterI2C_CLK_DIV < (CLK_Freq / I2C_Freq) )
+			masterI2C_CLK_DIV <=	masterI2C_CLK_DIV + 1;
 		else
 		begin
-			mI2C_CLK_DIV	<=	0;
-			mI2C_CTRL_CLK	<=	~mI2C_CTRL_CLK;
+			masterI2C_CLK_DIV	<=	0;
+			masterI2C_CTRL_CLK	<=	~masterI2C_CTRL_CLK;
 		end
 	end
 end
 
-////////////////////////////////////////////////////////////////////
-
-I2C_Controller 	u0	(	.CLOCK(mI2C_CTRL_CLK),		//	Controller Work Clock
-						.I2C_SCLK(I2C_SCLK),		//	I2C CLOCK
- 	 	 	 	 	 	.I2C_SDAT(I2C_SDAT),		//	I2C DATA
-						.I2C_DATA(mI2C_DATA),		//	DATA:[SLAVE_ADDR,SUB_ADDR,DATA]
-						.GO(mI2C_GO),      			//	GO transfor
-						.END(mI2C_END),				//	END transfor 
-						.ACK(mI2C_ACK),				//	ACK
-						.RESET(i2c_reset)
-					);
-					
-					
-//////////////////////	Config Control	////////////////////////////
-always@(posedge mI2C_CTRL_CLK or negedge i2c_reset)
+				
+				
+//	Kontrola 
+always@(posedge masterI2C_CTRL_CLK or negedge i2c_reset)
 begin
 	if(!i2c_reset)
 	begin
-		LUT_INDEX	<=	0;
-		mSetup_ST	<=	0;
-		mI2C_GO		<=	0;
+		DATA_INDEX	<=	0;
+		masterSetup_ST	<=	0;
+		masterI2C_GO		<=	0;
 	end
 
-	else if(LUT_INDEX < LUT_SIZE)
+	else if(DATA_INDEX < DATA_SIZE)
 		begin
-			case(mSetup_ST)
+			case(masterSetup_ST)
 			0:	begin
-					mI2C_DATA	<=	{8'hBA,LUT_DATA};
-					mI2C_GO		<=	1;
-					mSetup_ST	<=	1;
+					masterI2C_DATA	<=	{8'hBA,DATA_DATA};
+					masterI2C_GO		<=	1;
+					masterSetup_ST	<=	1;
 				end
 			1:	begin
-					if(mI2C_END)
+					if(masterI2C_END)
 					begin
-						if(!mI2C_ACK)
-						mSetup_ST	<=	2;
+						if(!masterI2C_ACK)
+						masterSetup_ST	<=	2;
 						else
-						mSetup_ST	<=	0;							
-						mI2C_GO		<=	0;
+						masterSetup_ST	<=	0;							
+						masterI2C_GO		<=	0;
 					end
 				end
 			2:	begin
-					LUT_INDEX	<=	LUT_INDEX+1;
-					mSetup_ST	<=	0;
+					DATA_INDEX	<=	DATA_INDEX+1;
+					masterSetup_ST	<=	0;
 				end
 			endcase
 		end
 end
 
-/////////////////////	Config Data LUT	  //////////////////////////		
+//	Config Data		
 always
 begin
-	case(LUT_INDEX)
-	0	:	LUT_DATA	<=	24'h000000;
-	1	:	LUT_DATA	<=	24'h200000;				//	Mirror Row and Columns
-	2	:	LUT_DATA	<=	24'h090100;				//	Exposure // {8'h09,sensor_exposure}
-	3	:	LUT_DATA	<=	24'h0500A0;				//	H_Blanking
-	4	:	LUT_DATA	<=	24'h06002D;				//	V_Blanking	
-	5	:	LUT_DATA	<=	24'h0A0000;				//	change latch
-	6	:	LUT_DATA	<=	24'h2B000b;				//	Green 1 Gain
-	7	:	LUT_DATA	<=	24'h2C000f;				//	Blue Gain
-	8	:	LUT_DATA	<=	24'h2D000f;				//	Red Gain
-	9	:	LUT_DATA	<=	24'h2E000b;				//	Green 2 Gain
-	10	:	LUT_DATA	<=	24'h100000;				//	set up PLL power on
-	11	:	LUT_DATA	<=	24'h100000;				//	PLL_m_Factor<<8+PLL_n_Divider	
-	12	:	LUT_DATA	<=	24'h120000;				//	PLL_p1_Divider	
-	13	:	LUT_DATA	<=	24'h100000;				//	set USE PLL	 
-	14	:	LUT_DATA	<=	24'h980000;				//	disable calibration 	
-	18	:	LUT_DATA	<=	sensor_start_row 	;	//	set start row	
-	19	:	LUT_DATA	<=	sensor_start_column ;	//	set start column 	
+	case(DATA_INDEX)
+	0	:	DATA_DATA	<=	24'h000000;
+	1	:	DATA_DATA	<=	24'h200000;				//	Mirror Row and Columns
+	2	:	DATA_DATA	<=	24'h090100;				//	Exposure // {8'h09,sensor_exposure}
+	3	:	DATA_DATA	<=	24'h0500A0;				//	H_Blanking
+	4	:	DATA_DATA	<=	24'h06002D;				//	V_Blanking	
+	5	:	DATA_DATA	<=	24'h0A0000;				//	change latch
+	6	:	DATA_DATA	<=	24'h2B000b;				//	Green 1 Gain
+	7	:	DATA_DATA	<=	24'h2C000f;				//	Blue Gain
+	8	:	DATA_DATA	<=	24'h2D000f;				//	Red Gain
+	9	:	DATA_DATA	<=	24'h2E000b;				//	Green 2 Gain
+	10	:	DATA_DATA	<=	24'h100000;				//	set up PLL power on
+	11	:	DATA_DATA	<=	24'h100000;				//	PLL_m_Factor<<8+PLL_n_Divider	
+	12	:	DATA_DATA	<=	24'h120000;				//	PLL_p1_Divider	
+	13	:	DATA_DATA	<=	24'h100000;				//	set USE PLL	 
+	14	:	DATA_DATA	<=	24'h980000;				//	disable calibration 	
+	18	:	DATA_DATA	<=	sensor_start_row 	;	//	set start row	
+	19	:	DATA_DATA	<=	sensor_start_column ;	//	set start column 	
 
-	20	:	LUT_DATA	<=	sensor_row_size;		//	set row size to 	
-	21	:	LUT_DATA	<=	sensor_column_size;		//	set column size to 2047
-	22	:	LUT_DATA	<=	sensor_row_mode;		//	set row mode in bin mode
-	23	:	LUT_DATA	<=	sensor_column_mode;		//	set column mode in bin mode
-	24	:	LUT_DATA	<=	24'h4901A8;				//	row black target		
-	25	:	LUT_DATA	<=	24'h1E0000;				//	read mode
-	default:LUT_DATA	<=	24'h000000;
+	20	:	DATA_DATA	<=	sensor_row_size;		//	set row size to 	
+	21	:	DATA_DATA	<=	sensor_column_size;		//	set column size to 2047
+	22	:	DATA_DATA	<=	sensor_row_mode;		//	set row mode in bin mode
+	23	:	DATA_DATA	<=	sensor_column_mode;		//	set column mode in bin mode
+	24	:	DATA_DATA	<=	24'h4901A8;				//	row black target		
+	25	:	DATA_DATA	<=	24'h1E0000;				//	read mode
+	default:DATA_DATA	<=	24'h000000;
 	endcase
 end
 
