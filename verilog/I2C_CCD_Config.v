@@ -1,10 +1,11 @@
-module I2C_CCD_Config (	//	Host Side
-						iCLK,
-						iRST_N,
-						//	I2C Side
-						I2C_SCLK,
-						I2C_SDAT
-						);
+module I2C_CCD_Config (	
+	// Host Side
+	iCLK,
+	iRST_N,
+	// I2C Side
+	I2C_SCLK,
+	I2C_SDAT
+);
 						
 //	Host Side
 input			iCLK;
@@ -27,7 +28,7 @@ reg	[5:0]	LUT_INDEX;
 reg	[3:0]	mSetup_ST;
 
 
-//////////////   CMOS sensor registers setting //////////////////////
+//   CMOS sensor registers setting //
 
 reg	[24:0]	combo_cnt;
 wire			combo_pulse;
@@ -48,7 +49,7 @@ wire [23:0] sensor_row_mode;
 wire [23:0] sensor_column_mode;
 
 assign sensor_start_row 		= 24'h010036; // 24'h010000;
-assign sensor_start_column 	= 24'h020010; // 24'h020000;
+assign sensor_start_column 		= 24'h020010; // 24'h020000;
 assign sensor_row_size	 		= 24'h030280; // 24'h0301E0; //  0797
 assign sensor_column_size 		= 24'h0401E0; // 24'h040280; //  0x0A1F
 assign sensor_row_mode 			= 24'h22001A; // 24'h22001A;
@@ -73,7 +74,7 @@ wire	i2c_reset;
 
 assign i2c_reset = iRST_N & ~exposure_adj_reset & ~combo_pulse ;
 
-/////////////////////////////////////////////////////////////////////
+// Configuration constants
 
 //	Clock Setting
 parameter	CLK_Freq	=	50000000;	//	50	MHz
@@ -91,8 +92,8 @@ begin
 	end
 	else
 	begin
-		if( mI2C_CLK_DIV	< (CLK_Freq/I2C_Freq) )
-		mI2C_CLK_DIV	<=	mI2C_CLK_DIV+1;
+		if( mI2C_CLK_DIV	< (CLK_Freq / I2C_Freq) )
+		mI2C_CLK_DIV	<=	mI2C_CLK_DIV + 1;
 		else
 		begin
 			mI2C_CLK_DIV	<=	0;
@@ -100,7 +101,9 @@ begin
 		end
 	end
 end
+
 ////////////////////////////////////////////////////////////////////
+
 I2C_Controller 	u0	(	.CLOCK(mI2C_CTRL_CLK),		//	Controller Work Clock
 						.I2C_SCLK(I2C_SCLK),		//	I2C CLOCK
  	 	 	 	 	 	.I2C_SDAT(I2C_SDAT),		//	I2C DATA
@@ -111,6 +114,7 @@ I2C_Controller 	u0	(	.CLOCK(mI2C_CTRL_CLK),		//	Controller Work Clock
 						.RESET(i2c_reset)
 					);
 					
+					
 //////////////////////	Config Control	////////////////////////////
 always@(posedge mI2C_CTRL_CLK or negedge i2c_reset)
 begin
@@ -119,10 +123,9 @@ begin
 		LUT_INDEX	<=	0;
 		mSetup_ST	<=	0;
 		mI2C_GO		<=	0;
-
 	end
 
-	else if(LUT_INDEX<LUT_SIZE)
+	else if(LUT_INDEX < LUT_SIZE)
 		begin
 			case(mSetup_ST)
 			0:	begin
@@ -171,9 +174,9 @@ begin
 	19	:	LUT_DATA	<=	sensor_start_column ;	//	set start column 	
 
 	20	:	LUT_DATA	<=	sensor_row_size;		//	set row size to 	
-	21	:	LUT_DATA	<=	sensor_column_size;	//	set column size to 2047
+	21	:	LUT_DATA	<=	sensor_column_size;		//	set column size to 2047
 	22	:	LUT_DATA	<=	sensor_row_mode;		//	set row mode in bin mode
-	23	:	LUT_DATA	<=	sensor_column_mode;	//	set column mode in bin mode
+	23	:	LUT_DATA	<=	sensor_column_mode;		//	set column mode in bin mode
 	24	:	LUT_DATA	<=	24'h4901A8;				//	row black target		
 	25	:	LUT_DATA	<=	24'h1E0000;				//	read mode
 	default:LUT_DATA	<=	24'h000000;

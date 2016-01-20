@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>480</x>
+      <y>80</y>
+      <w>710</w>
+      <h>710</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+I2C_CCD_Config</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>870</x>
+      <y>200</y>
+      <w>280</w>
+      <h>570</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+I2C_Controller</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>260</y>
+      <w>350</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>m1=iCLK
+lt=&lt;-</panel_attributes>
+    <additional_attributes>330.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>630</y>
+      <w>350</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>m1=iRST_N
+
+lt=&lt;-</panel_attributes>
+    <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>310</y>
+      <w>350</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>m1=I2C_SCLK
+
+lt=&lt;-</panel_attributes>
+    <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>350</y>
+      <w>350</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>m1=I2C_DAT
+
+lt=&lt;-</panel_attributes>
+    <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>390</y>
+      <w>320</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>m1=I2C_SDAT
+
+lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;20.0;300.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>440</y>
+      <w>330</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>m1=ICLK
+lt=&lt;-()</panel_attributes>
+    <additional_attributes>310.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>480</y>
+      <w>330</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>m1=GO
+lt=&lt;-()</panel_attributes>
+    <additional_attributes>310.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>520</y>
+      <w>330</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>m1=END
+lt=&lt;-()</panel_attributes>
+    <additional_attributes>310.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>560</y>
+      <w>330</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>m1=W_R
+lt=&lt;-()</panel_attributes>
+    <additional_attributes>310.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>600</y>
+      <w>330</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>m1=ACK
+lt=&lt;-()</panel_attributes>
+    <additional_attributes>310.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>640</y>
+      <w>330</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>m1=RST
+lt=&lt;-()</panel_attributes>
+    <additional_attributes>310.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>720</y>
+      <w>320</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>m1=I2C_SDAT
+lt=&lt;-&gt;</panel_attributes>
+    <additional_attributes>300.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>390</y>
+      <w>70</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>
+lt=.()</panel_attributes>
+    <additional_attributes>50.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>710</y>
+      <w>70</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>
+lt=.()</panel_attributes>
+    <additional_attributes>50.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>260</y>
+      <w>330</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>m1=ICLK
+lt=&lt;-()</panel_attributes>
+    <additional_attributes>310.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>530</x>
+      <y>840</y>
+      <w>630</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>m2=Oznacza wykorzystanie syngału w ramach modułu, w odróżnieniu od tylko przekazania go dalej
+lt=.()</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>320</y>
+      <w>330</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>m1=I2C_SCLK
+lt=&lt;-()</panel_attributes>
+    <additional_attributes>310.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>360</y>
+      <w>330</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>m1=I2C_DAT
+lt=&lt;-()</panel_attributes>
+    <additional_attributes>310.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
